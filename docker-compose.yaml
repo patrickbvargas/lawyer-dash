@@ -1,0 +1,39 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:16.2
+    container_name: postgres-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - postgres-db-network
+    restart: always
+    
+  pgAdmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'teste@teste.com'
+      PGADMIN_DEFAULT_PASSWORD: 'teste'
+    ports:
+      - 16543:80
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - postgres-db-network
+    restart: always
+    
+networks:
+  postgres-db-network:
+    driver: bridge
+
+volumes:
+  postgres_data: 
+  pgadmin_data: 
