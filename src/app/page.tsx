@@ -1,3 +1,5 @@
+import { Card, Chip } from '@/components';
+import { LAWYER_ROLE } from '@/constants';
 import {
   getClientById,
   getClients,
@@ -30,8 +32,25 @@ export default async function Home() {
   if (!data) return null;
 
   return (
-    <main>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </main>
+    <Card.List>
+      {data.map((item) => (
+        <Card.Root key={item.id}>
+          <Card.Header title={item.fullName} />
+          <Card.Divider />
+          <Card.Content>
+            <Card.Field label='OAB' value={item.oabNumber} />
+            <Card.Field label='Perfil' value={item.role} />
+            <Card.Field
+              label='Remuneração'
+              value={item.remunerationPercent}
+              isHighlighted={true}
+            />
+            <Chip value={LAWYER_ROLE[item.role].alias} variant={item.role} />
+          </Card.Content>
+        </Card.Root>
+      ))}
+    </Card.List>
   );
+
+  // return <div>{<pre>{JSON.stringify(data, null, 2)}</pre>}</div>;
 }

@@ -13,6 +13,7 @@
     "docker-compose*": true,
     "postcss.config.js": true,
     "tailwind.config.ts": false,
+    ".prettierrc.json": true,
     ".env*": true
   }
 }
