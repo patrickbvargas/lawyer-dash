@@ -30,7 +30,7 @@ const Root = ({ className, ...props }: CardRootProps) => {
   return (
     <li
       className={cn(
-        'flex h-fit cursor-pointer flex-col gap-2 space-y-1 rounded-lg border-l-4 border-transparent py-3 pl-3 pr-4 transition duration-300',
+        'flex h-full cursor-pointer flex-col gap-2 space-y-1 rounded-lg border-l-4 border-transparent py-3 pl-3 pr-4 transition duration-300',
         'bg-white shadow-sm hover:border-accent/50',
         'dark:bg-zinc-800/60 dark:shadow-none dark:hover:border-accent',
         className
@@ -62,7 +62,22 @@ const Header = ({ title, className, ...props }: CardHeaderProps) => {
 const Content = ({ className, ...props }: CardWrapperProps) => {
   return (
     <div
-      className={cn('grid grid-cols-1 gap-3.5 sm:grid-cols-2', className)}
+      className={cn(
+        'grid h-full grid-cols-1 gap-3.5 sm:grid-cols-2',
+        className
+      )}
+      {...props}
+    />
+  );
+};
+
+const Footer = ({ className, ...props }: CardWrapperProps) => {
+  return (
+    <div
+      className={cn(
+        'grid grid-cols-1 items-center gap-3.5 sm:grid-cols-2',
+        className
+      )}
       {...props}
     />
   );
@@ -99,12 +114,12 @@ const Field = ({
       )}
       {...props}
     >
-      <dt className='truncate text-xs uppercase tracking-wide'>{label}</dt>
-      <dd className={cn('truncate text-xs', isHighlighted && 'font-semibold')}>
+      <dt className='truncate text-sm uppercase tracking-wide'>{label}</dt>
+      <dd className={cn('truncate text-sm', isHighlighted && 'font-semibold')}>
         {value}
       </dd>
     </dl>
   );
 };
 
-export { List, Root, Header, Content, Divider, Field };
+export { List, Root, Header, Content, Footer, Divider, Field };

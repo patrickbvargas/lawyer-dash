@@ -5,7 +5,33 @@ export async function getContracts() {
     return await prisma.contract.findMany({
       include: {
         client: true,
-        lawyers: true,
+        lawyers: {
+          include: {
+            lawyer: true,
+          },
+        },
+        revenues: true,
+      },
+    });
+  } catch (e) {
+    console.error('Database error:', e);
+    throw new Error('Failed to fetch contract data.');
+  }
+}
+
+export async function getContractsFiltered(page: number, limit: number) {
+  try {
+    const offset = (page - 1) * limit || 0;
+    return await prisma.contract.findMany({
+      skip: offset,
+      take: limit,
+      include: {
+        client: true,
+        lawyers: {
+          include: {
+            lawyer: true,
+          },
+        },
         revenues: true,
       },
     });

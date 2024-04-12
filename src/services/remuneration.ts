@@ -4,7 +4,19 @@ export async function getRemunerations() {
   try {
     return await prisma.remuneration.findMany({
       include: {
-        fee: true,
+        fee: {
+          include: {
+            revenue: {
+              include: {
+                contract: {
+                  include: {
+                    lawyers: true,
+                  },
+                },
+              },
+            },
+          },
+        },
         lawyer: true,
       },
     });
