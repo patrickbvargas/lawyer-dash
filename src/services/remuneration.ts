@@ -1,8 +1,8 @@
-import { prisma } from '@/lib';
+import { prismaDb } from '@/lib';
 
 export async function getRemunerations() {
   try {
-    return await prisma.remuneration.findMany({
+    return await prismaDb.remuneration.findMany({
       include: {
         fee: {
           include: {
@@ -28,7 +28,7 @@ export async function getRemunerations() {
 
 export async function getRemunerationById(id: string) {
   try {
-    return await prisma.remuneration.findUniqueOrThrow({
+    return await prismaDb.remuneration.findUniqueOrThrow({
       where: { id },
       include: {
         fee: true,

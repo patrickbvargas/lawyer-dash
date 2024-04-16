@@ -1,3 +1,4 @@
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider as NextThemeProvider } from 'next-themes';
+import { NextUIProvider } from '@nextui-org/react';
 
-export { ThemeProvider };
+export { NextUIProvider, NextThemeProvider };

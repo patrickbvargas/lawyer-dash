@@ -1,5 +1,6 @@
+'use client';
 import * as React from 'react';
-import { ThemeProvider } from '@/contexts';
+import { NextUIProvider, NextThemeProvider } from '@/contexts';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -7,13 +8,11 @@ interface ProvidersProps {
 
 const Providers = ({ children }: ProvidersProps) => {
   return (
-    <ThemeProvider
-      defaultTheme='dark'
-      enableSystem={false}
-      disableTransitionOnChange
-    >
-      {children}
-    </ThemeProvider>
+    <NextUIProvider>
+      <NextThemeProvider attribute='class' defaultTheme='dark'>
+        {children}
+      </NextThemeProvider>
+    </NextUIProvider>
   );
 };
 

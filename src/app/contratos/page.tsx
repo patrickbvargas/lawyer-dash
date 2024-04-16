@@ -1,54 +1,52 @@
-import { getContractsFiltered } from '@/services';
 import { SearchParams } from '@/types';
-import { Card, Chip, Pagination } from '@/components';
-import { CONTRACT_LEGAL_AREA, CONTRACT_STATUS } from '@/constants';
+import { getContractsFiltered } from '@/services';
+import { DataListViewer, Card } from '@/components';
+import { CONTRACT_LEGAL_AREA, LAWYER_ASSIGNMENT } from '@/constants';
+import { ITEMS_PER_PAGE } from '@/constants';
 
 export default async function ContractsPage({ searchParams }: SearchParams) {
-  const { page, limit } = searchParams;
-  const data = await getContractsFiltered(
-    Number(page) || 1,
-    Number(limit) || 10
-  );
+  const page = Number(searchParams.page) || 1;
+  const limit = Number(searchParams.limit) || ITEMS_PER_PAGE;
+  const query = searchParams.query || '';
+
+  const { data, count } = await getContractsFiltered(page, limit, query);
   if (!data) return null;
 
   return (
-    <div className='space-y-4'>
-      <Card.List>
-        {data.map((item) => (
-          <Card.Root key={item.id}>
-            <Card.Header title={item.identification} />
-            <Card.Divider />
-            <Card.Content>
-              <Card.Field label='Cliente' value={item.client.fullName} />
-              <Card.Field
-                label='Status'
-                value={CONTRACT_STATUS[item.status].alias}
-              />
-              {item.lawyers.map((lawyer) => (
+    <DataListViewer
+      totalItems={count}
+      itemsPerPage={limit}
+      searchPlaceholder='Pesquisar por Processo, Cliente e Advogado'
+    >
+      {data.map((item) => (
+        <Card.Root key={item.id} id={item.id} title={item.identification}>
+          <Card.Body>
+            <Card.Field label='Cliente' value={item.client.fullName} />
+            {item.lawyers
+              .filter(
+                (lawyer) =>
+                  lawyer.lawyerAssignment !==
+                  LAWYER_ASSIGNMENT.RECOMMENDING.value
+              )
+              .map((lawyer) => (
                 <Card.Field
+                  key={lawyer.lawyer.id}
                   label='Advogado'
                   value={lawyer.lawyer.fullName}
-                  key={lawyer.id}
                 />
               ))}
-            </Card.Content>
-            <Card.Divider />
-            <Card.Footer>
-              <Card.Field
-                label='Honorários'
-                value={item.feePercent}
-                isHighlighted={true}
-              />
-              <Chip
-                value={CONTRACT_LEGAL_AREA[item.legalArea].alias}
-                variant={CONTRACT_LEGAL_AREA[item.legalArea].value}
-              />
-            </Card.Footer>
-          </Card.Root>
-        ))}
-      </Card.List>
-      <Pagination totalItems={8} />
-    </div>
+          </Card.Body>
+          <Card.Footer>
+            <Card.Field
+              label='Honorários'
+              value={item.feePercent}
+              isHighlighted
+            />
+            <Card.Chip>{CONTRACT_LEGAL_AREA[item.legalArea].alias}</Card.Chip>
+          </Card.Footer>
+        </Card.Root>
+      ))}
+    </DataListViewer>
   );
 
   // return <div>{<pre>{JSON.stringify(data, null, 2)}</pre>}</div>;

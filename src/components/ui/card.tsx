@@ -1,11 +1,11 @@
 import * as React from 'react';
+import * as NextUI from '@nextui-org/card';
 import { cn } from '@/lib';
+import { Trash, FilePen } from '@/assets/icons';
+import { Divider, Chip, Button, Tooltip } from '@/components';
 
-interface CardWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
-interface CardListProps extends React.HTMLAttributes<HTMLUListElement> {}
-interface CardRootProps extends React.HTMLAttributes<HTMLLIElement> {}
-interface CardDividerProps extends React.HTMLAttributes<HTMLHRElement> {}
-interface CardHeaderProps extends CardWrapperProps {
+interface CardProps extends NextUI.CardProps {
+  id: string;
   title: string;
 }
 interface CardFieldProps extends React.HTMLAttributes<HTMLDListElement> {
@@ -14,86 +14,54 @@ interface CardFieldProps extends React.HTMLAttributes<HTMLDListElement> {
   isHighlighted?: boolean;
 }
 
-const List = ({ className, ...props }: CardListProps) => {
+const Root = ({ id, title, children, ...props }: CardProps) => {
   return (
-    <ul
-      className={cn(
-        'grid h-fit max-h-full w-full grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3',
-        className
-      )}
+    <NextUI.Card isHoverable className='group/card h-max' {...props}>
+      <NextUI.CardHeader className='flex items-center justify-between'>
+        <p className='truncate font-semibold'>{title}</p>
+        <Actions />
+      </NextUI.CardHeader>
+      <Divider />
+      {children}
+    </NextUI.Card>
+  );
+};
+
+const Body = ({ className, ...props }: NextUI.CardProps) => {
+  return (
+    <NextUI.CardBody
+      className={cn('grid grid-cols-2 items-center gap-unit-sm', className)}
       {...props}
     />
   );
 };
 
-const Root = ({ className, ...props }: CardRootProps) => {
+const Footer = ({ className, ...props }: NextUI.CardFooterProps) => {
   return (
-    <li
-      className={cn(
-        'flex h-full cursor-pointer flex-col gap-2 space-y-1 rounded-lg border-l-4 border-transparent py-3 pl-3 pr-4 transition duration-300',
-        'bg-white shadow-sm hover:border-accent/50',
-        'dark:bg-zinc-800/60 dark:shadow-none dark:hover:border-accent',
-        className
-      )}
-      {...props}
-    />
+    <React.Fragment>
+      <Divider />
+      <NextUI.CardFooter
+        className={cn('grid grid-cols-2 items-center gap-unit-sm', className)}
+        {...props}
+      />
+    </React.Fragment>
   );
 };
 
-const Header = ({ title, className, ...props }: CardHeaderProps) => {
+const Actions = () => {
   return (
-    <div
-      className={cn('flex items-center justify-between', className)}
-      {...props}
-    >
-      <h3
-        className={cn(
-          'truncate text-base font-semibold',
-          'text-zinc-600/80',
-          'dark:text-zinc-200'
-        )}
-      >
-        {title}
-      </h3>
+    <div className='flex gap-2 opacity-0 transition duration-1000 group-hover/card:opacity-100'>
+      <Tooltip content='Excluir' color='danger'>
+        <Button isIconOnly size='sm' variant='flat' color='danger'>
+          <Trash className='h-4 w-4' />
+        </Button>
+      </Tooltip>
+      <Tooltip content='Editar'>
+        <Button isIconOnly size='sm' variant='flat'>
+          <FilePen className='h-4 w-4' />
+        </Button>
+      </Tooltip>
     </div>
-  );
-};
-
-const Content = ({ className, ...props }: CardWrapperProps) => {
-  return (
-    <div
-      className={cn(
-        'grid h-full grid-cols-1 gap-3.5 sm:grid-cols-2',
-        className
-      )}
-      {...props}
-    />
-  );
-};
-
-const Footer = ({ className, ...props }: CardWrapperProps) => {
-  return (
-    <div
-      className={cn(
-        'grid grid-cols-1 items-center gap-3.5 sm:grid-cols-2',
-        className
-      )}
-      {...props}
-    />
-  );
-};
-
-const Divider = ({ className, ...props }: CardDividerProps) => {
-  return (
-    <hr
-      className={cn(
-        'rounded-full border-t-2',
-        'border-zinc-200/60',
-        'dark:border-zinc-700/50',
-        className
-      )}
-      {...props}
-    />
   );
 };
 
@@ -105,21 +73,20 @@ const Field = ({
   ...props
 }: CardFieldProps) => {
   return (
-    <dl
-      className={cn(
-        'flex flex-col gap-1',
-        'text-zinc-600',
-        'dark:text-zinc-300/80',
-        className
-      )}
-      {...props}
-    >
-      <dt className='truncate text-sm uppercase tracking-wide'>{label}</dt>
-      <dd className={cn('truncate text-sm', isHighlighted && 'font-semibold')}>
+    <dl className={cn('flex flex-col gap-1 text-start', className)} {...props}>
+      <dt className='truncate text-xs font-semibold uppercase tracking-wide text-foreground-500'>
+        {label}
+      </dt>
+      <dd
+        className={cn(
+          'truncate text-sm text-foreground-500',
+          isHighlighted && 'font-semibold'
+        )}
+      >
         {value}
       </dd>
     </dl>
   );
 };
 
-export { List, Root, Header, Content, Footer, Divider, Field };
+export { Root, Body, Footer, Field, Chip };

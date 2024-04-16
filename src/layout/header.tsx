@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cn } from '@/lib';
-import { Button, ThemeSwitcher } from '@/components';
 import { Plus } from '@/assets/icons';
+import { Button, ThemeSwitcher } from '@/components';
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -19,8 +19,7 @@ const Header = ({ className, ...props }: HeaderProps) => {
       </h1>
       <div className='flex items-center gap-2'>
         <ThemeSwitcher />
-        <Button variant={'primary'} iconStyle={'startIcon'}>
-          <Plus />
+        <Button color='primary' startContent={<Plus />}>
           Criar
         </Button>
       </div>

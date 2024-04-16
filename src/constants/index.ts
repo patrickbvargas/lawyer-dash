@@ -5,7 +5,7 @@ import { CONTRACT_STATUS } from '@/constants/contract-status';
 import { REVENUE_TYPE } from '@/constants/revenue-type';
 import { CLIENT_TYPE } from '@/constants/client-type';
 import { MARITAL_STATUS } from '@/constants/marital-status';
-import * as DATA_LIST from '@/constants/data-list';
+import { ITEMS_PER_PAGE } from '@/constants/data-list';
 
 export {
   LAWYER_ROLE,
@@ -15,5 +15,5 @@ export {
   REVENUE_TYPE,
   CLIENT_TYPE,
   MARITAL_STATUS,
-  DATA_LIST,
+  ITEMS_PER_PAGE,
 };

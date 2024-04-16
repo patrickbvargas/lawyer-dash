@@ -1,8 +1,8 @@
-import { prisma } from '@/lib';
+import { prismaDb } from '@/lib';
 
 export async function getRevenues() {
   try {
-    return await prisma.revenue.findMany({
+    return await prismaDb.revenue.findMany({
       include: {
         contract: true,
         fees: true,
@@ -16,7 +16,7 @@ export async function getRevenues() {
 
 export async function getRevenueById(id: string) {
   try {
-    return await prisma.revenue.findUniqueOrThrow({
+    return await prismaDb.revenue.findUniqueOrThrow({
       where: { id },
       include: {
         contract: true,

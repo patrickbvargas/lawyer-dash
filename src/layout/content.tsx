@@ -6,7 +6,7 @@ interface ContentProps extends React.HTMLAttributes<HTMLElement> {}
 const Content = ({ className, ...props }: ContentProps) => {
   return (
     <main
-      className={cn('flex h-full px-8 py-2 overflow-hidden', className)}
+      className={cn('flex h-full overflow-hidden px-8 pb-8 pt-2', className)}
       {...props}
     />
   );

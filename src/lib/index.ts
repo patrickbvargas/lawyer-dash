@@ -1,4 +1,5 @@
-import { prisma } from '@/lib/prisma';
+import { Prisma } from '@prisma/client';
+import { prismaDb } from '@/lib/prisma';
 import { cn } from '@/lib/cn';
 
-export { prisma, cn };
+export { Prisma, prismaDb, cn };

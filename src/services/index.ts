@@ -1,5 +1,13 @@
-import { getLawyers, getLawyerById } from '@/services/lawyer';
-import { getClients, getClientById } from '@/services/client';
+import {
+  getLawyers,
+  getLawyerById,
+  getLawyersFiltered,
+} from '@/services/lawyer';
+import {
+  getClients,
+  getClientById,
+  getClientsFiltered,
+} from '@/services/client';
 import {
   getContracts,
   getContractById,
@@ -12,8 +20,10 @@ import { getRemunerations, getRemunerationById } from '@/services/remuneration';
 export {
   getLawyers,
   getLawyerById,
+  getLawyersFiltered,
   getClients,
   getClientById,
+  getClientsFiltered,
   getContracts,
   getContractById,
   getContractsFiltered,

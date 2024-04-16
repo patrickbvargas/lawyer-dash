@@ -1,46 +1,53 @@
 'use client';
 import * as React from 'react';
+import * as NextUI from '@nextui-org/pagination';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { Button } from '@/components';
 
 interface PaginationProps {
   totalItems: number;
+  itemsPerPage: number;
 }
 
-const Pagination = ({ totalItems }: PaginationProps) => {
+const Pagination = ({ totalItems, itemsPerPage }: PaginationProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const [itemsPerPage, setItemsPerPage] = React.useState(2);
-  const [totalPages, setTotalPages] = React.useState(
-    Math.floor(totalItems / itemsPerPage)
-  );
+  const currentPage = Number(searchParams.get('page') || 1);
 
+  // TODO: fix
   React.useEffect(() => {
-    setTotalPages(Math.floor(totalItems / itemsPerPage));
-  }, [totalItems, itemsPerPage]);
+    handlePageChange(currentPage);
+  }, [currentPage]);
 
-  const handleChangePage = (page: number) => {
+  const handlePageChange = (pageNumber: number) => {
+    console.log(`page ${pageNumber}`, itemsPerPage);
     const params = new URLSearchParams(searchParams);
-    params.set('page', page.toString());
+    params.set('page', pageNumber.toString());
+    params.set('limit', itemsPerPage.toString());
     replace(`${pathname}?${params.toString()}`);
-    setCurrentPage(page);
+  };
+
+  const renderPaginationFeedback = () => {
+    const initialItem = (currentPage - 1) * itemsPerPage;
+    const finalItem = initialItem + itemsPerPage;
+
+    return (
+      <p className='text-sm text-foreground-500'>
+        {totalItems === 1
+          ? 'Exibindo 1 de 1 registro'
+          : `Exibindo ${initialItem + 1} a ${Math.min(finalItem, totalItems)} de ${totalItems} registros`}
+      </p>
+    );
   };
 
   return (
-    <div className='space-x-2'>
-      {Array(totalPages)
-        .fill(0)
-        .map((_, index) => (
-          <Button
-            key={index}
-            onClick={() => handleChangePage(index + 1)}
-            variant={index + 1 === currentPage ? 'primary' : 'ghost'}
-          >
-            {index + 1}
-          </Button>
-        ))}
+    <div className='flex items-center justify-end gap-unit-4'>
+      {renderPaginationFeedback()}
+      <NextUI.Pagination
+        total={Math.ceil(totalItems / itemsPerPage)}
+        page={currentPage}
+        onChange={handlePageChange}
+      />
     </div>
   );
 };
