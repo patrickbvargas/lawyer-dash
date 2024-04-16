@@ -1,8 +1,8 @@
 import { SearchParams } from '@/types';
+import { ITEMS_PER_PAGE } from '@/constants';
 import { getContractsFiltered } from '@/services';
 import { DataListViewer, Card } from '@/components';
 import { CONTRACT_LEGAL_AREA, LAWYER_ASSIGNMENT } from '@/constants';
-import { ITEMS_PER_PAGE } from '@/constants';
 
 export default async function ContractsPage({ searchParams }: SearchParams) {
   const page = Number(searchParams.page) || 1;

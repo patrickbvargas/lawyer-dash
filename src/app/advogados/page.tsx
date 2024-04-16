@@ -1,41 +1,36 @@
 import { SearchParams } from '@/types';
-import { CLIENT_TYPE } from '@/constants';
+import { LAWYER_ROLE } from '@/constants';
 import { ITEMS_PER_PAGE } from '@/constants';
-import { getClientsFiltered } from '@/services';
+import { getLawyersFiltered } from '@/services';
 import { DataListViewer, Card } from '@/components';
 
-export default async function ClientsPage({ searchParams }: SearchParams) {
+export default async function LawyersPage({ searchParams }: SearchParams) {
   const page = Number(searchParams.page) || 1;
   const limit = Number(searchParams.limit) || ITEMS_PER_PAGE;
   const query = searchParams.query || '';
 
-  const { data, count } = await getClientsFiltered(page, limit, query);
+  const { data, count } = await getLawyersFiltered(page, limit, query);
   if (!data) return null;
 
   return (
     <DataListViewer
       totalItems={count}
       itemsPerPage={limit}
-      searchPlaceholder='Pesquisar por Nome, CPF e CNPJ'
+      searchPlaceholder='Pesquisar por Advogado e AOB'
     >
       {data.map((item) => (
         <Card.Root key={item.id} id={item.id} title={item.fullName}>
           <Card.Body>
-            {item.individual && (
-              <Card.Field label='CPF' value={item.individual.cpf} />
-            )}
-            {item.corporate && (
-              <Card.Field label='CNPJ' value={item.corporate.cnpj} />
-            )}
-            <Card.Field label='Email' value={item.email} />
+            <Card.Field label='OAB' value={item.oabNumber} />
+            <Card.Field label='Remuneração' value={item.remunerationPercent} />
           </Card.Body>
           <Card.Footer>
             <Card.Field
               label='Contratos'
-              value={item.constracts.length}
+              value={item.contracts.length}
               isHighlighted
             />
-            <Card.Chip>{CLIENT_TYPE[item.type].alias}</Card.Chip>
+            <Card.Chip>{LAWYER_ROLE[item.role].alias}</Card.Chip>
           </Card.Footer>
         </Card.Root>
       ))}

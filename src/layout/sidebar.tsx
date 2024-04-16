@@ -22,6 +22,11 @@ const links: SidebarLink[] = [
     Icon: MoonStar,
   },
   {
+    label: 'Advogados',
+    href: '/advogados',
+    Icon: MoonStar,
+  },
+  {
     label: 'Clientes',
     href: '/clientes',
     Icon: MoonStar,
