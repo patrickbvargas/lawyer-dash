@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import * as NextUI from '@nextui-org/pagination';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from '@/hooks';
 
 interface PaginationProps {
   totalItems: number;

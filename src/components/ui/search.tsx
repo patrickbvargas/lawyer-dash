@@ -1,6 +1,10 @@
 'use client';
-import { useDebouncedCallback } from 'use-debounce';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import {
+  usePathname,
+  useRouter,
+  useSearchParams,
+  useDebouncedCallback,
+} from '@/hooks';
 import { Input } from '@/components';
 import { Search as SearchIcon } from '@/assets/icons';
 

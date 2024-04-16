@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import * as NextLink from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname } from '@/hooks';
 
 interface LinkProps
   extends NextLink.LinkProps,
