@@ -1,5 +1,3 @@
-import { SearchParams } from '@/types';
-
-export default async function Home({ searchParams }: SearchParams) {
-  return <h1>Lawyers Dash</h1>;
+export default async function Home() {
+  return <h1>Home</h1>;
 }

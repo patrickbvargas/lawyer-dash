@@ -1,4 +1,4 @@
-import { $Enums as ENUM } from '@prisma/client';
+import { ENUM } from '@/lib/prisma';
 
 type ContractLegalAreaInfo = {
   value: ENUM.ContractLegalArea;
