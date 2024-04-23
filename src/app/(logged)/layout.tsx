@@ -7,7 +7,7 @@ export default function LoggedLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className='grid grid-cols-layout grid-rows-layout'>
+    <div className='grid grid-cols-layout grid-rows-layout overflow-hidden'>
       <Header />
       <Sidebar className='row-span-full' />
       <Content>{children}</Content>

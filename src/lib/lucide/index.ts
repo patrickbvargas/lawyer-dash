@@ -9,6 +9,8 @@ import {
   UserRound,
   Lock,
   LogOut,
+  Wallet,
+  KeyRound,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -24,4 +26,6 @@ export {
   UserRound,
   Lock,
   LogOut,
+  Wallet,
+  KeyRound,
 };

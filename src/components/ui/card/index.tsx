@@ -54,12 +54,12 @@ const Actions = () => {
     <div className='flex gap-2 opacity-0 transition duration-1000 group-hover/card:opacity-100'>
       <Tooltip content='Excluir' color='danger'>
         <Button isIconOnly size='sm' variant='flat' color='danger'>
-          <Trash className='h-4 w-4' />
+          <Trash className='size-4' />
         </Button>
       </Tooltip>
       <Tooltip content='Editar'>
         <Button isIconOnly size='sm' variant='flat'>
-          <FilePen className='h-4 w-4' />
+          <FilePen className='size-4' />
         </Button>
       </Tooltip>
     </div>

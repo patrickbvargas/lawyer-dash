@@ -1,10 +1,14 @@
+import { prismaDb } from '@/lib/prisma';
+import { compareSync } from '@/lib/bcrypt';
 import { signInSchema } from '@/schemas/auth';
-import NextAuth from 'next-auth/next';
 import nextAuth from 'next-auth';
+import NextAuth from 'next-auth/next';
+import { useSession } from 'next-auth/react';
 import { NextAuthOptions, User } from 'next-auth';
 import { signIn, signOut } from 'next-auth/react';
 import { getServerSession } from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { equal } from 'assert';
 
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24;
 
@@ -25,22 +29,30 @@ const authConfig: NextAuthOptions = {
       },
       async authorize(payload) {
         const credentials = signInSchema.parse(payload);
+        if (!credentials) return null;
 
-        if (credentials.oab !== 'a') return null;
+        const lawyer = await prismaDb.lawyer.findFirst({
+          where: {
+            oabNumber: {
+              equals: credentials.oab,
+              mode: 'insensitive',
+            },
+          },
+        });
+        if (!lawyer) return null;
+
+        if (!compareSync(credentials.password, lawyer.passwordHash))
+          return null;
 
         const user: User = {
-          id: 'clulzf6kf000108l7ajja6dpi',
-          oabNumber: 'RS0022334',
-          fullName: 'Fulano da Silva',
-          remunerationPercent: 0.3,
-          role: 'ADMIN',
+          id: lawyer.id,
+          oabNumber: lawyer.oabNumber,
+          fullName: lawyer.fullName,
+          remunerationPercent: lawyer.remunerationPercent,
+          role: lawyer.role,
         };
 
-        if (user) {
-          return user;
-        }
-
-        return null;
+        return user;
       },
     }),
   ],
@@ -72,4 +84,12 @@ async function getSessionInfo() {
   return await getServerSession(authConfig);
 }
 
-export { NextAuth, nextAuth, authConfig, signIn, signOut, getSessionInfo };
+export {
+  NextAuth,
+  nextAuth,
+  authConfig,
+  signIn,
+  signOut,
+  getSessionInfo,
+  useSession,
+};

@@ -65,6 +65,7 @@ CREATE TABLE "lawyers" (
     "full_name" TEXT NOT NULL,
     "remuneration_percent" DOUBLE PRECISION NOT NULL,
     "role" "role" NOT NULL DEFAULT 'USER',
+    "password_hash" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 

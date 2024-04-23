@@ -1,3 +1,4 @@
+import { ENUM } from '@/lib/prisma';
 import { nextAuth } from '@/lib/next-auth';
 
 interface UserAuth {
@@ -5,7 +6,7 @@ interface UserAuth {
   oabNumber: string;
   fullName: string;
   remunerationPercent: number;
-  role: string;
+  role: ENUM.Role;
 }
 
 declare module 'next-auth' {

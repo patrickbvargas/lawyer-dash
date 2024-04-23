@@ -19,8 +19,8 @@ const Header = async ({ className, ...props }: HeaderProps) => {
         TÍTULO [AJUSTAR]
       </h1>
       <div className='flex items-center gap-2'>
-        {/* <ThemeSwitcher /> */}
-        <Button color='primary' startContent={<Plus />}>
+        <ThemeSwitcher />
+        <Button color='primary' startContent={<Plus className='size-4' />}>
           Criar
         </Button>
         <Profile />
