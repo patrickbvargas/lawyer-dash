@@ -8,7 +8,6 @@ import { NextAuthOptions, User } from 'next-auth';
 import { signIn, signOut } from 'next-auth/react';
 import { getServerSession } from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { equal } from 'assert';
 
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24;
 
@@ -28,35 +27,40 @@ const authConfig: NextAuthOptions = {
         password: { type: 'password' },
       },
       async authorize(payload) {
-        const credentials = signInSchema.parse(payload);
-        if (!credentials) return null;
-
-        const lawyer = await prismaDb.lawyer.findFirst({
-          where: {
-            oabNumber: {
-              equals: credentials.oab,
-              mode: 'insensitive',
+        try {
+          const { oab, password } = signInSchema.parse(payload);
+          const user = await prismaDb.lawyer.findFirstOrThrow({
+            where: {
+              oabNumber: {
+                equals: oab,
+                mode: 'insensitive',
+              },
             },
-          },
-        });
-        if (!lawyer) return null;
+          });
 
-        if (!compareSync(credentials.password, lawyer.passwordHash))
+          if (!user || !compareSync(password, user.hashedPassword)) {
+            throw new Error('Invalid credentials');
+          }
+
+          const { id, oabNumber, fullName, remunerationPercent, role } = user;
+          const sessionUser: User = {
+            id,
+            oabNumber,
+            fullName,
+            remunerationPercent,
+            role,
+          };
+
+          return sessionUser;
+        } catch (e) {
+          console.error(e);
           return null;
-
-        const user: User = {
-          id: lawyer.id,
-          oabNumber: lawyer.oabNumber,
-          fullName: lawyer.fullName,
-          remunerationPercent: lawyer.remunerationPercent,
-          role: lawyer.role,
-        };
-
-        return user;
+        }
       },
     }),
   ],
   callbacks: {
+    // TODO: not save user role in jwt
     jwt({ token, user }) {
       if (user) {
         token.id = user.id;
@@ -68,6 +72,7 @@ const authConfig: NextAuthOptions = {
       return token;
     },
     session({ session, token }) {
+      // TODO: get updated user role
       if (token) {
         session.user.id = token.id;
         session.user.fullName = token.fullName;

@@ -54,7 +54,7 @@ model Lawyer {
   fullName            String           @map("full_name")
   remunerationPercent Float            @map("remuneration_percent")
   role                Role             @default(USER)
-  passwordHash        String           @map("password_hash")
+  hashedPassword      String           @map("hashed_password")
   createdAt           DateTime         @default(now()) @map("created_at")
   updatedAt           DateTime         @updatedAt @map("updated_at")
   contracts           ContractLawyer[]
