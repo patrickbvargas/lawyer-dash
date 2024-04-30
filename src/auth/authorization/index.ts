@@ -9,12 +9,12 @@ import {
   RevenueSubject,
 } from './subjects';
 
-type GenericAbility = [
+type GenericSubject = [
   'manage' | 'create' | 'read' | 'update' | 'delete',
   'all',
 ];
 type AppAbility = MongoAbility<
-  | GenericAbility
+  | GenericSubject
   | ClientSubject
   | ContractSubject
   | FeeSubject
