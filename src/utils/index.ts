@@ -1,3 +1,3 @@
-import { cn } from '@/utils/cn';
+import { cn } from './cn';
 
 export { cn };

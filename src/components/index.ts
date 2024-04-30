@@ -1,21 +1,21 @@
-import { Container } from '@/components/container';
-import { ThemeSwitcher } from '@/components/theme-switcher';
-import { DataListViewer } from '@/components/data-list-viewer';
-import { Input } from '@/components/form/input';
-import * as Select from '@/components/form/select';
-import * as Checkbox from '@/components/form/checkbox';
-import { User } from '@/components/ui/user';
-import { Chip } from '@/components/ui/chip';
-import * as Card from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Search } from '@/components/ui/search';
-import { Divider } from '@/components/ui/divider';
-import { Tooltip } from '@/components/ui/tooltip';
-import { Logotype } from '@/components/ui/logotype';
-import * as Dropdown from '@/components/ui/dropdown';
-import { Link, NavLink } from '@/components/ui/link';
-import { Pagination } from '@/components/ui/pagination';
-import { ScrollShadow } from '@/components/ui/scroll-shadow';
+import { Container } from './container';
+import { ThemeSwitcher } from './theme-switcher';
+import { DataListViewer } from './data-list-viewer';
+import { Input } from './form/input';
+import * as Select from './form/select';
+import * as Checkbox from './form/checkbox';
+import { User } from './ui/user';
+import { Chip } from './ui/chip';
+import * as Card from './ui/card';
+import { Button } from './ui/button';
+import { Search } from './ui/search';
+import { Divider } from './ui/divider';
+import { Tooltip } from './ui/tooltip';
+import { Logotype } from './ui/logotype';
+import * as Dropdown from './ui/dropdown';
+import { Link, NavLink } from './ui/link';
+import { Pagination } from './ui/pagination';
+import { ScrollShadow } from './ui/scroll-shadow';
 
 export {
   Container,

@@ -1,11 +1,11 @@
-import { LAWYER_ROLE } from '@/constants/lawyer-role';
-import { LAWYER_ASSIGNMENT } from '@/constants/lawyer-assignment';
-import { CONTRACT_LEGAL_AREA } from '@/constants/contract-legal-area';
-import { CONTRACT_STATUS } from '@/constants/contract-status';
-import { REVENUE_TYPE } from '@/constants/revenue-type';
-import { CLIENT_TYPE } from '@/constants/client-type';
-import { MARITAL_STATUS } from '@/constants/marital-status';
-import { ITEMS_PER_PAGE } from '@/constants/data-list';
+import { LAWYER_ROLE } from './lawyer-role';
+import { LAWYER_ASSIGNMENT } from './lawyer-assignment';
+import { CONTRACT_LEGAL_AREA } from './contract-legal-area';
+import { CONTRACT_STATUS } from './contract-status';
+import { REVENUE_TYPE } from './revenue-type';
+import { CLIENT_TYPE } from './client-type';
+import { MARITAL_STATUS } from './marital-status';
+import { ITEMS_PER_PAGE } from './data-list';
 
 export {
   LAWYER_ROLE,

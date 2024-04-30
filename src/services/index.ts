@@ -1,21 +1,13 @@
-import {
-  getLawyers,
-  getLawyerById,
-  getLawyersFiltered,
-} from '@/services/lawyer';
-import {
-  getClients,
-  getClientById,
-  getClientsFiltered,
-} from '@/services/client';
+import { getLawyers, getLawyerById, getLawyersFiltered } from './lawyer';
+import { getClients, getClientById, getClientsFiltered } from './client';
 import {
   getContracts,
   getContractById,
   getContractsFiltered,
-} from '@/services/contract';
-import { getRevenues, getRevenueById } from '@/services/revenue';
-import { getFees, getFeeById } from '@/services/fee';
-import { getRemunerations, getRemunerationById } from '@/services/remuneration';
+} from './contract';
+import { getRevenues, getRevenueById } from './revenue';
+import { getFees, getFeeById } from './fee';
+import { getRemunerations, getRemunerationById } from './remuneration';
 
 export {
   getLawyers,
