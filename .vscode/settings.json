@@ -1,0 +1,18 @@
+{
+  "files.exclude": {
+    ".vscode": false,
+    ".devcontainer": false,
+    ".next": true,
+    ".gitignore": true,
+    ".eslintrc*": true,
+    ".prettierrc.json": true,
+    "README.md": true,
+    "tsconfig.*": true,
+    "node_modules": true,
+    "next-env.d.ts": true,
+    "next.config.*": true,
+    "package*.json": true,
+    "postcss.config.*": true,
+    "tailwind.config.ts": false
+  }
+}

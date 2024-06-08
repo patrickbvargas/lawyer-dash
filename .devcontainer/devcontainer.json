@@ -1,0 +1,23 @@
+{
+  "name": "Node & Postgres",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "forwardPorts": [3000, 5050, 5432],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "formulahendry.auto-rename-tag",
+        "aaron-bond.better-comments",
+        "naumovs.color-highlight",
+        "ms-azuretools.vscode-docker",
+        "dsznajder.es7-react-js-snippets",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "yoavbls.pretty-ts-errors",
+        "prisma.prisma",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}
