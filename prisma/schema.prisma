@@ -1,0 +1,204 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  id          String            @id @default(cuid())
+  fullName    String            @map("full_name")
+  email       String
+  phone       String?
+  mobilePhone String?           @map("mobile_phone")
+  type        ClientType
+  slug        String
+  status      EntityStatus      @default(ACTIVE)
+  createdAt   DateTime          @default(now()) @map("created_at")
+  updatedAt   DateTime          @updatedAt @map("updated_at")
+  contracts   Contract[]
+  individual  IndividualClient?
+  corporate   CorporateClient?
+
+  @@map("clients")
+}
+
+model IndividualClient {
+  id            String        @id @default(cuid())
+  clientId      String        @unique @map("client_id")
+  cpf           String        @unique
+  birthdate     DateTime
+  maritalStatus MaritalStatus @map("marital_status")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+  client        Client        @relation(fields: [clientId], references: [id])
+
+  @@map("individual_clients")
+}
+
+model CorporateClient {
+  id        String   @id @default(cuid())
+  clientId  String   @unique @map("client_id")
+  cnpj      String   @unique
+  legalName String   @map("legal_name")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  client    Client   @relation(fields: [clientId], references: [id])
+
+  @@map("corporate_clients")
+}
+
+model Lawyer {
+  id                  String           @id @default(cuid())
+  oabNumber           String           @unique @map("oab_number")
+  fullName            String           @map("full_name")
+  remunerationPercent Float            @map("remuneration_percent")
+  role                LawyerRole       @default(USER)
+  hashedPassword      String           @map("hashed_password")
+  slug                String
+  status              EntityStatus     @default(ACTIVE)
+  createdAt           DateTime         @default(now()) @map("created_at")
+  updatedAt           DateTime         @updatedAt @map("updated_at")
+  contracts           ContractLawyer[]
+
+  @@map("lawyers")
+}
+
+model Contract {
+  id             String            @id @default(cuid())
+  clientId       String            @map("client_id")
+  identification String            @unique
+  legalArea      ContractLegalArea @map("legal_area")
+  feePercent     Float             @map("fee_percent")
+  observation    String?
+  slug           String
+  status         EntityStatus      @default(ACTIVE)
+  createdAt      DateTime          @default(now()) @map("created_at")
+  updatedAt      DateTime          @updatedAt @map("updated_at")
+  client         Client            @relation(fields: [clientId], references: [id])
+  revenues       Revenue[]
+  lawyers        ContractLawyer[]
+
+  @@map("contracts")
+}
+
+model ContractLawyer {
+  id               String           @id @default(cuid())
+  contractId       String           @map("contract_id")
+  lawyerId         String           @map("lawyer_id")
+  lawyerAssignment LawyerAssignment @map("lawyer_assignment")
+  createdAt        DateTime         @default(now()) @map("created_at")
+  updatedAt        DateTime         @updatedAt @map("updated_at")
+  contract         Contract         @relation(fields: [contractId], references: [id])
+  lawyer           Lawyer           @relation(fields: [lawyerId], references: [id])
+  remunerations    Remuneration[]
+
+  @@unique([contractId, lawyerId])
+  @@map("contract_lawyer")
+}
+
+model Revenue {
+  id                String      @id @default(cuid())
+  contractId        String      @map("contract_id")
+  type              RevenueType
+  totalValue        Float       @map("total_value")
+  entryValue        Float       @map("entry_value")
+  installmentsTotal Int         @map("installments_total")
+  installmentsPaid  Int         @map("installments_paid")
+  paymentStartDate  DateTime    @map("payment_start_date")
+  createdAt         DateTime    @default(now()) @map("created_at")
+  updatedAt         DateTime    @updatedAt @map("updated_at")
+  contract          Contract    @relation(fields: [contractId], references: [id])
+  fees              Fee[]
+
+  @@map("revenues")
+}
+
+model Fee {
+  id                String         @id @default(cuid())
+  revenueId         String         @map("revenue_id")
+  value             Float
+  installmentNumber Int            @map("installment_number")
+  paymentDate       DateTime       @map("payment_date")
+  createdAt         DateTime       @default(now()) @map("created_at")
+  updatedAt         DateTime       @updatedAt @map("updated_at")
+  revenue           Revenue        @relation(fields: [revenueId], references: [id])
+  remunerations     Remuneration[]
+
+  @@map("fees")
+}
+
+model Remuneration {
+  id                  String         @id @default(cuid())
+  feeId               String         @map("fee_id")
+  contractLawyerId    String         @map("contract_lawyer_id")
+  remunerationPercent Float          @map("remuneration_percent")
+  value               Float
+  paymentDate         DateTime       @map("payment_date")
+  createdAt           DateTime       @default(now()) @map("created_at")
+  updatedAt           DateTime       @updatedAt @map("updated_at")
+  fee                 Fee            @relation(fields: [feeId], references: [id])
+  contractLawyer      ContractLawyer @relation(fields: [contractLawyerId], references: [id])
+
+  @@map("remunerations")
+}
+
+enum LawyerRole {
+  ADMIN
+  USER
+
+  @@map("lawyer_role")
+}
+
+enum LawyerAssignment {
+  RESPONSIBLE
+  RECOMMENDED
+  RECOMMENDING
+  ADITIONAL
+
+  @@map("lawyer_assignment")
+}
+
+enum ContractLegalArea {
+  SOCIAL_SECURITY
+  CIVIL
+  FAMILY
+  LABOR
+  OTHER
+
+  @@map("contract_legal_area")
+}
+
+enum RevenueType {
+  ADMINISTRATIVE
+  JUDICIAL
+  COMPLIANCE
+
+  @@map("revenue_type")
+}
+
+enum ClientType {
+  INDIVIDUAL
+  CORPORATE
+
+  @@map("client_type")
+}
+
+enum EntityStatus {
+  ACTIVE
+  INACTIVE
+
+  @@map("entity_status")
+}
+
+enum MaritalStatus {
+  SINGLE
+  MARRIED
+  DIVORCED
+  WIDOWED
+  OTHER
+
+  @@map("marital_status")
+}
