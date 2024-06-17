@@ -1,5 +1,6 @@
 {
   "files.exclude": {
+    ".env": true,
     ".vscode": false,
     ".devcontainer": false,
     ".next": true,
