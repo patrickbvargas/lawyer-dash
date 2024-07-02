@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { subjectTypeName } from '@/schemas/subject';
+import { lawyerAssignmentSchema } from '@/schemas/lawyer';
 
 export const remunerationSchema = z.object({
   kind: subjectTypeName.default('Remuneration'),
@@ -11,6 +12,7 @@ export const remunerationSchema = z.object({
   paymentDate: z.date(),
   createdAt: z.date(),
   updatedAt: z.date(),
+  contractLawyer: lawyerAssignmentSchema,
 });
 
 export type RemunerationSchemaType = z.infer<typeof remunerationSchema>;

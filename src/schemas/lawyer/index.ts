@@ -16,4 +16,10 @@ export const lawyerSchema = z.object({
   updatedAt: z.date(),
 });
 
+export const lawyerAssignmentSchema = z.object({
+  lawyerId: z.string(),
+  lawyerAssignment: z.nativeEnum(ENUM.LawyerAssignment),
+});
+
 export type LawyerSchemaType = z.infer<typeof lawyerSchema>;
+export type LawyerAssignmentSchemaType = z.infer<typeof lawyerAssignmentSchema>;

@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { ENUM } from '@/constants/enum';
 import { subjectTypeName } from '@/schemas/subject';
+import { lawyerAssignmentSchema } from '@/schemas/lawyer';
 
 export const contractSchema = z.object({
   kind: subjectTypeName.default('Contract'),
@@ -14,6 +15,7 @@ export const contractSchema = z.object({
   status: z.nativeEnum(ENUM.EntityStatus),
   createdAt: z.date(),
   updatedAt: z.date(),
+  lawyers: z.array(lawyerAssignmentSchema),
 });
 
 export type ContractSchemaType = z.infer<typeof contractSchema>;
