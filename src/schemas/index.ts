@@ -1,10 +1,10 @@
-import { lawyerSchema, LawyerSchemaType } from './lawyer';
 import { clientSchema, ClientSchemaType } from './client';
 import { contractSchema, ContractSchemaType } from './contract';
-import { revenueSchema, RevenueSchemaType } from './revenue';
 import { feeSchema, FeeSchemaType } from './fee';
+import { lawyerSchema, LawyerSchemaType } from './lawyer';
 import { remunerationSchema, RemunerationSchemaType } from './remuneration';
-import { subjectTypeName } from './subject';
+import { revenueSchema, RevenueSchemaType } from './revenue';
+import { subjectActionSchema, SubjectActionSchemaType } from './subject';
 
 export {
   lawyerSchema,
@@ -13,7 +13,7 @@ export {
   revenueSchema,
   feeSchema,
   remunerationSchema,
-  subjectTypeName,
+  subjectActionSchema,
 };
 
 export type {
@@ -23,4 +23,5 @@ export type {
   RevenueSchemaType,
   FeeSchemaType,
   RemunerationSchemaType,
+  SubjectActionSchemaType,
 };

@@ -71,6 +71,17 @@ export async function getData() {
       },
     });
     return z.array(contractSchema).parse(data);
+    // ! Lawyer
+    // const data = await prismaDb.lawyer.findMany();
+    // return z.array(lawyerSchema).parse(data);
+    // ! Client
+    // const data = await prismaDb.client.findMany({
+    //   include: {
+    //     individual: true,
+    //     corporate: true,
+    //   },
+    // });
+    // return z.array(clientSchema).parse(data);
   } catch (e) {
     console.error('Database error:', e);
     throw new Error('Failed to fetch data.');

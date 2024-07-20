@@ -1,10 +1,11 @@
 import { z } from 'zod';
 
-export const subjectTypeName = z.union([
-  z.literal('Lawyer'),
-  z.literal('Client'),
-  z.literal('Contract'),
-  z.literal('Revenue'),
-  z.literal('Fee'),
-  z.literal('Remuneration'),
+export const subjectActionSchema = z.union([
+  z.literal('manage'),
+  z.literal('create'),
+  z.literal('read'),
+  z.literal('update'),
+  z.literal('delete'),
 ]);
+
+export type SubjectActionSchemaType = z.infer<typeof subjectActionSchema>;
