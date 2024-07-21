@@ -97,7 +97,7 @@ const permissions: Record<ENUM.LawyerRole, UserPermissions> = {
 };
 
 export function defineAbilityForUser() {
-  const user = { id: 'clulzffpg000308l7g33qbrs7', role: ENUM.LawyerRole.USER }; // TODO: replace for session user data
+  const user = { id: 'clulzffpg000308l7g33qbrs7', role: ENUM.LawyerRole.ADMIN }; // TODO: replace for session user data
   const builder = new AbilityBuilder<AppAbility>(createMongoAbility);
   permissions[user.role](user.id, builder);
 
