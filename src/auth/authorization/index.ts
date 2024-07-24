@@ -5,9 +5,9 @@ import {
   createMongoAbility,
 } from '@casl/ability';
 import {
-  FeeSchemaType,
-  RemunerationSchemaType,
-  RevenueSchemaType,
+  FeeSchemaWithSubjectNameType,
+  RemunerationSchemaWithSubjectNameType,
+  RevenueSchemaWithSubjectNameType,
 } from '@/schemas';
 import {
   DefaultSubject,
@@ -34,16 +34,16 @@ type UserPermissions = (
   builder: AbilityBuilder<AppAbility>,
 ) => void;
 
-type FlatRevenue = RevenueSchemaType & {
-  'contract.lawyers': RevenueSchemaType['contract']['lawyers'];
+type FlatRevenue = RevenueSchemaWithSubjectNameType & {
+  'contract.lawyers': RevenueSchemaWithSubjectNameType['contract']['lawyers'];
 };
 
-type FlatFee = FeeSchemaType & {
-  'revenue.contract.lawyers': FeeSchemaType['revenue']['contract']['lawyers'];
+type FlatFee = FeeSchemaWithSubjectNameType & {
+  'revenue.contract.lawyers': FeeSchemaWithSubjectNameType['revenue']['contract']['lawyers'];
 };
 
-type FlatRemuneration = RemunerationSchemaType & {
-  'contractLawyer.lawyerId': RemunerationSchemaType['contractLawyer']['lawyerId'];
+type FlatRemuneration = RemunerationSchemaWithSubjectNameType & {
+  'contractLawyer.lawyerId': RemunerationSchemaWithSubjectNameType['contractLawyer']['lawyerId'];
 };
 
 const ALLOWED_LAWYER_ASSIGNMENTS = [
@@ -97,7 +97,7 @@ const permissions: Record<ENUM.LawyerRole, UserPermissions> = {
 };
 
 export function defineAbilityForUser() {
-  const user = { id: 'clulzffpg000308l7g33qbrs7', role: ENUM.LawyerRole.ADMIN }; // TODO: replace for session user data
+  const user = { id: 'clulzffpg000308l7g33qbrs7', role: ENUM.LawyerRole.USER }; // TODO: replace for session user data
   const builder = new AbilityBuilder<AppAbility>(createMongoAbility);
   permissions[user.role](user.id, builder);
 

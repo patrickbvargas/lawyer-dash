@@ -1,27 +1,69 @@
-import { clientSchema, ClientSchemaType } from './client';
-import { contractSchema, ContractSchemaType } from './contract';
-import { feeSchema, FeeSchemaType } from './fee';
-import { lawyerSchema, LawyerSchemaType } from './lawyer';
-import { remunerationSchema, RemunerationSchemaType } from './remuneration';
-import { revenueSchema, RevenueSchemaType } from './revenue';
-import { subjectActionSchema, SubjectActionSchemaType } from './subject';
+import {
+  clientSchema,
+  clientSchemaWithSubjectName,
+  type ClientSchemaType,
+  type ClientSchemaWithSubjectNameType,
+} from './client';
+import {
+  contractSchema,
+  contractSchemaWithSubjectName,
+  type ContractSchemaType,
+  type ContractSchemaWithSubjectNameType,
+} from './contract';
+import {
+  feeSchema,
+  feeSchemaWithSubjectName,
+  type FeeSchemaType,
+  type FeeSchemaWithSubjectNameType,
+} from './fee';
+import {
+  lawyerSchema,
+  lawyerSchemaWithSubjectName,
+  type LawyerSchemaType,
+  type LawyerSchemaWithSubjectNameType,
+} from './lawyer';
+import {
+  remunerationSchema,
+  remunerationSchemaWithSubjectName,
+  type RemunerationSchemaType,
+  type RemunerationSchemaWithSubjectNameType,
+} from './remuneration';
+import {
+  revenueSchema,
+  revenueSchemaWithSubjectName,
+  type RevenueSchemaType,
+  type RevenueSchemaWithSubjectNameType,
+} from './revenue';
+import { subjectActionSchema, type SubjectActionSchemaType } from './subject';
 
 export {
   lawyerSchema,
+  lawyerSchemaWithSubjectName,
   clientSchema,
+  clientSchemaWithSubjectName,
   contractSchema,
+  contractSchemaWithSubjectName,
   revenueSchema,
+  revenueSchemaWithSubjectName,
   feeSchema,
+  feeSchemaWithSubjectName,
   remunerationSchema,
+  remunerationSchemaWithSubjectName,
   subjectActionSchema,
 };
 
 export type {
-  LawyerSchemaType,
   ClientSchemaType,
+  ClientSchemaWithSubjectNameType,
   ContractSchemaType,
-  RevenueSchemaType,
+  ContractSchemaWithSubjectNameType,
   FeeSchemaType,
+  FeeSchemaWithSubjectNameType,
+  LawyerSchemaType,
+  LawyerSchemaWithSubjectNameType,
   RemunerationSchemaType,
+  RemunerationSchemaWithSubjectNameType,
+  RevenueSchemaType,
+  RevenueSchemaWithSubjectNameType,
   SubjectActionSchemaType,
 };

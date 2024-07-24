@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { prismaDb } from '@/lib/prisma';
-import { contractSchema } from '@/schemas';
+import { contractSchemaWithSubjectName } from '@/schemas';
 
 export async function getContracts() {
   try {
@@ -14,7 +14,7 @@ export async function getContracts() {
         },
       },
     });
-    return z.array(contractSchema).parse(data);
+    return z.array(contractSchemaWithSubjectName).parse(data);
   } catch (error) {
     console.log('Database error:', error);
     throw new Error('Failed to fetch contract data');

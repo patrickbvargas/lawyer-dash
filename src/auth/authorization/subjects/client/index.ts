@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { subjectActionSchema } from '@/schemas';
-import { clientSchema, clientTypeName } from '@/schemas/client';
+import { clientSchemaWithSubjectName, subjectActionSchema } from '@/schemas';
 
+export const clientSubjectName = z.literal('Client');
 const clientSubject = z.tuple([
   subjectActionSchema,
-  z.union([clientTypeName, clientSchema]),
+  z.union([clientSubjectName, clientSchemaWithSubjectName]),
 ]);
 
 export type ClientSubject = z.infer<typeof clientSubject>;

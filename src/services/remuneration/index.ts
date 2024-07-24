@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { prismaDb } from '@/lib/prisma';
-import { remunerationSchema } from '@/schemas';
+import { remunerationSchemaWithSubjectName } from '@/schemas';
 
 export async function getRemunerations() {
   try {
@@ -14,7 +14,7 @@ export async function getRemunerations() {
         },
       },
     });
-    return z.array(remunerationSchema).parse(data);
+    return z.array(remunerationSchemaWithSubjectName).parse(data);
   } catch (e) {
     console.error('Database error:', e);
     throw new Error('Failed to fetch remuneration data.');

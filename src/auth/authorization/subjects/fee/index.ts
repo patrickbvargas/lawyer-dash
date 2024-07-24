@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { subjectActionSchema } from '@/schemas';
-import { feeSchema, feeTypeName } from '@/schemas/fee';
+import { feeSchemaWithSubjectName, subjectActionSchema } from '@/schemas';
 
+export const feeSubjectName = z.literal('Fee');
 const feeSubject = z.tuple([
   subjectActionSchema,
-  z.union([feeTypeName, feeSchema]),
+  z.union([feeSubjectName, feeSchemaWithSubjectName]),
 ]);
 
 export type FeeSubject = z.infer<typeof feeSubject>;

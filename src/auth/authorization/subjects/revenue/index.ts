@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { subjectActionSchema } from '@/schemas';
-import { revenueSchema, revenueTypeName } from '@/schemas/revenue';
+import { revenueSchemaWithSubjectName, subjectActionSchema } from '@/schemas';
 
+export const revenueSubjectName = z.literal('Revenue');
 const revenueSubject = z.tuple([
   subjectActionSchema,
-  z.union([revenueTypeName, revenueSchema]),
+  z.union([revenueSubjectName, revenueSchemaWithSubjectName]),
 ]);
 
 export type RevenueSubject = z.TypeOf<typeof revenueSubject>;

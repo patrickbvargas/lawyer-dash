@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { prismaDb } from '@/lib/prisma';
-import { feeSchema } from '@/schemas';
+import { feeSchemaWithSubjectName } from '@/schemas';
 
 export async function getFees() {
   try {
@@ -22,7 +22,7 @@ export async function getFees() {
         },
       },
     });
-    return z.array(feeSchema).parse(data);
+    return z.array(feeSchemaWithSubjectName).parse(data);
   } catch (e) {
     console.error('Database error:', e);
     throw new Error('Failed to fetch fee data.');

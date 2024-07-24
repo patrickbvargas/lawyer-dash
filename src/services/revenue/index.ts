@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { prismaDb } from '@/lib/prisma';
-import { revenueSchema } from '@/schemas';
+import { revenueSchemaWithSubjectName } from '@/schemas';
 
 export async function getRevenues() {
   try {
@@ -18,7 +18,7 @@ export async function getRevenues() {
         },
       },
     });
-    return z.array(revenueSchema).parse(data);
+    return z.array(revenueSchemaWithSubjectName).parse(data);
   } catch (e) {
     console.error('Database error:', e);
     throw new Error('Failed to fetch revenue data.');

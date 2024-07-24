@@ -1,13 +1,13 @@
 import { z } from 'zod';
-import { subjectActionSchema } from '@/schemas';
 import {
-  remunerationSchema,
-  remunerationTypeName,
-} from '@/schemas/remuneration';
+  remunerationSchemaWithSubjectName,
+  subjectActionSchema,
+} from '@/schemas';
 
+export const remunerationSubjectName = z.literal('Remuneration');
 const remunerationSubject = z.tuple([
   subjectActionSchema,
-  z.union([remunerationTypeName, remunerationSchema]),
+  z.union([remunerationSubjectName, remunerationSchemaWithSubjectName]),
 ]);
 
 export type RemunerationSubject = z.infer<typeof remunerationSubject>;
