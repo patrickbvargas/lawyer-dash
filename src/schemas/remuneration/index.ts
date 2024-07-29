@@ -1,6 +1,12 @@
 import { z } from 'zod';
-import { lawyerAssignmentSchema } from '@/schemas/lawyer';
 import { subject } from '@casl/ability';
+import { contractSchema } from '@/schemas/contract';
+import { lawyerSchema, lawyerAssignmentSchema } from '@/schemas/lawyer';
+
+const contractAppendSchema = lawyerAssignmentSchema.extend({
+  lawyer: lawyerSchema.pick({ fullName: true }),
+  contract: contractSchema.pick({ id: true, identification: true }),
+});
 
 export const remunerationSchema = z.object({
   id: z.string(),
@@ -11,7 +17,7 @@ export const remunerationSchema = z.object({
   paymentDate: z.date(),
   createdAt: z.date(),
   updatedAt: z.date(),
-  contractLawyer: lawyerAssignmentSchema,
+  contractLawyer: contractAppendSchema,
 });
 
 export const remunerationSchemaWithSubjectName = remunerationSchema.transform(

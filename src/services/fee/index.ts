@@ -8,12 +8,25 @@ export async function getFees() {
       include: {
         revenue: {
           select: {
+            type: true,
             contract: {
               select: {
+                identification: true,
+                client: {
+                  select: {
+                    id: true,
+                    fullName: true,
+                  },
+                },
                 lawyers: {
                   select: {
                     lawyerId: true,
                     lawyerAssignment: true,
+                    lawyer: {
+                      select: {
+                        fullName: true,
+                      },
+                    },
                   },
                 },
               },
@@ -22,6 +35,7 @@ export async function getFees() {
         },
       },
     });
+    console.log(data[0]);
     return z.array(feeSchemaWithSubjectName).parse(data);
   } catch (e) {
     console.error('Database error:', e);

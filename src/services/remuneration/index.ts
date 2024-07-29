@@ -10,6 +10,17 @@ export async function getRemunerations() {
           select: {
             lawyerId: true,
             lawyerAssignment: true,
+            lawyer: {
+              select: {
+                fullName: true,
+              },
+            },
+            contract: {
+              select: {
+                id: true,
+                identification: true,
+              },
+            },
           },
         },
       },

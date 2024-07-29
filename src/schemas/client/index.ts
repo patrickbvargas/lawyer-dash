@@ -34,6 +34,9 @@ export const clientSchema = z.object({
   updatedAt: z.date(),
   individual: individualClient.nullable(),
   corporate: corporateClient.nullable(),
+  _count: z.object({
+    contracts: z.number(),
+  }),
 });
 
 export const clientSchemaWithSubjectName = clientSchema.transform((client) =>

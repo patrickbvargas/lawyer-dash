@@ -8,8 +8,14 @@ export async function getClients() {
       include: {
         individual: true,
         corporate: true,
+        _count: {
+          select: {
+            contracts: true,
+          },
+        },
       },
     });
+    console.log(data[0]);
     return z.array(clientSchemaWithSubjectName).parse(data);
   } catch (error) {
     console.log('Database error:', error);

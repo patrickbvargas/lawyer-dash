@@ -8,10 +8,16 @@ export async function getRevenues() {
       include: {
         contract: {
           select: {
+            identification: true,
             lawyers: {
               select: {
                 lawyerId: true,
                 lawyerAssignment: true,
+                lawyer: {
+                  select: {
+                    fullName: true,
+                  },
+                },
               },
             },
           },

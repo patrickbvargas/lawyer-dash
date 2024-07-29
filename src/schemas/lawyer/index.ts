@@ -13,6 +13,9 @@ export const lawyerSchema = z.object({
   status: z.nativeEnum(ENUM.EntityStatus),
   createdAt: z.date(),
   updatedAt: z.date(),
+  _count: z.object({
+    contracts: z.number(),
+  }),
 });
 
 export const lawyerSchemaWithSubjectName = lawyerSchema.transform((lawyer) =>
