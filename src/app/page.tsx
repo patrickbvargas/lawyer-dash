@@ -11,7 +11,7 @@ import { Card } from '@/components';
 import { ENUM } from '@/constants/enum';
 
 export default async function Home() {
-  const data = await getLawyers();
+  const data = await getClients();
   const ability = defineAbilityForUser();
 
   const authData = data.filter((item) => ability.can('read', item));
@@ -20,42 +20,42 @@ export default async function Home() {
     <main className="grid grid-cols-3 gap-4">
       {authData.map((item) => (
         // ! Client
-        // <Card.Root key={item.id}>
-        //   <Card.Header>
-        //     <Card.Title>{item.fullName}</Card.Title>
-        //   </Card.Header>
-        //   <Card.Divider />
-        //   <Card.Content>
-        //     <Card.Field
-        //       label={item.individual ? 'CPF' : 'CNPJ'}
-        //       value={item.individual?.cpf || item.corporate?.cnpj}
-        //     />
-        //     <Card.Field label="Celular" value={item.mobilePhone} />
-        //     <Card.Field
-        //       label="Contratos"
-        //       value={item._count.contracts}
-        //       variant="highlight"
-        //     />
-        //     <Card.Badge label={item.individual ? 'PF' : 'PJ'} />
-        //   </Card.Content>
-        // </Card.Root>
-        // ! Lawyer
         <Card.Root key={item.id}>
           <Card.Header>
             <Card.Title>{item.fullName}</Card.Title>
           </Card.Header>
           <Card.Divider />
           <Card.Content>
-            <Card.Field label="OAB" value={item.oabNumber} />
-            <Card.Field label="Remuneração" value={item.remunerationPercent} />
+            <Card.Field
+              label={item.individual ? 'CPF' : 'CNPJ'}
+              value={item.individual?.cpf || item.corporate?.cnpj}
+            />
+            <Card.Field label="Celular" value={item.mobilePhone} />
             <Card.Field
               label="Contratos"
               value={item._count.contracts}
               variant="highlight"
             />
-            <Card.Badge label={item.role} />
+            <Card.Badge label={item.individual ? 'PF' : 'PJ'} />
           </Card.Content>
         </Card.Root>
+        // ! Lawyer
+        // <Card.Root key={item.id}>
+        //   <Card.Header>
+        //     <Card.Title>{item.fullName}</Card.Title>
+        //   </Card.Header>
+        //   <Card.Divider />
+        //   <Card.Content>
+        //     <Card.Field label="OAB" value={item.oabNumber} />
+        //     <Card.Field label="Remuneração" value={item.remunerationPercent} />
+        //     <Card.Field
+        //       label="Contratos"
+        //       value={item._count.contracts}
+        //       variant="highlight"
+        //     />
+        //     <Card.Badge label={item.role} />
+        //   </Card.Content>
+        // </Card.Root>
         // ! Contract
         // <Card.Root key={item.id}>
         //   <Card.Header>
