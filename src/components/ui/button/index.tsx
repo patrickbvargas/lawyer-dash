@@ -11,6 +11,15 @@ export const buttonVariants = cva(
           'bg-accent text-white hover:bg-accent/80 focus:ring-accent/50',
           'dark:focus:ring-amber-200',
         ],
+        secondary: [
+          'bg-white text-gray-500 shadow-sm hover:bg-gray-100 focus:ring-gray-200',
+          'dark:bg-neutral-800 dark:text-neutral-300 dark:shadow-none dark:hover:bg-neutral-700 dark:focus:ring-neutral-600',
+        ],
+        outline: [
+          'border-2',
+          'text-gray-600 border-gray-300 focus:ring-gray-300',
+          'dark:text-neutral-300 dark:border-neutral-800 dark:focus:ring-neutral-600',
+        ],
         ghost: [
           'bg-none text-gray-600 hover:bg-gray-200 focus:ring-gray-300',
           'dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:ring-neutral-600',

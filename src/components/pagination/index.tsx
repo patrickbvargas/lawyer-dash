@@ -1,94 +1,92 @@
-import * as React from 'react';
-import { cn } from '@/utils/cn';
-import { Link as LinkPrimitive } from '@/components';
-import { buttonVariants } from '@/components/ui/button';
-import {
-  EllipsisHorizontalIcon,
-  ChevronRightIcon,
-  ChevronDoubleRightIcon,
-} from '@heroicons/react/20/solid';
+'use client';
+import { cn } from '@/utils';
+import { usePagination } from '@/hooks';
+import * as PaginationPrimitive from './components';
 
-interface RootProps extends React.ComponentProps<'nav'> {}
-export const Root = ({ className, ...props }: RootProps) => (
-  <nav
-    role="navigation"
-    aria-label="pagination"
-    className={cn('flex w-full', className)}
-    {...props}
-  />
-);
-
-interface ContentProps extends React.ComponentProps<'ul'> {}
-export const Content = ({ className, ...props }: ContentProps) => (
-  <ul
-    className={cn('flex flex-row items-center gap-1', className)}
-    {...props}
-  />
-);
-
-interface ItemProps extends React.ComponentProps<'li'> {}
-export const Item = ({ ...props }: ItemProps) => <li {...props} />;
-
-interface LinkProps extends React.ComponentProps<typeof LinkPrimitive> {
-  isActive?: boolean;
-  isDisabled?: boolean;
+interface PaginationProps
+  extends React.ComponentProps<typeof PaginationPrimitive.Root> {
+  totalRecords: number;
+  siblingCount?: number;
 }
-export const Link = ({
-  isActive = false,
-  isDisabled = false,
+export const Pagination = ({
+  totalRecords = 0,
+  siblingCount = 1,
   className,
   ...props
-}: LinkProps) => (
-  <LinkPrimitive
-    aria-current={isActive ? 'page' : undefined}
-    className={cn(
-      buttonVariants({ variant: isActive ? 'default' : 'ghost', size: 'icon' }),
-      isDisabled && 'pointer-events-none opacity-50',
-      className,
-    )}
-    {...props}
-  />
-);
+}: PaginationProps) => {
+  const { currentPage, pageSize, handlePageNumber } = usePagination();
+  const totalPagesCount = Math.ceil(totalRecords / pageSize);
+  const totalDisplayPages = 1 + siblingCount * 2;
 
-interface PreviousProps extends React.ComponentProps<typeof Link> {}
-export const Previous = ({ ...props }: PreviousProps) => (
-  <Link aria-label="Ir para a página anterior" {...props}>
-    <ChevronRightIcon className="size-5 rotate-180" />
-  </Link>
-);
+  const startPage = Math.max(
+    1,
+    Math.min(
+      currentPage - siblingCount,
+      totalPagesCount - totalDisplayPages + 1,
+    ),
+  );
+  const endPage = Math.min(totalPagesCount, startPage + totalDisplayPages - 1);
 
-interface FirstProps extends React.ComponentProps<typeof Link> {}
-export const First = ({ ...props }: FirstProps) => (
-  <Link aria-label="Ir para a primeira página" {...props}>
-    <ChevronDoubleRightIcon className="size-5 rotate-180" />
-  </Link>
-);
+  const generateFeedback = () => {
+    const initialItem = (currentPage - 1) * pageSize;
+    const finalItem = initialItem + pageSize;
+    return (
+      totalRecords > 1 &&
+      `Exibindo ${initialItem + 1} - ${Math.min(finalItem, totalRecords)} de ${totalRecords}`
+    );
+  };
 
-interface NextProps extends React.ComponentProps<typeof Link> {}
-export const Next = ({ ...props }: NextProps) => (
-  <Link aria-label="Ir para a próxima página" {...props}>
-    <ChevronRightIcon className="size-5" />
-  </Link>
-);
+  const renderPageLinks = () =>
+    Array.from({ length: endPage - startPage + 1 }).map((_, index) => {
+      const pageNumber = startPage + index;
+      return (
+        <PaginationPrimitive.Item key={pageNumber}>
+          <PaginationPrimitive.Link
+            href="#"
+            isActive={pageNumber === currentPage}
+            onClick={() => handlePageNumber(pageNumber)}
+          >
+            {pageNumber}
+          </PaginationPrimitive.Link>
+        </PaginationPrimitive.Item>
+      );
+    });
 
-interface LastProps extends React.ComponentProps<typeof Link> {}
-export const Last = ({ ...props }: LastProps) => (
-  <Link aria-label="Ir para a última página" {...props}>
-    <ChevronDoubleRightIcon className="size-5" />
-  </Link>
-);
-
-interface EllipsisProps extends React.ComponentProps<'span'> {}
-export const Ellipsis = ({ className, ...props }: EllipsisProps) => (
-  <span
-    aria-hidden
-    className={cn(
-      buttonVariants({ variant: 'ghost', size: 'icon' }),
-      'pointer-events-none',
-      className,
-    )}
-    {...props}
-  >
-    <EllipsisHorizontalIcon className="size-5" />
-  </span>
-);
+  return (
+    <PaginationPrimitive.Root
+      className={cn('flex gap-2 justify-end', className)}
+      {...props}
+    >
+      <PaginationPrimitive.Feedback>
+        {generateFeedback()}
+      </PaginationPrimitive.Feedback>
+      <PaginationPrimitive.Content>
+        <PaginationPrimitive.Item isDisabled={currentPage === 1}>
+          <PaginationPrimitive.First
+            href="#"
+            onClick={() => handlePageNumber(1)}
+          />
+        </PaginationPrimitive.Item>
+        <PaginationPrimitive.Item isDisabled={currentPage === 1}>
+          <PaginationPrimitive.Previous
+            href="#"
+            onClick={() => handlePageNumber(currentPage - 1)}
+          />
+        </PaginationPrimitive.Item>
+        {renderPageLinks()}
+        <PaginationPrimitive.Item isDisabled={!(currentPage < totalPagesCount)}>
+          <PaginationPrimitive.Next
+            href="#"
+            onClick={() => handlePageNumber(currentPage + 1)}
+          />
+        </PaginationPrimitive.Item>
+        <PaginationPrimitive.Item isDisabled={!(currentPage < totalPagesCount)}>
+          <PaginationPrimitive.Last
+            href="#"
+            onClick={() => handlePageNumber(totalPagesCount)}
+          />
+        </PaginationPrimitive.Item>
+      </PaginationPrimitive.Content>
+    </PaginationPrimitive.Root>
+  );
+};
