@@ -5,5 +5,6 @@ import * as ScrollArea from './scroll-area';
 import { Pagination } from './pagination';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import * as Select from './ui/select';
 
-export { Link, Card, DataGrid, ScrollArea, Pagination, Button, Input };
+export { Link, Card, DataGrid, ScrollArea, Pagination, Button, Input, Select };
