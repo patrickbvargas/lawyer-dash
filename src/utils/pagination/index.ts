@@ -1,8 +1,8 @@
 import {
-  DEFAULT_ITEMS_PER_PAGE,
-  DEFAULT_START_PAGE,
-  PAGE_NUMBER_QUERY_PARAM,
-  PAGE_SIZE_QUERY_PARAM,
+  PAGE_SIZE_DEFAULT,
+  PAGE_NUMBER_DEFAULT,
+  PAGE_NUMBER_ALIAS,
+  PAGE_SIZE_ALIAS,
 } from '@/constants/pagination';
 
 type Query = URLSearchParams | Record<string, string>;
@@ -19,15 +19,7 @@ function getQueryParam(query: Query, key: string, defaultValue: number) {
 
 export function getPaginationParamsFromQuery(query: Query) {
   return {
-    currentPage: getQueryParam(
-      query,
-      PAGE_NUMBER_QUERY_PARAM,
-      DEFAULT_START_PAGE,
-    ),
-    pageSize: getQueryParam(
-      query,
-      PAGE_SIZE_QUERY_PARAM,
-      DEFAULT_ITEMS_PER_PAGE,
-    ),
+    currentPage: getQueryParam(query, PAGE_NUMBER_ALIAS, PAGE_NUMBER_DEFAULT),
+    pageSize: getQueryParam(query, PAGE_SIZE_ALIAS, PAGE_SIZE_DEFAULT),
   };
 }

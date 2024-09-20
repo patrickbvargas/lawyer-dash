@@ -14,7 +14,11 @@ export const Pagination = ({
   className,
   ...props
 }: PaginationProps) => {
-  const { currentPage, pageSize, handlePageNumber } = usePagination();
+  const {
+    pageNumber: currentPage,
+    pageSize,
+    handlePageNumber,
+  } = usePagination();
   const totalPagesCount = Math.ceil(totalRecords / pageSize);
   const totalDisplayPages = 1 + siblingCount * 2;
 

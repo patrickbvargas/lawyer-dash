@@ -1,6 +1,6 @@
 import { defineAbilityForUser } from '@/auth/authorization';
 import { getLawyers } from '@/services';
-import { DataGrid, LawyerCard, Pagination, Input } from '@/components';
+import { DataGrid, LawyerCard, Pagination, Search } from '@/components';
 
 export default async function Home() {
   const data = await getLawyers();
@@ -10,7 +10,7 @@ export default async function Home() {
   return (
     <DataGrid.Root>
       <DataGrid.Header>
-        <Input placeholder="Pesquisar por Nome ou OAB (implementar)" />
+        <Search placeholder="Pesquisar por Nome ou OAB (implementar)" />
       </DataGrid.Header>
       <DataGrid.Content>
         {authData.map((lawyer) => (

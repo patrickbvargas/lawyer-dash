@@ -1,3 +1,5 @@
+import { useUrlSearchParams } from './use-url-search-params';
 import { usePagination } from './use-pagination';
+import { useSearch } from './use-search';
 
-export { usePagination };
+export { useUrlSearchParams, usePagination, useSearch };

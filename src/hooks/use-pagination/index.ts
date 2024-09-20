@@ -1,25 +1,26 @@
 'use client';
-import { getPaginationParamsFromQuery } from '@/utils';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useUrlSearchParams } from '@/hooks';
 import {
-  PAGE_NUMBER_QUERY_PARAM,
-  PAGE_SIZE_QUERY_PARAM,
+  PAGE_NUMBER_ALIAS,
+  PAGE_NUMBER_DEFAULT,
+  PAGE_SIZE_ALIAS,
+  PAGE_SIZE_DEFAULT,
 } from '@/constants/pagination';
 
 export function usePagination() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const { replace } = useRouter();
+  const { searchParams, handleSearchParams } = useUrlSearchParams();
 
-  const { currentPage, pageSize } = getPaginationParamsFromQuery(searchParams);
+  const pageNumber =
+    Number(searchParams.get(PAGE_NUMBER_ALIAS)) || PAGE_NUMBER_DEFAULT;
+  const pageSize =
+    Number(searchParams.get(PAGE_SIZE_ALIAS)) || PAGE_SIZE_DEFAULT;
 
   const handlePageNumber = (pageNumber: number) => {
     const params = new URLSearchParams(searchParams);
-    params.set(PAGE_NUMBER_QUERY_PARAM, pageNumber.toString());
-    params.set(PAGE_SIZE_QUERY_PARAM, pageSize.toString());
-    replace(`${pathname}?${params.toString()}`);
-    console.log(`${pathname}?${params.toString()}`);
+    params.set(PAGE_NUMBER_ALIAS, pageNumber.toString());
+    params.set(PAGE_SIZE_ALIAS, pageSize.toString());
+    handleSearchParams(params);
   };
 
-  return { currentPage, pageSize, handlePageNumber };
+  return { pageNumber, pageSize, handlePageNumber };
 }
