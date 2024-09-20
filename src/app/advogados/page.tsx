@@ -1,6 +1,6 @@
 import { defineAbilityForUser } from '@/auth/authorization';
 import { getLawyers } from '@/services';
-import { DataGrid, Card } from '@/components';
+import { DataGrid, Card, Pagination, Input } from '@/components';
 
 export default async function Home() {
   const data = await getLawyers();
@@ -9,6 +9,9 @@ export default async function Home() {
 
   return (
     <DataGrid.Root>
+      <DataGrid.Header>
+        <Input placeholder="Pesquisar por Nome ou OAB (implementar)" />
+      </DataGrid.Header>
       <DataGrid.Content>
         {authData.map((item) => (
           <Card.Root key={item.id}>
@@ -32,6 +35,9 @@ export default async function Home() {
           </Card.Root>
         ))}
       </DataGrid.Content>
+      <DataGrid.Footer>
+        <Pagination totalRecords={200} />
+      </DataGrid.Footer>
     </DataGrid.Root>
   );
 }

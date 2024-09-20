@@ -12,8 +12,7 @@ export const Header = ({ className, ...props }: HeaderProps) => (
   <div className={cn('flex justify-between gap-3', className)} {...props} />
 );
 
-interface ContentProps
-  extends React.ComponentPropsWithoutRef<typeof ScrollArea.Root> {}
+interface ContentProps extends React.ComponentProps<typeof ScrollArea.Root> {}
 export const Content = ({ className, children, ...props }: ContentProps) => (
   <ScrollArea.Root className={className} {...props}>
     <ScrollArea.Viewport>
@@ -22,4 +21,9 @@ export const Content = ({ className, children, ...props }: ContentProps) => (
       </div>
     </ScrollArea.Viewport>
   </ScrollArea.Root>
+);
+
+interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+export const Footer = ({ className, ...props }: FooterProps) => (
+  <div className={cn('flex justify-between gap-3', className)} {...props} />
 );
