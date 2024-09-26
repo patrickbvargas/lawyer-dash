@@ -5,7 +5,7 @@ import {
   PAGE_NUMBER_DEFAULT,
   PAGE_SIZE_ALIAS,
   PAGE_SIZE_DEFAULT,
-} from '@/constants/pagination';
+} from '@/constants';
 
 export function usePagination() {
   const { searchParams, handleSearchParams } = useUrlSearchParams();

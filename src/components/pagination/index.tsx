@@ -19,6 +19,11 @@ export const Pagination = ({
     pageSize,
     handlePageNumber,
   } = usePagination();
+
+  if (totalRecords === 0) {
+    return null;
+  }
+
   const totalPagesCount = Math.ceil(totalRecords / pageSize);
   const totalDisplayPages = 1 + siblingCount * 2;
 
@@ -34,10 +39,9 @@ export const Pagination = ({
   const generateFeedback = () => {
     const initialItem = (currentPage - 1) * pageSize;
     const finalItem = initialItem + pageSize;
-    return (
-      totalRecords > 1 &&
-      `Exibindo ${initialItem + 1} - ${Math.min(finalItem, totalRecords)} de ${totalRecords}`
-    );
+    return totalRecords === 1
+      ? 'Exibindo 1 de 1'
+      : `Exibindo ${initialItem + 1} - ${Math.min(finalItem, totalRecords)} de ${totalRecords}`;
   };
 
   const renderPageLinks = () =>

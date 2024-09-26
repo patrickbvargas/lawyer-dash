@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Card } from '@/components';
+import { getLawyerRoleAlias } from '@/utils';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
 
-interface LawyerCardProps extends React.ComponentProps<typeof Card.Root> {
+interface LawyerCardProps {
   data: LawyerSchemaWithSubjectNameType;
 }
-export const LawyerCard = ({ data, className, ...props }: LawyerCardProps) => {
+export const LawyerCard = ({ data }: LawyerCardProps) => {
   return (
-    <Card.Root {...props}>
+    <Card.Root>
       <Card.Header>
         <Card.Title>{data.fullName}</Card.Title>
       </Card.Header>
@@ -25,7 +26,7 @@ export const LawyerCard = ({ data, className, ...props }: LawyerCardProps) => {
           value={data._count.contracts}
           variant="highlight"
         />
-        <Card.Badge label={data.role} />
+        <Card.Badge label={getLawyerRoleAlias(data.role)} />
       </Card.Content>
     </Card.Root>
   );

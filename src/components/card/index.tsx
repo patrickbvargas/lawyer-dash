@@ -38,7 +38,7 @@ export const Title = ({ className, ...props }: TitleProps) => (
 interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 export const Content = ({ className, ...props }: ContentProps) => (
   <div
-    className={cn('grid grid-cols-1 gap-3.5 px-2 sm:grid-cols-2', className)}
+    className={cn('grid grid-cols-1 gap-3.5 sm:grid-cols-2', className)}
     {...props}
   />
 );

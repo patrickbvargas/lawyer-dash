@@ -14,12 +14,8 @@ export const Header = ({ className, ...props }: HeaderProps) => (
 
 interface ContentProps extends React.ComponentProps<typeof ScrollArea.Root> {}
 export const Content = ({ className, children, ...props }: ContentProps) => (
-  <ScrollArea.Root className={className} {...props}>
-    <ScrollArea.Viewport>
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
-        {children}
-      </div>
-    </ScrollArea.Viewport>
+  <ScrollArea.Root className={cn('flex-grow', className)} {...props}>
+    <ScrollArea.Viewport>{children}</ScrollArea.Viewport>
   </ScrollArea.Root>
 );
 

@@ -1,32 +1,69 @@
 import { z } from 'zod';
-import { prismaDb } from '@/lib/prisma';
-import { lawyerSchemaWithSubjectName } from '@/schemas/lawyer';
-import { ENUM } from '@/constants/enum';
+import { ENUM } from '@/constants';
+import { prismaDb, Prisma } from '@/lib';
+import { unstable_cache } from 'next/cache';
+import {
+  lawyerSchemaWithSubjectName,
+  SearchParamsSchemaType,
+  SearchParamsFilterSchemaType,
+} from '@/schemas';
 
-export async function getLawyers() {
-  try {
-    const data = await prismaDb.lawyer.findMany({
-      include: {
-        _count: {
-          select: {
-            contracts: {
-              where: {
-                lawyerAssignment: {
-                  in: [
-                    ENUM.LawyerAssignment.RESPONSIBLE,
-                    ENUM.LawyerAssignment.RECOMMENDED,
-                  ],
+const getLawyersFilter = (params: SearchParamsFilterSchemaType) => {
+  const filter: Prisma.LawyerWhereInput = {
+    OR: [
+      { fullName: { contains: params.query, mode: 'insensitive' } },
+      { oabNumber: { contains: params.query, mode: 'insensitive' } },
+    ],
+  };
+  return filter;
+};
+
+export const getLawyersCount = unstable_cache(
+  async (params: SearchParamsFilterSchemaType) => {
+    try {
+      const filter = getLawyersFilter(params);
+      const count = await prismaDb.lawyer.count({
+        where: filter,
+      });
+      return count;
+    } catch (e) {
+      console.error('Database error:', e);
+      throw new Error('Failed to fetch lawyer data.');
+    }
+  },
+);
+
+export const getLawyers = unstable_cache(
+  async ({ pagination, filters }: SearchParamsSchemaType) => {
+    try {
+      const offset = (pagination.page - 1) * pagination.size || 0;
+      const filter = getLawyersFilter(filters);
+      const data = await prismaDb.lawyer.findMany({
+        where: filter,
+        skip: offset,
+        take: pagination.size,
+        orderBy: { fullName: 'asc' },
+        include: {
+          _count: {
+            select: {
+              contracts: {
+                where: {
+                  lawyerAssignment: {
+                    in: [
+                      ENUM.LawyerAssignment.RESPONSIBLE,
+                      ENUM.LawyerAssignment.RECOMMENDED,
+                    ],
+                  },
                 },
               },
             },
           },
         },
-      },
-    });
-    console.log(data[0]);
-    return z.array(lawyerSchemaWithSubjectName).parse(data);
-  } catch (e) {
-    console.error('Database error:', e);
-    throw new Error('Failed to fetch lawyer data.');
-  }
-}
+      });
+      return z.array(lawyerSchemaWithSubjectName).parse(data);
+    } catch (e) {
+      console.error('Database error:', e);
+      throw new Error('Failed to fetch lawyer data.');
+    }
+  },
+);

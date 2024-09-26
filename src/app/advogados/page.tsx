@@ -1,24 +1,40 @@
-import { defineAbilityForUser } from '@/auth/authorization';
-import { getLawyers } from '@/services';
-import { DataGrid, LawyerCard, Pagination, Search } from '@/components';
+import * as React from 'react';
+import { PageSearchParams } from '@/types';
+import { searchParamsSchema } from '@/schemas';
+import { getLawyers, getLawyersCount } from '@/services';
+import {
+  DataGrid,
+  Search,
+  Suspense,
+  Await,
+  LawyerList,
+  SkeletonList,
+  Pagination,
+} from '@/components';
 
-export default async function Home() {
-  const data = await getLawyers();
-  const ability = defineAbilityForUser();
-  const authData = data.filter((item) => ability.can('read', item));
+// TODO: implement error.tsx && loading.tsx
+interface LawyerPageProps {
+  searchParams?: PageSearchParams;
+}
+export default async function LawyersPage({ searchParams }: LawyerPageProps) {
+  const params = searchParamsSchema.parse(searchParams);
+  const count = await getLawyersCount(params.filters);
+  const fallbackSize = Math.min(params.pagination.size, count);
 
   return (
     <DataGrid.Root>
       <DataGrid.Header>
-        <Search placeholder="Pesquisar por Nome ou OAB (implementar)" />
+        <Search placeholder="Pesquisar por Advogado ou OAB" />
       </DataGrid.Header>
       <DataGrid.Content>
-        {authData.map((lawyer) => (
-          <LawyerCard key={lawyer.id} data={lawyer} />
-        ))}
+        <Suspense fallback={<SkeletonList totalRecords={fallbackSize} />}>
+          <Await promise={getLawyers(params)}>
+            {(data) => <LawyerList data={data} />}
+          </Await>
+        </Suspense>
       </DataGrid.Content>
       <DataGrid.Footer>
-        <Pagination totalRecords={200} />
+        <Pagination totalRecords={count} />
       </DataGrid.Footer>
     </DataGrid.Root>
   );

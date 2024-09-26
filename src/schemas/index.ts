@@ -17,6 +17,7 @@ import {
   type FeeSchemaWithSubjectNameType,
 } from './fee';
 import {
+  lawyerAssignmentSchema,
   lawyerSchema,
   lawyerSchemaWithSubjectName,
   type LawyerSchemaType,
@@ -35,10 +36,17 @@ import {
   type RevenueSchemaWithSubjectNameType,
 } from './revenue';
 import { subjectActionSchema, type SubjectActionSchemaType } from './subject';
+import {
+  searchParamsSchema,
+  searchParamsFilterSchema,
+  type SearchParamsSchemaType,
+  type SearchParamsFilterSchemaType,
+} from './search-params';
 
 export {
   lawyerSchema,
   lawyerSchemaWithSubjectName,
+  lawyerAssignmentSchema,
   clientSchema,
   clientSchemaWithSubjectName,
   contractSchema,
@@ -50,6 +58,8 @@ export {
   remunerationSchema,
   remunerationSchemaWithSubjectName,
   subjectActionSchema,
+  searchParamsSchema,
+  searchParamsFilterSchema,
 };
 
 export type {
@@ -66,4 +76,6 @@ export type {
   RevenueSchemaType,
   RevenueSchemaWithSubjectNameType,
   SubjectActionSchemaType,
+  SearchParamsSchemaType,
+  SearchParamsFilterSchemaType,
 };

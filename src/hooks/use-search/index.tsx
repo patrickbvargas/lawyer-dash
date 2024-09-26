@@ -2,7 +2,7 @@
 import { useUrlSearchParams } from '@/hooks';
 import { useDebouncedCallback } from 'use-debounce';
 import { PAGE_NUMBER_ALIAS } from '@/constants/pagination';
-import { SEARCH_TERM_DEFAULT, SEARCH_TERM_ALIAS } from '@/constants/search';
+import { SEARCH_TERM_DEFAULT, SEARCH_TERM_ALIAS } from '@/constants';
 
 export function useSearch() {
   const { searchParams, handleSearchParams } = useUrlSearchParams();

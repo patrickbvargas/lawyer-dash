@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description: 'Lawyer Dashboard Project',
 };
 
+// TODO: check body font family with Next font
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
-        {/* TODO: check body font family with Next font */}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
