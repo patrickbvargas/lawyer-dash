@@ -3,7 +3,7 @@ import { PageSearchParams } from '@/types';
 import { searchParamsSchema } from '@/schemas';
 import { getLawyers, getLawyersCount } from '@/services';
 import {
-  DataGrid,
+  PageWrapper,
   Search,
   Suspense,
   Await,
@@ -22,20 +22,23 @@ export default async function LawyersPage({ searchParams }: LawyerPageProps) {
   const fallbackSize = Math.min(params.pagination.size, count);
 
   return (
-    <DataGrid.Root>
-      <DataGrid.Header>
+    <PageWrapper.Root>
+      <PageWrapper.Header>
+        <PageWrapper.Title title="Advogados" />
+      </PageWrapper.Header>
+      <PageWrapper.Content>
         <Search placeholder="Pesquisar por Advogado ou OAB" />
-      </DataGrid.Header>
-      <DataGrid.Content>
-        <Suspense fallback={<SkeletonList totalRecords={fallbackSize} />}>
-          <Await promise={getLawyers(params)}>
-            {(data) => <LawyerList data={data} />}
-          </Await>
-        </Suspense>
-      </DataGrid.Content>
-      <DataGrid.Footer>
+        <PageWrapper.ScrollArea>
+          <Suspense fallback={<SkeletonList totalRecords={fallbackSize} />}>
+            <Await promise={getLawyers(params)}>
+              {(data) => <LawyerList data={data} />}
+            </Await>
+          </Suspense>
+        </PageWrapper.ScrollArea>
+      </PageWrapper.Content>
+      <PageWrapper.Footer>
         <Pagination totalRecords={count} />
-      </DataGrid.Footer>
-    </DataGrid.Root>
+      </PageWrapper.Footer>
+    </PageWrapper.Root>
   );
 }

@@ -26,13 +26,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Wrapper.Root>
-            <Header.Root>
-              <Header.Title>Lawyer Dashboard</Header.Title>
-            </Header.Root>
-            <Sidebar.Root />
-            <Content.Root>{children}</Content.Root>
-          </Wrapper.Root>
+          <Wrapper>
+            <div className="border-r-2 border-neutral-800">
+              <Header>Header</Header>
+              <Sidebar>Sidebar</Sidebar>
+            </div>
+            <Content>{children}</Content>
+          </Wrapper>
         </ThemeProvider>
       </body>
     </html>

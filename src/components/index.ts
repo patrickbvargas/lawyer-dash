@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { Await } from './await';
 import { Empty } from './empty';
 import { Suspense } from './suspense';
+import * as PageWrapper from './page-wrapper';
 import * as Card from './card';
 import { LawyerCard } from './card/lawyer';
 import { SkeletonCard } from './card/skeleton';
-import * as DataGrid from './data-grid';
 import * as ScrollArea from './scroll-area';
 import { Search } from './search';
 import { Pagination } from './pagination';
@@ -22,10 +22,10 @@ export {
   Await,
   Empty,
   Suspense,
+  PageWrapper,
   Card,
   LawyerCard,
   SkeletonCard,
-  DataGrid,
   ScrollArea,
   Search,
   Pagination,
