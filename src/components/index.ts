@@ -12,6 +12,7 @@ import { Pagination } from './pagination';
 import { Skeleton } from './ui/skeleton';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { Badge } from './ui/badge';
 import * as Select from './ui/select';
 import { WrapperList } from './list/wrapper';
 import { LawyerList } from './list/lawyer';
@@ -31,6 +32,7 @@ export {
   Pagination,
   Button,
   Input,
+  Badge,
   Select,
   Skeleton,
   WrapperList,

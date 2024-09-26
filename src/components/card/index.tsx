@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Badge as BadgePrimitive } from '@/components';
 import { cn, cva, type VariantProps } from '@/utils';
 
 interface RootProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -94,26 +95,10 @@ export const Field = ({
   </dl>
 );
 
-const badgeVariants = cva(
-  'rounded-md px-2.5 py-1 text-xs font-semibold uppercase text-white place-self-end truncate',
-  {
-    variants: {
-      variant: {
-        default: 'bg-accent',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-    },
-  },
-);
-interface BadgeProps
-  extends React.HTMLAttributes<HTMLSpanElement>,
-    VariantProps<typeof badgeVariants> {
-  label: string;
-}
-export const Badge = ({ variant, label, className, ...props }: BadgeProps) => (
-  <span className={cn(badgeVariants({ variant }), className)} {...props}>
-    {label}
-  </span>
+interface BadgeProps extends React.ComponentProps<typeof BadgePrimitive> {}
+export const Badge = ({ variant, className, ...props }: BadgeProps) => (
+  <BadgePrimitive
+    className={cn('place-self-end', variant, className)}
+    {...props}
+  />
 );
