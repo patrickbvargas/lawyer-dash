@@ -4,29 +4,29 @@ import { getLawyerRoleAlias } from '@/utils';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
 
 interface LawyerCardProps {
-  data: LawyerSchemaWithSubjectNameType;
+  lawyer: LawyerSchemaWithSubjectNameType;
 }
-export const LawyerCard = ({ data }: LawyerCardProps) => {
+export const LawyerCard = ({ lawyer }: LawyerCardProps) => {
   return (
     <Card.Root>
       <Card.Header>
-        <Card.Title>{data.fullName}</Card.Title>
+        <Card.Title>{lawyer.fullName}</Card.Title>
       </Card.Header>
       <Card.Divider />
       <Card.Content>
-        <Card.Field label="OAB" value={data.oabNumber} />
+        <Card.Field label="OAB" value={lawyer.oabNumber} />
         <Card.Field
           label="Remuneração"
-          value={data.remunerationPercent.toLocaleString('pt-BR', {
+          value={lawyer.remunerationPercent.toLocaleString('pt-BR', {
             style: 'percent',
           })}
         />
         <Card.Field
           label="Contratos"
-          value={data._count.contracts}
+          value={lawyer._count.contracts}
           variant="highlight"
         />
-        <Card.Badge label={getLawyerRoleAlias(data.role)} />
+        <Card.Badge label={getLawyerRoleAlias(lawyer.role)} />
       </Card.Content>
     </Card.Root>
   );

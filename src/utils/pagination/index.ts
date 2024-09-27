@@ -7,6 +7,7 @@ import {
 
 type Query = URLSearchParams | Record<string, string>;
 
+// TODO: refactor
 function getQueryParam(query: Query, key: string, defaultValue: number) {
   if (query instanceof URLSearchParams) {
     const value = query.get(key);

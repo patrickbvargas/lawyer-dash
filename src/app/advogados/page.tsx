@@ -8,18 +8,17 @@ import {
   Suspense,
   Await,
   LawyerList,
-  SkeletonList,
+  CardListSkeleton,
   Pagination,
 } from '@/components';
 
-// TODO: implement error.tsx && loading.tsx
 interface LawyerPageProps {
   searchParams?: PageSearchParams;
 }
 export default async function LawyersPage({ searchParams }: LawyerPageProps) {
   const params = searchParamsSchema.parse(searchParams);
-  const count = await getLawyersCount(params.filters);
-  const fallbackSize = Math.min(params.pagination.size, count);
+  const lawyersCount = await getLawyersCount(params.filters);
+  const fallbackSize = Math.min(params.pagination.size, lawyersCount);
 
   return (
     <PageWrapper.Root>
@@ -29,15 +28,15 @@ export default async function LawyersPage({ searchParams }: LawyerPageProps) {
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Advogado ou OAB" />
         <PageWrapper.ScrollArea>
-          <Suspense fallback={<SkeletonList totalRecords={fallbackSize} />}>
+          <Suspense fallback={<CardListSkeleton totalRecords={fallbackSize} />}>
             <Await promise={getLawyers(params)}>
-              {(data) => <LawyerList data={data} />}
+              {(data) => <LawyerList lawyers={data} />}
             </Await>
           </Suspense>
         </PageWrapper.ScrollArea>
       </PageWrapper.Content>
       <PageWrapper.Footer>
-        <Pagination totalRecords={count} />
+        <Pagination totalRecords={lawyersCount} />
       </PageWrapper.Footer>
     </PageWrapper.Root>
   );

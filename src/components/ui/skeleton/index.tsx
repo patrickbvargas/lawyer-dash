@@ -6,8 +6,8 @@ export const Skeleton = ({ className, ...props }: SkeletonProps) => {
   return (
     <div
       className={cn(
-        'animate-pulse rounded size-20',
-        'bg-white shadow-sm',
+        'animate-pulse rounded-lg size-20 w-full',
+        'bg-gray-300 shadow-sm',
         'dark:bg-neutral-700 dark:shadow-none',
         className,
       )}

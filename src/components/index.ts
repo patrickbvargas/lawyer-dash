@@ -1,22 +1,23 @@
 import Link from 'next/link';
-import { Await } from './await';
 import { Empty } from './empty';
-import { Suspense } from './suspense';
-import * as PageWrapper from './page-wrapper';
-import * as Card from './card';
-import { LawyerCard } from './card/lawyer';
-import { SkeletonCard } from './card/skeleton';
-import * as ScrollArea from './scroll-area';
 import { Search } from './search';
 import { Pagination } from './pagination';
-import { Skeleton } from './ui/skeleton';
-import { Button } from './ui/button';
+import { LawyerCard } from './cards/lawyer';
+import { ListWrapper } from './wrappers/list';
+import * as PageWrapper from './wrappers/page';
+import { LawyerList } from './lists/lawyer';
+import { CardSkeleton } from './skeletons/card';
+import { PageListSkeleton } from './skeletons/page-list';
+import { CardListSkeleton } from './skeletons/card-list';
+import * as Card from './ui/card';
+import { Await } from './ui/await';
 import { Input } from './ui/input';
 import { Badge } from './ui/badge';
+import { Button } from './ui/button';
 import * as Select from './ui/select';
-import { WrapperList } from './list/wrapper';
-import { LawyerList } from './list/lawyer';
-import { SkeletonList } from './list/skeleton';
+import { Skeleton } from './ui/skeleton';
+import { Suspense } from './ui/suspense';
+import * as ScrollArea from './ui/scroll-area';
 
 export {
   Link,
@@ -26,7 +27,6 @@ export {
   PageWrapper,
   Card,
   LawyerCard,
-  SkeletonCard,
   ScrollArea,
   Search,
   Pagination,
@@ -35,7 +35,9 @@ export {
   Badge,
   Select,
   Skeleton,
-  WrapperList,
+  ListWrapper,
   LawyerList,
-  SkeletonList,
+  CardSkeleton,
+  PageListSkeleton,
+  CardListSkeleton,
 };
