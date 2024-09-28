@@ -6,6 +6,10 @@ import {
   PAGE_SIZE_DEFAULT,
 } from './pagination';
 import { SEARCH_TERM_ALIAS, SEARCH_TERM_DEFAULT } from './search';
+import {
+  DEFAULT_PAGE_ERROR_FEEDBACK,
+  DEFAULT_LIST_EMPTY_FEEDBACK,
+} from './feedback';
 
 export {
   ENUM,
@@ -15,4 +19,6 @@ export {
   PAGE_SIZE_DEFAULT,
   SEARCH_TERM_ALIAS,
   SEARCH_TERM_DEFAULT,
+  DEFAULT_PAGE_ERROR_FEEDBACK,
+  DEFAULT_LIST_EMPTY_FEEDBACK,
 };
