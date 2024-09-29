@@ -4,7 +4,7 @@ import { Illustration as IllustrationPrimitive } from '@/components';
 
 interface RootProps extends React.HTMLAttributes<HTMLDivElement> {}
 export const Root = ({ className, ...props }: RootProps) => (
-  <div className="flex flex-col items-center gap-2" {...props} />
+  <div className="flex flex-col items-center gap-2 mt-10" {...props} />
 );
 
 interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {

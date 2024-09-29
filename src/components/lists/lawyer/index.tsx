@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
-import { ListWrapper, LawyerCard, Empty } from '@/components';
+import { ListWrapper, LawyerCard, ListEmptyFeedback } from '@/components';
 
 interface LawyerListProps {
   lawyers: LawyerSchemaWithSubjectNameType[];
 }
 export const LawyerList = async ({ lawyers }: LawyerListProps) => {
   if (lawyers.length === 0) {
-    return <Empty title="Nenhum advogado encontrado." />;
+    return <ListEmptyFeedback />;
   }
 
   return (

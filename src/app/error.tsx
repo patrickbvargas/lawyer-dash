@@ -12,7 +12,7 @@ export default function Error({ reset }: ErrorProps) {
       <PageWrapper.Header>
         <PageWrapper.Title title="Oops..." />
       </PageWrapper.Header>
-      <PageWrapper.Content className="mt-10">
+      <PageWrapper.Content>
         <PageErrorFeedback reset={reset} />
       </PageWrapper.Content>
     </PageWrapper.Root>

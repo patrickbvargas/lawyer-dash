@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Empty } from './empty';
 import { Search } from './search';
 import { Pagination } from './pagination';
 import { LawyerCard } from './cards/lawyer';
@@ -10,6 +9,7 @@ import { CardSkeleton } from './skeletons/card';
 import { PageListSkeleton } from './skeletons/page-list';
 import { CardListSkeleton } from './skeletons/card-list';
 import { PageErrorFeedback } from './feedbacks/page-error';
+import { ListEmptyFeedback } from './feedbacks/list-empty';
 import * as Card from './ui/card';
 import { Await } from './ui/await';
 import { Input } from './ui/input';
@@ -22,10 +22,10 @@ import * as Feedback from './ui/feedback';
 import * as ScrollArea from './ui/scroll-area';
 import { Illustration } from './ui/illustration';
 
-export { Link, Empty, Search, Pagination };
+export { Link, Search, Pagination };
 export { LawyerCard };
 export { LawyerList };
-export { PageErrorFeedback };
+export { PageErrorFeedback, ListEmptyFeedback };
 export { PageWrapper, ListWrapper };
 export { PageListSkeleton, CardSkeleton, CardListSkeleton };
 export {
