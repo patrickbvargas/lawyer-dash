@@ -10,6 +10,7 @@ import { PageListSkeleton } from './skeletons/page-list';
 import { CardListSkeleton } from './skeletons/card-list';
 import { PageErrorFeedback } from './feedbacks/page-error';
 import { ListEmptyFeedback } from './feedbacks/list-empty';
+import { NotFoundFeedback } from './feedbacks/not-found';
 import * as Card from './ui/card';
 import { Await } from './ui/await';
 import { Input } from './ui/input';
@@ -25,7 +26,7 @@ import { Illustration } from './ui/illustration';
 export { Link, Search, Pagination };
 export { LawyerCard };
 export { LawyerList };
-export { PageErrorFeedback, ListEmptyFeedback };
+export { PageErrorFeedback, ListEmptyFeedback, NotFoundFeedback };
 export { PageWrapper, ListWrapper };
 export { PageListSkeleton, CardSkeleton, CardListSkeleton };
 export {
