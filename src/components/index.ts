@@ -3,11 +3,15 @@ import { Search } from './search';
 import { Pagination } from './pagination';
 import { LawyerCard } from './cards/lawyer';
 import { LawyerList } from './lists/lawyer';
+import { LawyerDetails } from './details/lawyer';
 import { ListWrapper } from './wrappers/list';
 import * as PageWrapper from './wrappers/page';
 import { CardSkeleton } from './skeletons/card';
+import { PageTitleSkeleton } from './skeletons/page-title';
 import { PageListSkeleton } from './skeletons/page-list';
-import { CardListSkeleton } from './skeletons/card-list';
+import { PageDetailsSkeleton } from './skeletons/page-details';
+import { EntityListSkeleton } from './skeletons/entity-list';
+import { EntityDetailsSkeleton } from './skeletons/entity-details';
 import { PageErrorFeedback } from './feedbacks/page-error';
 import { ListEmptyFeedback } from './feedbacks/list-empty';
 import { NotFoundFeedback } from './feedbacks/not-found';
@@ -22,13 +26,24 @@ import { Suspense } from './ui/suspense';
 import * as Feedback from './ui/feedback';
 import * as ScrollArea from './ui/scroll-area';
 import { Illustration } from './ui/illustration';
+import { SectionTitle } from './ui/section-title';
+import * as EntityDetails from './ui/entity-details';
+import { DefinitionItem } from './ui/definition-item';
 
 export { Link, Search, Pagination };
 export { LawyerCard };
 export { LawyerList };
+export { LawyerDetails };
 export { PageErrorFeedback, ListEmptyFeedback, NotFoundFeedback };
 export { PageWrapper, ListWrapper };
-export { PageListSkeleton, CardSkeleton, CardListSkeleton };
+export {
+  CardSkeleton,
+  EntityListSkeleton,
+  PageListSkeleton,
+  PageDetailsSkeleton,
+  EntityDetailsSkeleton,
+  PageTitleSkeleton,
+};
 export {
   Card,
   Await,
@@ -37,8 +52,11 @@ export {
   Button,
   Select,
   Skeleton,
+  Feedback,
   Suspense,
   ScrollArea,
-  Feedback,
   Illustration,
+  SectionTitle,
+  EntityDetails,
+  DefinitionItem,
 };

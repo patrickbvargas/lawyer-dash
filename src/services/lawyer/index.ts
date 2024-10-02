@@ -67,3 +67,33 @@ export const getLawyers = unstable_cache(
     }
   },
 );
+
+export const getLawyerBySlug = unstable_cache(async (slug: string) => {
+  try {
+    const data = await prismaDb.lawyer.findFirst({
+      where: {
+        slug,
+      },
+      include: {
+        _count: {
+          select: {
+            contracts: {
+              where: {
+                lawyerAssignment: {
+                  in: [
+                    ENUM.LawyerAssignment.RESPONSIBLE,
+                    ENUM.LawyerAssignment.RECOMMENDED,
+                  ],
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+    return lawyerSchemaWithSubjectName.parse(data);
+  } catch (e) {
+    console.error('Database error:', e);
+    throw new Error('Failed to fetch lawyer data.');
+  }
+});

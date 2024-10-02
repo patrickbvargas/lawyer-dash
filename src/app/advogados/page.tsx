@@ -8,7 +8,7 @@ import {
   Suspense,
   Await,
   LawyerList,
-  CardListSkeleton,
+  EntityListSkeleton,
   Pagination,
 } from '@/components';
 
@@ -28,7 +28,9 @@ export default async function LawyersPage({ searchParams }: LawyerPageProps) {
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Advogado ou OAB" />
         <PageWrapper.ScrollArea>
-          <Suspense fallback={<CardListSkeleton totalRecords={fallbackSize} />}>
+          <Suspense
+            fallback={<EntityListSkeleton totalRecords={fallbackSize} />}
+          >
             <Await promise={getLawyers(params)}>
               {(data) => <LawyerList lawyers={data} />}
             </Await>

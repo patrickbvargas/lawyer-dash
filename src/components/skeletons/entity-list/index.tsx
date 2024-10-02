@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { ListWrapper, CardSkeleton } from '@/components';
 
-interface CardListSkeletonProps {
+interface EntityListSkeletonProps {
   totalRecords: number;
 }
-export const CardListSkeleton = async ({
+export const EntityListSkeleton = ({
   totalRecords,
-}: CardListSkeletonProps) => {
+}: EntityListSkeletonProps) => {
   return (
     <ListWrapper>
       {Array.from({ length: totalRecords }).map((_, index) => (

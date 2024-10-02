@@ -1,7 +1,7 @@
 import { getClients } from './client';
 import { getContracts } from './contract';
 import { getFees } from './fee';
-import { getLawyers, getLawyersCount } from './lawyer';
+import { getLawyers, getLawyersCount, getLawyerBySlug } from './lawyer';
 import { getRemunerations } from './remuneration';
 import { getRevenues } from './revenue';
 
@@ -11,6 +11,7 @@ export {
   getFees,
   getLawyers,
   getLawyersCount,
+  getLawyerBySlug,
   getRemunerations,
   getRevenues,
 };

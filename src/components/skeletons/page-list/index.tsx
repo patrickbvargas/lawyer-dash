@@ -1,17 +1,27 @@
 import * as React from 'react';
 import { PAGE_SIZE_DEFAULT } from '@/constants';
-import { Skeleton, PageWrapper, CardListSkeleton } from '@/components';
+import {
+  Skeleton,
+  PageWrapper,
+  EntityListSkeleton,
+  PageTitleSkeleton,
+} from '@/components';
 
-export const PageListSkeleton = () => {
+interface PageListSkeletonProps {
+  totalRecords?: number;
+}
+export const PageListSkeleton = ({
+  totalRecords = PAGE_SIZE_DEFAULT,
+}: PageListSkeletonProps) => {
   return (
     <PageWrapper.Root>
       <PageWrapper.Header>
-        <Skeleton className="h-8 max-w-[300px]" />
+        <PageTitleSkeleton />
       </PageWrapper.Header>
       <PageWrapper.Content>
         <Skeleton className="h-10 flex-shrink-0" />
         <PageWrapper.ScrollArea>
-          <CardListSkeleton totalRecords={PAGE_SIZE_DEFAULT} />
+          <EntityListSkeleton totalRecords={totalRecords} />
         </PageWrapper.ScrollArea>
       </PageWrapper.Content>
       <PageWrapper.Footer className="justify-end">
