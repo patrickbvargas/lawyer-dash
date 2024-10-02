@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ListWrapper, CardSkeleton } from '@/components';
+import { EntityList, CardSkeleton } from '@/components';
 
 interface EntityListSkeletonProps {
   totalRecords: number;
@@ -8,10 +8,10 @@ export const EntityListSkeleton = ({
   totalRecords,
 }: EntityListSkeletonProps) => {
   return (
-    <ListWrapper>
+    <EntityList>
       {Array.from({ length: totalRecords }).map((_, index) => (
         <CardSkeleton key={index} />
       ))}
-    </ListWrapper>
+    </EntityList>
   );
 };

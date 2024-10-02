@@ -4,7 +4,6 @@ import { Pagination } from './pagination';
 import { LawyerCard } from './cards/lawyer';
 import { LawyerList } from './lists/lawyer';
 import { LawyerDetails } from './details/lawyer';
-import { ListWrapper } from './wrappers/list';
 import * as PageWrapper from './wrappers/page';
 import { CardSkeleton } from './skeletons/card';
 import { PageTitleSkeleton } from './skeletons/page-title';
@@ -24,6 +23,7 @@ import * as Select from './ui/select';
 import { Skeleton } from './ui/skeleton';
 import { Suspense } from './ui/suspense';
 import * as Feedback from './ui/feedback';
+import { EntityList } from './ui/entity-list';
 import * as ScrollArea from './ui/scroll-area';
 import { Illustration } from './ui/illustration';
 import { SectionTitle } from './ui/section-title';
@@ -35,7 +35,7 @@ export { LawyerCard };
 export { LawyerList };
 export { LawyerDetails };
 export { PageErrorFeedback, ListEmptyFeedback, NotFoundFeedback };
-export { PageWrapper, ListWrapper };
+export { PageWrapper };
 export {
   CardSkeleton,
   EntityListSkeleton,
@@ -57,6 +57,7 @@ export {
   ScrollArea,
   Illustration,
   SectionTitle,
+  EntityList,
   EntityDetails,
   DefinitionItem,
 };
