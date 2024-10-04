@@ -62,7 +62,10 @@ export const Pagination = ({
 
   return (
     <PaginationPrimitive.Root
-      className={cn('flex gap-2 justify-end', className)}
+      className={cn(
+        'flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',
+        className,
+      )}
       {...props}
     >
       <PaginationPrimitive.Feedback>
