@@ -1,5 +1,10 @@
 import { PageParams } from './page-params';
 import { PageSearchParams } from './search-params';
-import { DefinitionItemData } from './definition-item';
+import { DefinitionItemData, CardDefinitionItemData } from './definition-item';
 
-export type { PageSearchParams, PageParams, DefinitionItemData };
+export type {
+  PageParams,
+  PageSearchParams,
+  DefinitionItemData,
+  CardDefinitionItemData,
+};

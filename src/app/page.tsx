@@ -25,7 +25,7 @@ export default async function Home() {
             <Card.Title>{item.fullName}</Card.Title>
           </Card.Header>
           <Card.Divider />
-          <Card.Content>
+          {/* <Card.Content>
             <Card.Field
               label={item.individual ? 'CPF' : 'CNPJ'}
               value={item.individual?.cpf || item.corporate?.cnpj}
@@ -37,7 +37,7 @@ export default async function Home() {
               variant="highlight"
             />
             <Card.Badge label={item.individual ? 'PF' : 'PJ'} />
-          </Card.Content>
+          </Card.Content> */}
         </Card.Root>
         // ! Lawyer
         // <Card.Root key={item.id}>

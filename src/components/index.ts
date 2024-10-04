@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Search } from './search';
 import { Pagination } from './pagination';
+import { WithLink } from './hocs/with-link';
 import { LawyerCard } from './cards/lawyer';
 import { LawyerList } from './lists/lawyer';
 import { LawyerDetails } from './details/lawyer';
@@ -35,14 +36,15 @@ export { LawyerCard };
 export { LawyerList };
 export { LawyerDetails };
 export { PageErrorFeedback, ListEmptyFeedback, NotFoundFeedback };
+export { WithLink };
 export { PageWrapper };
 export {
   CardSkeleton,
-  EntityListSkeleton,
   PageListSkeleton,
+  PageTitleSkeleton,
+  EntityListSkeleton,
   PageDetailsSkeleton,
   EntityDetailsSkeleton,
-  PageTitleSkeleton,
 };
 export {
   Card,

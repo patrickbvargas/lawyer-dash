@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Badge as BadgePrimitive } from '@/components';
-import { cn, cva, type VariantProps } from '@/utils';
+import { cn } from '@/utils';
+import { CardDefinitionItemData } from '@/types';
+import { Badge as BadgePrimitive, DefinitionItem } from '@/components';
 
 interface RootProps extends React.HTMLAttributes<HTMLDivElement> {}
 export const Root = ({ className, ...props }: RootProps) => (
@@ -36,14 +37,6 @@ export const Title = ({ className, ...props }: TitleProps) => (
   />
 );
 
-interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Content = ({ className, ...props }: ContentProps) => (
-  <div
-    className={cn('grid grid-cols-1 gap-3.5 sm:grid-cols-2', className)}
-    {...props}
-  />
-);
-
 interface DividerProps extends React.HTMLAttributes<HTMLHRElement> {}
 export const Divider = ({ className, ...props }: DividerProps) => (
   <hr
@@ -57,48 +50,33 @@ export const Divider = ({ className, ...props }: DividerProps) => (
   />
 );
 
-const fieldVariants = cva('truncate text-sm', {
-  variants: {
-    variant: {
-      default: 'font-normal',
-      highlight: 'font-semibold',
-    },
-    defaultVariants: {
-      variant: 'default',
-    },
-  },
-});
-interface FieldProps
-  extends React.HTMLAttributes<HTMLDListElement>,
-    VariantProps<typeof fieldVariants> {
-  label: string;
-  value: string | number | undefined | null;
+interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export const Content = ({ className, ...props }: ContentProps) => (
+  <div className={cn('relative flex flex-col gap-3.5', className)} {...props} />
+);
+
+interface DefinitionListProps extends React.HTMLAttributes<HTMLDListElement> {
+  data: CardDefinitionItemData;
 }
-export const Field = ({
-  variant,
-  label,
-  value,
+export const DefinitionList = ({
+  data,
   className,
   ...props
-}: FieldProps) => (
+}: DefinitionListProps) => (
   <dl
-    className={cn(
-      'flex flex-col gap-1',
-      'text-gray-500',
-      'dark:text-neutral-300',
-      className,
-    )}
+    className={cn('grid grid-cols-1 gap-3.5 sm:grid-cols-2', className)}
     {...props}
   >
-    <dt className="truncate text-xs font-semibold uppercase">{label}</dt>
-    <dd className={fieldVariants({ variant })}>{value || ''}</dd>
+    {data.map((item) => (
+      <DefinitionItem key={item.term} {...item} />
+    ))}
   </dl>
 );
 
 interface BadgeProps extends React.ComponentProps<typeof BadgePrimitive> {}
 export const Badge = ({ variant, className, ...props }: BadgeProps) => (
   <BadgePrimitive
-    className={cn('place-self-end', variant, className)}
+    className={cn('sm:absolute sm:bottom-0 sm:right-0', variant, className)}
     {...props}
   />
 );
