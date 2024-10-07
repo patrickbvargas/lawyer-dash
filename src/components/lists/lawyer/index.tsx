@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EntityList, LawyerCard } from '@/components';
+import { EntityList, LawyerCard, ListEmptyFeedback } from '@/components';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
 
 interface LawyerListProps {
@@ -10,6 +10,10 @@ export const LawyerList = async ({
   totalRecords,
   lawyers,
 }: LawyerListProps) => {
+  if (totalRecords === 0) {
+    return <ListEmptyFeedback />;
+  }
+
   return (
     <EntityList.Root>
       <EntityList.Content>
