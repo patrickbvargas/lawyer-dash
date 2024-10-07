@@ -24,7 +24,7 @@ import * as Select from './ui/select';
 import { Skeleton } from './ui/skeleton';
 import { Suspense } from './ui/suspense';
 import * as Feedback from './ui/feedback';
-import { EntityList } from './ui/entity-list';
+import * as EntityList from './ui/entity-list';
 import * as ScrollArea from './ui/scroll-area';
 import { Illustration } from './ui/illustration';
 import { SectionTitle } from './ui/section-title';
