@@ -5,8 +5,29 @@ const LawyerRoleAlias = {
   [ENUM.LawyerRole.USER]: 'Usuário',
 };
 
+const ClientMaritalStatusAlias = {
+  [ENUM.MaritalStatus.DIVORCED]: 'Divorciado(a)',
+  [ENUM.MaritalStatus.MARRIED]: 'Casado(a)',
+  [ENUM.MaritalStatus.SINGLE]: 'Solteiro(a)',
+  [ENUM.MaritalStatus.WIDOWED]: 'Viúvo(a)',
+  [ENUM.MaritalStatus.OTHER]: 'Outro',
+};
+
+const EntityStatusAlias = {
+  [ENUM.EntityStatus.ACTIVE]: 'Ativo',
+  [ENUM.EntityStatus.INACTIVE]: 'Inativo',
+};
+
 function formatRole(role: ENUM.LawyerRole) {
   return LawyerRoleAlias[role];
+}
+
+function formatMaritalStatus(maritalStatus: ENUM.MaritalStatus) {
+  return ClientMaritalStatusAlias[maritalStatus];
+}
+
+function formatEntityStatus(status: ENUM.EntityStatus) {
+  return EntityStatusAlias[status];
 }
 
 function formatOAB(oab: string) {
@@ -28,6 +49,15 @@ function formatMobilePhone(mobilePhone: string) {
   return mobilePhone.replace(/(\d{3})(\d{5})(\d{4})/, '($1) $2-$3');
 }
 
+function formatDate(date: Date | string) {
+  const dateObject = typeof date === 'string' ? new Date(date) : date;
+  return dateObject.toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+}
+
 function formatPercent(percent: number) {
   return percent.toLocaleString('pt-BR', {
     style: 'percent',
@@ -36,9 +66,12 @@ function formatPercent(percent: number) {
 
 export const formatter = {
   percent: formatPercent,
+  date: formatDate,
   cpf: formatCPF,
   cnpj: formatCNPJ,
   mobilePhone: formatMobilePhone,
-  role: formatRole,
   oab: formatOAB,
+  role: formatRole,
+  maritalStatus: formatMaritalStatus,
+  status: formatEntityStatus,
 };
