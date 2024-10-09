@@ -14,14 +14,6 @@ export const Root = ({ className, ...props }: RootProps) => (
   />
 );
 
-interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Section = ({ className, ...props }: SectionProps) => (
-  <div
-    className={cn('max-w-[16rem] flex flex-col flex-1 gap-4', className)}
-    {...props}
-  />
-);
-
 interface DefinitionListProps extends React.HTMLAttributes<HTMLDListElement> {
   data: DefinitionItemData[];
 }
@@ -30,7 +22,7 @@ export const DefinitionList = ({
   className,
   ...props
 }: DefinitionListProps) => (
-  <dl className={cn('flex flex-col gap-3.5 pl-3.5', className)} {...props}>
+  <dl className={cn('flex flex-col gap-3.5', className)} {...props}>
     {data.map((item) => (
       <DefinitionItem key={item.term} {...item} />
     ))}

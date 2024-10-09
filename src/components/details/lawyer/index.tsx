@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
 import { DefinitionItemData } from '@/types';
-import { EntityDetails, SectionTitle } from '@/components';
+import { EntityDetails, Section } from '@/components';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
 
 interface LawyerData {
@@ -38,14 +38,18 @@ export const LawyerDetails = async ({ lawyer }: LawyerDetailsProps) => {
 
   return (
     <EntityDetails.Root>
-      <EntityDetails.Section>
-        <SectionTitle title="Identificação" />
-        <EntityDetails.DefinitionList data={lawyerData.identification} />
-      </EntityDetails.Section>
-      <EntityDetails.Section>
-        <SectionTitle title="Detalhes" />
-        <EntityDetails.DefinitionList data={lawyerData.details} />
-      </EntityDetails.Section>
+      <Section.Root>
+        <Section.Title title="Identificação" />
+        <Section.Content>
+          <EntityDetails.DefinitionList data={lawyerData.identification} />
+        </Section.Content>
+      </Section.Root>
+      <Section.Root>
+        <Section.Title title="Detalhes" />
+        <Section.Content>
+          <EntityDetails.DefinitionList data={lawyerData.details} />
+        </Section.Content>
+      </Section.Root>
     </EntityDetails.Root>
   );
 };

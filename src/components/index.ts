@@ -26,13 +26,13 @@ import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import * as Select from './ui/select';
 import * as Tooltip from './ui/tooltip';
+import * as Section from './ui/section';
 import { Skeleton } from './ui/skeleton';
 import { Suspense } from './ui/suspense';
 import * as Feedback from './ui/feedback';
 import * as EntityList from './ui/entity-list';
 import * as ScrollArea from './ui/scroll-area';
 import { Illustration } from './ui/illustration';
-import { SectionTitle } from './ui/section-title';
 import * as EntityDetails from './ui/entity-details';
 import { DefinitionItem } from './ui/definition-item';
 
@@ -58,14 +58,14 @@ export {
   Badge,
   Button,
   Select,
+  Section,
   Tooltip,
   Skeleton,
   Feedback,
   Suspense,
   ScrollArea,
-  Illustration,
-  SectionTitle,
   EntityList,
+  Illustration,
   EntityDetails,
   DefinitionItem,
 };

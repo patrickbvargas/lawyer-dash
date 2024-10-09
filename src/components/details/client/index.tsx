@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
 import { DefinitionItemData } from '@/types';
-import { EntityDetails, SectionTitle } from '@/components';
+import { EntityDetails, Section } from '@/components';
 import { ClientSchemaWithSubjectNameType } from '@/schemas';
 
 interface ClientData {
@@ -78,18 +78,24 @@ export const ClientDetails = async ({ client }: ClientDetailsProps) => {
 
   return (
     <EntityDetails.Root>
-      <EntityDetails.Section>
-        <SectionTitle title="Identificação" />
-        <EntityDetails.DefinitionList data={clientData.identification} />
-      </EntityDetails.Section>
-      <EntityDetails.Section>
-        <SectionTitle title="Contato" />
-        <EntityDetails.DefinitionList data={clientData.contact} />
-      </EntityDetails.Section>
-      <EntityDetails.Section>
-        <SectionTitle title="Detalhes" />
-        <EntityDetails.DefinitionList data={clientData.details} />
-      </EntityDetails.Section>
+      <Section.Root>
+        <Section.Title title="Identificação" />
+        <Section.Content>
+          <EntityDetails.DefinitionList data={clientData.identification} />
+        </Section.Content>
+      </Section.Root>
+      <Section.Root>
+        <Section.Title title="Contato" />
+        <Section.Content>
+          <EntityDetails.DefinitionList data={clientData.contact} />
+        </Section.Content>
+      </Section.Root>
+      <Section.Root>
+        <Section.Title title="Detalhes" />
+        <Section.Content>
+          <EntityDetails.DefinitionList data={clientData.details} />
+        </Section.Content>
+      </Section.Root>
     </EntityDetails.Root>
   );
 };
