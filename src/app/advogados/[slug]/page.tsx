@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageParams } from '@/types';
-import { pageParamsSchema } from '@/schemas';
 import { getLawyerBySlug } from '@/services';
+import { pageParamsSchema } from '@/schemas';
 import {
   PageWrapper,
   Suspense,
@@ -10,10 +10,10 @@ import {
   PageDetailsSkeleton,
 } from '@/components';
 
-interface LawyerDetailsPage {
+interface LawyerPageProps {
   params?: PageParams;
 }
-export default async function LawyerDetailsPage({ params }: LawyerDetailsPage) {
+export default async function LawyerPage({ params }: LawyerPageProps) {
   const pageParams = pageParamsSchema.parse(params);
 
   return (

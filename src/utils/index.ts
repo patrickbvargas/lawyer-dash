@@ -1,17 +1,15 @@
 import { cn } from './cn';
-import { cva, type VariantProps } from './cva';
-import { getPaginationParamsFromQuery } from './pagination';
-import { getLawyerRoleAlias } from './alias';
-import { getPercentLocaleString } from './locale-string';
 import { formatter } from './formatter';
+import { cva, type VariantProps } from './cva';
+import { getPercentLocaleString } from './locale-string';
+import { getPaginationParamsFromQuery } from './pagination';
 
 export {
   cn,
   cva,
-  getPaginationParamsFromQuery,
-  getLawyerRoleAlias,
-  getPercentLocaleString,
   formatter,
+  getPaginationParamsFromQuery,
+  getPercentLocaleString,
 };
 
 export type { VariantProps };

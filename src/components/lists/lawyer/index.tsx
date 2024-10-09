@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { EntityList, LawyerCard, ListEmptyFeedback } from '@/components';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
+import { EntityList, LawyerCard, ListEmptyFeedback } from '@/components';
 
 interface LawyerListProps {
   lawyers: LawyerSchemaWithSubjectNameType[];

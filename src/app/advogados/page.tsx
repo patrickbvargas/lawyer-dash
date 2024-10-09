@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { getLawyers } from '@/services';
 import { PageSearchParams } from '@/types';
 import { searchParamsSchema } from '@/schemas';
-import { getLawyers } from '@/services';
 import {
   PageWrapper,
   Search,
@@ -11,10 +11,10 @@ import {
   EntityListSkeleton,
 } from '@/components';
 
-interface LawyerPageProps {
+interface LawyersPageProps {
   searchParams?: PageSearchParams;
 }
-export default async function LawyersPage({ searchParams }: LawyerPageProps) {
+export default async function LawyersPage({ searchParams }: LawyersPageProps) {
   const params = searchParamsSchema.parse(searchParams);
 
   return (

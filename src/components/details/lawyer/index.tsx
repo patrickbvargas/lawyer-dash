@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getLawyerRoleAlias } from '@/utils';
+import { formatter } from '@/utils';
 import { DefinitionItemData } from '@/types';
 import { EntityDetails, SectionTitle } from '@/components';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
@@ -17,19 +17,17 @@ export const LawyerDetails = async ({ lawyer }: LawyerDetailsProps) => {
     identification: [
       {
         term: 'OAB',
-        definition: lawyer.oabNumber,
+        definition: formatter.oab(lawyer.oabNumber),
       },
       {
         term: 'Perfil',
-        definition: getLawyerRoleAlias(lawyer.role),
+        definition: formatter.role(lawyer.role),
       },
     ],
     details: [
       {
         term: 'Remuneração',
-        definition: lawyer.remunerationPercent.toLocaleString('pt-BR', {
-          style: 'percent',
-        }),
+        definition: formatter.percent(lawyer.remunerationPercent),
       },
       {
         term: 'Contratos',

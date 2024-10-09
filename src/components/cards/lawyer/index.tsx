@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { formatter } from '@/utils';
 import { Card, WithLink } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
-import { getLawyerRoleAlias, getPercentLocaleString } from '@/utils';
 
 interface LawyerCardProps {
   lawyer: LawyerSchemaWithSubjectNameType;
@@ -11,11 +11,11 @@ export const LawyerCard = ({ lawyer }: LawyerCardProps) => {
   const lawyerData: CardDefinitionItemData = [
     {
       term: 'OAB',
-      definition: lawyer.oabNumber,
+      definition: formatter.oab(lawyer.oabNumber),
     },
     {
       term: 'Remuneração',
-      definition: getPercentLocaleString(lawyer.remunerationPercent),
+      definition: formatter.percent(lawyer.remunerationPercent),
     },
     {
       term: 'Contratos',
@@ -33,7 +33,7 @@ export const LawyerCard = ({ lawyer }: LawyerCardProps) => {
         <Card.Divider />
         <Card.Content>
           <Card.DefinitionList data={lawyerData} />
-          <Card.Badge label={getLawyerRoleAlias(lawyer.role)} />
+          <Card.Badge label={formatter.role(lawyer.role)} />
         </Card.Content>
       </Card.Root>
     </WithLink>
