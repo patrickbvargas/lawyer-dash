@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Search } from './search';
 import { Pagination } from './pagination';
+import { Navigation } from './navigation';
 import { WithLink } from './hocs/with-link';
 import { LawyerCard } from './cards/lawyer';
 import { LawyerList } from './lists/lawyer';
@@ -21,6 +22,7 @@ import { Input } from './ui/input';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import * as Select from './ui/select';
+import * as Tooltip from './ui/tooltip';
 import { Skeleton } from './ui/skeleton';
 import { Suspense } from './ui/suspense';
 import * as Feedback from './ui/feedback';
@@ -31,7 +33,7 @@ import { SectionTitle } from './ui/section-title';
 import * as EntityDetails from './ui/entity-details';
 import { DefinitionItem } from './ui/definition-item';
 
-export { Link, Search, Pagination };
+export { Link, Search, Pagination, Navigation };
 export { LawyerCard };
 export { LawyerList };
 export { LawyerDetails };
@@ -53,6 +55,7 @@ export {
   Badge,
   Button,
   Select,
+  Tooltip,
   Skeleton,
   Feedback,
   Suspense,

@@ -26,12 +26,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Wrapper>
-            <div className="border-r-2 border-neutral-800">
-              <Header>Header</Header>
-              <Sidebar>Sidebar</Sidebar>
-            </div>
-            <Content>{children}</Content>
+          <Wrapper className="flex flex-col sm:grid sm:grid-cols-layout sm:grid-rows-layout">
+            <Header className="sm:row-start-1" />
+            <Sidebar className="order-last sm:row-start-2" />
+            <Content className="sm:row-span-full">{children}</Content>
           </Wrapper>
         </ThemeProvider>
       </body>

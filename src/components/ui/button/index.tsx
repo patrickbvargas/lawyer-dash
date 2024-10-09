@@ -13,7 +13,7 @@ export const buttonVariants = cva(
         ],
         secondary: [
           'bg-white text-gray-500 shadow-sm hover:bg-gray-100 focus:ring-gray-200',
-          'dark:bg-neutral-800 dark:text-neutral-300 dark:shadow-none dark:hover:bg-neutral-700 dark:focus:ring-neutral-600',
+          'dark:bg-neutral-700 dark:text-neutral-300 dark:shadow-none dark:hover:bg-neutral-600 dark:focus:ring-neutral-600',
         ],
         outline: [
           'border-2',
