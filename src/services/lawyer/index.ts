@@ -48,7 +48,7 @@ const getLawyersFilter = (params: SearchParamsFilterSchemaType) => {
 export const getLawyers = unstable_cache(
   async ({ pagination, filters }: SearchParamsSchemaType) => {
     try {
-      const offset = (pagination.page - 1) * pagination.size ?? 0;
+      const offset = (pagination.page - 1) * pagination.size || 0;
       const filter = getLawyersFilter(filters);
       const count = await prismaDb.lawyer.count({
         where: filter,

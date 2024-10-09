@@ -1,4 +1,4 @@
-import { getClients } from './client';
+import { getClients, getClientBySlug } from './client';
 import { getContracts } from './contract';
 import { getFees } from './fee';
 import { getLawyers, getLawyerBySlug } from './lawyer';
@@ -7,6 +7,7 @@ import { getRevenues } from './revenue';
 
 export {
   getClients,
+  getClientBySlug,
   getContracts,
   getFees,
   getLawyers,
