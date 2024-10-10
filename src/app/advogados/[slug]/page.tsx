@@ -17,7 +17,7 @@ export default async function LawyerPage({ params }: LawyerPageProps) {
   const pageParams = pageParamsSchema.parse(params);
 
   return (
-    <Suspense fallback={<PageDetailsSkeleton totalSections={2} />}>
+    <Suspense fallback={<PageDetailsSkeleton totalSections={3} />}>
       <Await promise={getLawyerBySlug(pageParams.slug)}>
         {(lawyer) => (
           <PageWrapper.Root>

@@ -6,6 +6,7 @@ import { LawyerSchemaWithSubjectNameType } from '@/schemas';
 
 interface LawyerData {
   identification: DefinitionItemData[];
+  financial: DefinitionItemData[];
   details: DefinitionItemData[];
 }
 
@@ -24,14 +25,20 @@ export const LawyerDetails = async ({ lawyer }: LawyerDetailsProps) => {
         definition: formatter.role(lawyer.role),
       },
     ],
-    details: [
+    financial: [
       {
         term: 'Remuneração',
         definition: formatter.percent(lawyer.remunerationPercent),
       },
+    ],
+    details: [
       {
         term: 'Contratos',
         definition: lawyer._count.contracts,
+      },
+      {
+        term: 'Status',
+        definition: formatter.status(lawyer.status),
       },
     ],
   };
@@ -42,6 +49,12 @@ export const LawyerDetails = async ({ lawyer }: LawyerDetailsProps) => {
         <Section.Title title="Identificação" />
         <Section.Content>
           <EntityDetails.DefinitionList data={lawyerData.identification} />
+        </Section.Content>
+      </Section.Root>
+      <Section.Root>
+        <Section.Title title="Financeiro" />
+        <Section.Content>
+          <EntityDetails.DefinitionList data={lawyerData.financial} />
         </Section.Content>
       </Section.Root>
       <Section.Root>
