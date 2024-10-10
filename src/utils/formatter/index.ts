@@ -18,6 +18,14 @@ const EntityStatusAlias = {
   [ENUM.EntityStatus.INACTIVE]: 'Inativo',
 };
 
+const ContractLegalAreaAlias = {
+  [ENUM.ContractLegalArea.CIVIL]: 'Cível',
+  [ENUM.ContractLegalArea.FAMILY]: 'Família',
+  [ENUM.ContractLegalArea.LABOR]: 'Trabalhista',
+  [ENUM.ContractLegalArea.SOCIAL_SECURITY]: 'Previdenciário',
+  [ENUM.ContractLegalArea.OTHER]: 'Outro',
+};
+
 function formatRole(role: ENUM.LawyerRole) {
   return LawyerRoleAlias[role];
 }
@@ -28,6 +36,10 @@ function formatMaritalStatus(maritalStatus: ENUM.MaritalStatus) {
 
 function formatEntityStatus(status: ENUM.EntityStatus) {
   return EntityStatusAlias[status];
+}
+
+function formatContractLegalArea(legalArea: ENUM.ContractLegalArea) {
+  return ContractLegalAreaAlias[legalArea];
 }
 
 function formatOAB(oab: string) {
@@ -74,4 +86,5 @@ export const formatter = {
   role: formatRole,
   maritalStatus: formatMaritalStatus,
   status: formatEntityStatus,
+  legalArea: formatContractLegalArea,
 };
