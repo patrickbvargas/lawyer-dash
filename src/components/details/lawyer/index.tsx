@@ -45,24 +45,28 @@ export const LawyerDetails = async ({ lawyer }: LawyerDetailsProps) => {
 
   return (
     <EntityDetails.Root>
-      <Section.Root>
-        <Section.Title title="Identificação" />
-        <Section.Content>
-          <EntityDetails.DefinitionList data={lawyerData.identification} />
-        </Section.Content>
-      </Section.Root>
-      <Section.Root>
-        <Section.Title title="Financeiro" />
-        <Section.Content>
-          <EntityDetails.DefinitionList data={lawyerData.financial} />
-        </Section.Content>
-      </Section.Root>
-      <Section.Root>
-        <Section.Title title="Detalhes" />
-        <Section.Content>
-          <EntityDetails.DefinitionList data={lawyerData.details} />
-        </Section.Content>
-      </Section.Root>
+      <EntityDetails.Group>
+        <Section.Root>
+          <Section.Title title="Identificação" />
+          <Section.Content>
+            <EntityDetails.DefinitionList data={lawyerData.identification} />
+          </Section.Content>
+        </Section.Root>
+        <Section.Root>
+          <Section.Title title="Financeiro" />
+          <Section.Content>
+            <EntityDetails.DefinitionList data={lawyerData.financial} />
+          </Section.Content>
+        </Section.Root>
+      </EntityDetails.Group>
+      <EntityDetails.Group>
+        <Section.Root>
+          <Section.Title title="Detalhes" />
+          <Section.Content>
+            <EntityDetails.DefinitionList data={lawyerData.details} />
+          </Section.Content>
+        </Section.Root>
+      </EntityDetails.Group>
     </EntityDetails.Root>
   );
 };
