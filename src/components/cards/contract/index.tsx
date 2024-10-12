@@ -2,20 +2,18 @@ import * as React from 'react';
 import { formatter } from '@/utils';
 import { Card, WithLink } from '@/components';
 import { CardDefinitionItemData } from '@/types';
+import { isLawyerResponsibleForContract } from '@/services';
 import { ContractSchemaWithSubjectNameType } from '@/schemas';
-import { RESPONSIBLE_CONTRACT_LAWYER_ASSIGNMENTS } from '@/constants';
 
 interface ContractCardProps {
   contract: ContractSchemaWithSubjectNameType;
 }
 export const ContractCard = ({ contract }: ContractCardProps) => {
-  function getContractResponsibleLawyerFullname() {
+  const getContractResponsibleLawyerFullname = () => {
     return contract.lawyers.find((l) =>
-      RESPONSIBLE_CONTRACT_LAWYER_ASSIGNMENTS.some(
-        (assignment) => assignment === l.lawyerAssignment,
-      ),
+      isLawyerResponsibleForContract(l.lawyerAssignment),
     )?.lawyer.fullName;
-  }
+  };
 
   const contractData: CardDefinitionItemData = [
     {
