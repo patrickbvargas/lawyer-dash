@@ -4,8 +4,12 @@ import { contractSchema } from '@/schemas/contract';
 import { lawyerSchema, lawyerAssignmentSchema } from '@/schemas/lawyer';
 
 const contractAppendSchema = lawyerAssignmentSchema.extend({
-  lawyer: lawyerSchema.pick({ fullName: true }),
-  contract: contractSchema.pick({ id: true, identification: true }),
+  lawyer: lawyerSchema.omit({ _count: true }),
+  contract: contractSchema.omit({
+    revenues: true,
+    lawyers: true,
+    client: true,
+  }),
 });
 
 export const remunerationSchema = z.object({
