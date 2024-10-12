@@ -8,7 +8,7 @@ interface ClientCardProps {
   client: ClientSchemaWithSubjectNameType;
 }
 export const ClientCard = ({ client }: ClientCardProps) => {
-  function getClientIdentification() {
+  const getClientIdentification = () => {
     if (client.individual) {
       return formatter.cpf(client.individual.cpf);
     }
@@ -16,7 +16,7 @@ export const ClientCard = ({ client }: ClientCardProps) => {
       return formatter.cnpj(client.corporate.cnpj);
     }
     return 'N/A';
-  }
+  };
 
   const clientData: CardDefinitionItemData = [
     {
