@@ -14,7 +14,7 @@ interface ClientDetailsProps {
   client: ClientSchemaWithSubjectNameType;
 }
 export const ClientDetails = async ({ client }: ClientDetailsProps) => {
-  const getClientIdentification = (): DefinitionItemData[] => {
+  const getClientIdentificationData = (): DefinitionItemData[] => {
     if (client.individual) {
       return [
         {
@@ -51,7 +51,7 @@ export const ClientDetails = async ({ client }: ClientDetailsProps) => {
   };
 
   const clientData: ClientData = {
-    identification: getClientIdentification(),
+    identification: getClientIdentificationData(),
     contact: [
       {
         term: 'Celular',
@@ -78,24 +78,30 @@ export const ClientDetails = async ({ client }: ClientDetailsProps) => {
 
   return (
     <EntityDetails.Root>
-      <Section.Root>
-        <Section.Title title="Identificação" />
-        <Section.Content>
-          <EntityDetails.DefinitionList data={clientData.identification} />
-        </Section.Content>
-      </Section.Root>
-      <Section.Root>
-        <Section.Title title="Contato" />
-        <Section.Content>
-          <EntityDetails.DefinitionList data={clientData.contact} />
-        </Section.Content>
-      </Section.Root>
-      <Section.Root>
-        <Section.Title title="Detalhes" />
-        <Section.Content>
-          <EntityDetails.DefinitionList data={clientData.details} />
-        </Section.Content>
-      </Section.Root>
+      <EntityDetails.Group>
+        <Section.Root>
+          <Section.Title title="Identificação" />
+          <Section.Content>
+            <EntityDetails.DefinitionList data={clientData.identification} />
+          </Section.Content>
+        </Section.Root>
+      </EntityDetails.Group>
+      <EntityDetails.Group>
+        <Section.Root>
+          <Section.Title title="Contato" />
+          <Section.Content>
+            <EntityDetails.DefinitionList data={clientData.contact} />
+          </Section.Content>
+        </Section.Root>
+      </EntityDetails.Group>
+      <EntityDetails.Group>
+        <Section.Root>
+          <Section.Title title="Detalhes" />
+          <Section.Content>
+            <EntityDetails.DefinitionList data={clientData.details} />
+          </Section.Content>
+        </Section.Root>
+      </EntityDetails.Group>
     </EntityDetails.Root>
   );
 };
