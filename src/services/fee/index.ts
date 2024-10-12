@@ -82,3 +82,18 @@ export const getFees = unstable_cache(
     }
   },
 );
+
+export const getFeeById = unstable_cache(async (id: string) => {
+  try {
+    const data = await prismaDb.fee.findFirst({
+      where: {
+        id,
+      },
+      select: feeFields,
+    });
+    return feeSchemaWithSubjectName.parse(data);
+  } catch (e) {
+    console.error('Database error:', e);
+    throw new Error('Failed to fetch fee data.');
+  }
+});

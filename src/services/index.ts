@@ -1,6 +1,6 @@
 import { getClients, getClientBySlug } from './client';
 import { getContracts, getContractBySlug } from './contract';
-import { getFees } from './fee';
+import { getFees, getFeeById } from './fee';
 import {
   getLawyers,
   getLawyerBySlug,
@@ -15,6 +15,7 @@ export {
   getContracts,
   getContractBySlug,
   getFees,
+  getFeeById,
   getLawyers,
   getLawyerBySlug,
   isLawyerResponsibleForContract,

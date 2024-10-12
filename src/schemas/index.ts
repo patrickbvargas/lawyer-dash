@@ -42,7 +42,12 @@ import {
   type SearchParamsSchemaType,
   type SearchParamsFilterSchemaType,
 } from './search-params';
-import { pageParamsSchema, type PageParamsSchemaType } from './page-params';
+import {
+  pageParamsSchema,
+  pageParamsIdSchema,
+  type PageParamsSchemaType,
+  type PageParamsIdSchemaType,
+} from './page-params';
 
 export {
   lawyerSchema,
@@ -62,6 +67,7 @@ export {
   searchParamsSchema,
   searchParamsFilterSchema,
   pageParamsSchema,
+  pageParamsIdSchema,
 };
 
 export type {
@@ -81,4 +87,5 @@ export type {
   SearchParamsSchemaType,
   SearchParamsFilterSchemaType,
   PageParamsSchemaType,
+  PageParamsIdSchemaType,
 };
