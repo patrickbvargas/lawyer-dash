@@ -19,21 +19,16 @@ const contractFields: Prisma.ContractSelect = {
   status: true,
   createdAt: true,
   updatedAt: true,
+  revenues: true,
   client: {
-    select: {
-      id: true,
-      fullName: true,
+    include: {
+      individual: true,
+      corporate: true,
     },
   },
   lawyers: {
-    select: {
-      lawyerId: true,
-      lawyerAssignment: true,
-      lawyer: {
-        select: {
-          fullName: true,
-        },
-      },
+    include: {
+      lawyer: true,
     },
   },
 };
@@ -85,3 +80,19 @@ export const getContracts = unstable_cache(
     }
   },
 );
+
+export const getContractBySlug = unstable_cache(async (slug: string) => {
+  try {
+    const data = await prismaDb.contract.findFirst({
+      where: {
+        slug,
+      },
+      select: contractFields,
+    });
+    console.log(data);
+    return contractSchemaWithSubjectName.parse(data);
+  } catch (e) {
+    console.error('Database error:', e);
+    throw new Error('Failed to fetch contract data.');
+  }
+});

@@ -3,10 +3,7 @@ import { cn } from '@/utils';
 
 interface RootProps extends React.ComponentProps<'section'> {}
 export const Root = ({ className, ...props }: RootProps) => (
-  <section
-    className={cn('max-w-[16rem] flex flex-col flex-1 gap-4', className)}
-    {...props}
-  />
+  <section className={cn('flex flex-col flex-1 gap-4', className)} {...props} />
 );
 
 interface TitleProps extends React.HTMLAttributes<HTMLDivElement> {

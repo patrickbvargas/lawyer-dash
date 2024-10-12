@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { ENUM } from '@/constants';
-import { prismaDb, Prisma } from '@/lib';
 import { unstable_cache } from 'next/cache';
+import { prismaDb, Prisma } from '@/lib';
+import { ENUM, RESPONSIBLE_CONTRACT_LAWYER_ASSIGNMENTS } from '@/constants';
 import {
   lawyerSchemaWithSubjectName,
   SearchParamsSchemaType,
@@ -43,6 +43,14 @@ const getLawyersFilter = (params: SearchParamsFilterSchemaType) => {
     ],
   };
   return filter;
+};
+
+export const isLawyerResponsibleForContract = (
+  lawyerAssignment: ENUM.LawyerAssignment,
+) => {
+  return RESPONSIBLE_CONTRACT_LAWYER_ASSIGNMENTS.some(
+    (assignment) => assignment === lawyerAssignment,
+  );
 };
 
 export const getLawyers = unstable_cache(

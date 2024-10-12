@@ -7,7 +7,6 @@ import {
 import {
   FeeSchemaWithSubjectNameType,
   RemunerationSchemaWithSubjectNameType,
-  RevenueSchemaWithSubjectNameType,
 } from '@/schemas';
 import {
   DefaultSubject,
@@ -34,10 +33,6 @@ type UserPermissions = (
   builder: AbilityBuilder<AppAbility>,
 ) => void;
 
-type FlatRevenue = RevenueSchemaWithSubjectNameType & {
-  'contract.lawyers': RevenueSchemaWithSubjectNameType['contract']['lawyers'];
-};
-
 type FlatFee = FeeSchemaWithSubjectNameType & {
   'revenue.contract.lawyers': FeeSchemaWithSubjectNameType['revenue']['contract']['lawyers'];
 };
@@ -62,16 +57,6 @@ const permissions: Record<ENUM.LawyerRole, UserPermissions> = {
     });
     can('manage', 'Contract', {
       lawyers: {
-        $elemMatch: {
-          lawyerId: lawyerId,
-          lawyerAssignment: {
-            $in: ALLOWED_LAWYER_ASSIGNMENTS,
-          },
-        },
-      },
-    });
-    can<FlatRevenue>('manage', 'Revenue', {
-      'contract.lawyers': {
         $elemMatch: {
           lawyerId: lawyerId,
           lawyerAssignment: {

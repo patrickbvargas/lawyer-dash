@@ -21,7 +21,7 @@ interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 export const Title = ({ title, className, ...props }: TitleProps) => (
   <h1
     className={cn(
-      'max-w-full truncate text-2xl font-normal uppercase tracking-wider',
+      'max-w-full text-xl sm:text-2xl font-normal uppercase tracking-wider sm:truncate',
       'text-gray-600',
       'dark:text-neutral-300',
       className,

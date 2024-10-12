@@ -6,8 +6,16 @@ import { DefinitionItem } from '@/components';
 interface RootProps extends React.HTMLAttributes<HTMLDivElement> {}
 export const Root = ({ className, ...props }: RootProps) => (
   <div
+    className={cn('flex flex-wrap gap-6 mt-4 sm:gap-8', className)}
+    {...props}
+  />
+);
+
+interface GroupProps extends React.HTMLAttributes<HTMLDivElement> {}
+export const Group = ({ className, ...props }: GroupProps) => (
+  <div
     className={cn(
-      'grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4',
+      'min-w-5 max-w-52 w-full flex flex-col gap-6 sm:max-w-64 sm:gap-8',
       className,
     )}
     {...props}

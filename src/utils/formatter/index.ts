@@ -26,6 +26,19 @@ const ContractLegalAreaAlias = {
   [ENUM.ContractLegalArea.OTHER]: 'Outro',
 };
 
+const LawyerAssignmentAlias = {
+  [ENUM.LawyerAssignment.RESPONSIBLE]: 'Responsável',
+  [ENUM.LawyerAssignment.RECOMMENDED]: 'Indicado',
+  [ENUM.LawyerAssignment.RECOMMENDING]: 'Indicante',
+  [ENUM.LawyerAssignment.ADITIONAL]: 'Adicional',
+};
+
+const RevenueTypeAlias = {
+  [ENUM.RevenueType.ADMINISTRATIVE]: 'Administrativo',
+  [ENUM.RevenueType.JUDICIAL]: 'Judicial',
+  [ENUM.RevenueType.COMPLIANCE]: 'Sucumbência',
+};
+
 function formatRole(role: ENUM.LawyerRole) {
   return LawyerRoleAlias[role];
 }
@@ -40,6 +53,14 @@ function formatEntityStatus(status: ENUM.EntityStatus) {
 
 function formatContractLegalArea(legalArea: ENUM.ContractLegalArea) {
   return ContractLegalAreaAlias[legalArea];
+}
+
+function formatLawyerAssignment(lawyerAssignment: ENUM.LawyerAssignment) {
+  return LawyerAssignmentAlias[lawyerAssignment];
+}
+
+function formatRevenueType(revenueType: ENUM.RevenueType) {
+  return RevenueTypeAlias[revenueType];
 }
 
 function formatOAB(oab: string) {
@@ -76,8 +97,16 @@ function formatPercent(percent: number) {
   });
 }
 
+function formatCurrency(currency: number) {
+  return currency.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  });
+}
+
 export const formatter = {
   percent: formatPercent,
+  currency: formatCurrency,
   date: formatDate,
   cpf: formatCPF,
   cnpj: formatCNPJ,
@@ -87,4 +116,6 @@ export const formatter = {
   maritalStatus: formatMaritalStatus,
   status: formatEntityStatus,
   legalArea: formatContractLegalArea,
+  lawyerAssignment: formatLawyerAssignment,
+  revenueType: formatRevenueType,
 };
