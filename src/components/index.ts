@@ -28,6 +28,7 @@ import { EntityDetailsSkeleton } from './skeletons/entity-details';
 import { PageErrorFeedback } from './feedbacks/page-error';
 import { ListEmptyFeedback } from './feedbacks/list-empty';
 import { NotFoundFeedback } from './feedbacks/not-found';
+import { PageConstructionFeedback } from './feedbacks/page-construction';
 import * as Card from './ui/card';
 import { Await } from './ui/await';
 import { Input } from './ui/input';
@@ -55,7 +56,12 @@ export {
   FeeDetails,
   RemunerationDetails,
 };
-export { PageErrorFeedback, ListEmptyFeedback, NotFoundFeedback };
+export {
+  PageErrorFeedback,
+  ListEmptyFeedback,
+  NotFoundFeedback,
+  PageConstructionFeedback,
+};
 export { WithLink };
 export { PageWrapper };
 export {
