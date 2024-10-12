@@ -17,6 +17,7 @@ import { LawyerDetails } from './details/lawyer';
 import { ClientDetails } from './details/client';
 import { ContractDetails } from './details/contract';
 import { FeeDetails } from './details/fee';
+import { RemunerationDetails } from './details/remuneration';
 import * as PageWrapper from './wrappers/page';
 import { CardSkeleton } from './skeletons/card';
 import { PageTitleSkeleton } from './skeletons/page-title';
@@ -47,7 +48,13 @@ import { DefinitionItem } from './ui/definition-item';
 export { Link, Search, Pagination, Navigation };
 export { LawyerCard, ClientCard, ContractCard, FeeCard, RemunerationCard };
 export { LawyerList, ClientList, ContractList, FeeList, RemunerationList };
-export { LawyerDetails, ClientDetails, ContractDetails, FeeDetails };
+export {
+  LawyerDetails,
+  ClientDetails,
+  ContractDetails,
+  FeeDetails,
+  RemunerationDetails,
+};
 export { PageErrorFeedback, ListEmptyFeedback, NotFoundFeedback };
 export { WithLink };
 export { PageWrapper };

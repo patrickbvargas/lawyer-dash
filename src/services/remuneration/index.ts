@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { prismaDb, Prisma } from '@/lib';
 import { unstable_cache } from 'next/cache';
+import { prismaDb, Prisma } from '@/lib';
 import {
   remunerationSchemaWithSubjectName,
   SearchParamsSchemaType,
@@ -71,3 +71,18 @@ export const getRemunerations = unstable_cache(
     }
   },
 );
+
+export const getRemunerationById = unstable_cache(async (id: string) => {
+  try {
+    const data = await prismaDb.remuneration.findFirst({
+      where: {
+        id,
+      },
+      select: remunerationFields,
+    });
+    return remunerationSchemaWithSubjectName.parse(data);
+  } catch (e) {
+    console.error('Database error:', e);
+    throw new Error('Failed to remuneration fee data.');
+  }
+});

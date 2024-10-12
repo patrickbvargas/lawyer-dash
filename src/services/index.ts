@@ -6,7 +6,7 @@ import {
   getLawyerBySlug,
   isLawyerResponsibleForContract,
 } from './lawyer';
-import { getRemunerations } from './remuneration';
+import { getRemunerations, getRemunerationById } from './remuneration';
 import { getRevenues } from './revenue';
 
 export {
@@ -20,5 +20,6 @@ export {
   getLawyerBySlug,
   isLawyerResponsibleForContract,
   getRemunerations,
+  getRemunerationById,
   getRevenues,
 };
