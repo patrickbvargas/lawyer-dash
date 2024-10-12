@@ -1,44 +1,84 @@
 import { z } from 'zod';
-import { prismaDb } from '@/lib/prisma';
-import { feeSchemaWithSubjectName } from '@/schemas';
+import { prismaDb, Prisma } from '@/lib';
+import { unstable_cache } from 'next/cache';
+import {
+  feeSchemaWithSubjectName,
+  SearchParamsSchemaType,
+  SearchParamsFilterSchemaType,
+} from '@/schemas';
 
-export async function getFees() {
-  try {
-    const data = await prismaDb.fee.findMany({
-      include: {
-        revenue: {
-          select: {
-            type: true,
-            contract: {
-              select: {
-                identification: true,
-                client: {
-                  select: {
-                    id: true,
-                    fullName: true,
-                  },
-                },
-                lawyers: {
-                  select: {
-                    lawyerId: true,
-                    lawyerAssignment: true,
-                    lawyer: {
-                      select: {
-                        fullName: true,
-                      },
-                    },
-                  },
-                },
-              },
+const feeFields: Prisma.FeeSelect = {
+  id: true,
+  revenueId: true,
+  value: true,
+  installmentNumber: true,
+  paymentDate: true,
+  createdAt: true,
+  updatedAt: true,
+  revenue: {
+    include: {
+      contract: {
+        include: {
+          client: {
+            include: {
+              corporate: true,
+              individual: true,
+            },
+          },
+          lawyers: {
+            include: {
+              lawyer: true,
             },
           },
         },
       },
-    });
-    console.log(data[0]);
-    return z.array(feeSchemaWithSubjectName).parse(data);
-  } catch (e) {
-    console.error('Database error:', e);
-    throw new Error('Failed to fetch fee data.');
-  }
-}
+    },
+  },
+};
+
+const getFeesFilter = (params: SearchParamsFilterSchemaType) => {
+  const filter: Prisma.FeeWhereInput = {
+    OR: [
+      {
+        revenue: {
+          contract: {
+            client: {
+              fullName: { contains: params.query, mode: 'insensitive' },
+            },
+          },
+        },
+      },
+      {
+        revenue: {
+          contract: {
+            identification: { contains: params.query, mode: 'insensitive' },
+          },
+        },
+      },
+    ],
+  };
+  return filter;
+};
+
+export const getFees = unstable_cache(
+  async ({ pagination, filters }: SearchParamsSchemaType) => {
+    try {
+      const offset = (pagination.page - 1) * pagination.size || 0;
+      const filter = getFeesFilter(filters);
+      const count = await prismaDb.fee.count({
+        where: filter,
+      });
+      const data = await prismaDb.fee.findMany({
+        where: filter,
+        skip: offset,
+        take: pagination.size,
+        orderBy: { paymentDate: 'desc' },
+        select: feeFields,
+      });
+      return { data: z.array(feeSchemaWithSubjectName).parse(data), count };
+    } catch (e) {
+      console.error('Database error:', e);
+      throw new Error('Failed to fetch fee data.');
+    }
+  },
+);

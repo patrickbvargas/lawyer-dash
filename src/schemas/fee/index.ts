@@ -3,19 +3,11 @@ import { subject } from '@casl/ability';
 import { revenueSchema } from '@/schemas/revenue';
 import { contractSchema } from '@/schemas/contract';
 
-const contractAppendSchema = contractSchema.pick({
-  identification: true,
-  lawyers: true,
-  client: true,
-});
+const contractAppendSchema = contractSchema.omit({ revenues: true });
 
-const revenueAppendSchema = revenueSchema
-  .pick({
-    type: true,
-  })
-  .extend({
-    contract: contractAppendSchema,
-  });
+const revenueAppendSchema = revenueSchema.extend({
+  contract: contractAppendSchema,
+});
 
 export const feeSchema = z.object({
   id: z.string(),
