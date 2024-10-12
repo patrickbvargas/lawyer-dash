@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
-export const pageParamsSchema = z.object({
+export const pageParamsSlugSchema = z.object({
   slug: z.string().min(1),
 });
-export type PageParamsSchemaType = z.infer<typeof pageParamsSchema>;
+export type PageParamsSlugSchemaType = z.infer<typeof pageParamsSlugSchema>;
 
 export const pageParamsIdSchema = z.object({
   id: z.string().min(1),

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageParams } from '@/types';
 import { getClientBySlug } from '@/services';
-import { pageParamsSchema } from '@/schemas';
+import { pageParamsSlugSchema } from '@/schemas';
 import {
   PageWrapper,
   Suspense,
@@ -14,7 +14,7 @@ interface ClientPageProps {
   params?: PageParams;
 }
 export default async function ClientPage({ params }: ClientPageProps) {
-  const pageParams = pageParamsSchema.parse(params);
+  const pageParams = pageParamsSlugSchema.parse(params);
 
   return (
     <Suspense fallback={<PageDetailsSkeleton totalSections={3} />}>

@@ -43,9 +43,9 @@ import {
   type SearchParamsFilterSchemaType,
 } from './search-params';
 import {
-  pageParamsSchema,
+  pageParamsSlugSchema,
   pageParamsIdSchema,
-  type PageParamsSchemaType,
+  type PageParamsSlugSchemaType,
   type PageParamsIdSchemaType,
 } from './page-params';
 
@@ -66,7 +66,7 @@ export {
   subjectActionSchema,
   searchParamsSchema,
   searchParamsFilterSchema,
-  pageParamsSchema,
+  pageParamsSlugSchema,
   pageParamsIdSchema,
 };
 
@@ -86,6 +86,6 @@ export type {
   SubjectActionSchemaType,
   SearchParamsSchemaType,
   SearchParamsFilterSchemaType,
-  PageParamsSchemaType,
+  PageParamsSlugSchemaType,
   PageParamsIdSchemaType,
 };
