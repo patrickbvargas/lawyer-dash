@@ -6,10 +6,10 @@ import {
 } from '@/components';
 
 interface PageDetailsSkeletonProps {
-  totalSections?: number;
+  totalGroups?: number;
 }
 export const PageDetailsSkeleton = ({
-  totalSections = 3,
+  totalGroups = 4,
 }: PageDetailsSkeletonProps) => {
   return (
     <PageWrapper.Root>
@@ -17,7 +17,7 @@ export const PageDetailsSkeleton = ({
         <PageTitleSkeleton />
       </PageWrapper.Header>
       <PageWrapper.Content>
-        <EntityDetailsSkeleton totalSections={totalSections} />
+        <EntityDetailsSkeleton totalGroups={totalGroups} />
       </PageWrapper.Content>
     </PageWrapper.Root>
   );

@@ -11,6 +11,7 @@ export const Skeleton = ({ className, ...props }: SkeletonProps) => {
         'dark:bg-neutral-700 dark:shadow-none',
         className,
       )}
+      aria-hidden="true"
       {...props}
     />
   );

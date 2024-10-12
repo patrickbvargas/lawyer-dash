@@ -1,4 +1,4 @@
-// TODO: remove delay
+// TODO: remove delay in production
 interface AwaitProps<T> {
   promise: Promise<T>;
   children: (value: T) => JSX.Element;
@@ -8,7 +8,7 @@ interface AwaitProps<T> {
 export const Await = async <T,>({
   promise,
   children,
-  delaySeconds = 0,
+  delaySeconds = 2,
 }: AwaitProps<T>) => {
   if (delaySeconds > 0) {
     await new Promise((resolve) => setTimeout(resolve, delaySeconds * 1000));

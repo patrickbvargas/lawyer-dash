@@ -17,7 +17,7 @@ export default async function ContractPage({ params }: ContractPageProps) {
   const pageParams = pageParamsSlugSchema.parse(params);
 
   return (
-    <Suspense fallback={<PageDetailsSkeleton totalSections={3} />}>
+    <Suspense fallback={<PageDetailsSkeleton totalGroups={4} />}>
       <Await promise={getContractBySlug(pageParams.slug)}>
         {(contract) => (
           <PageWrapper.Root>

@@ -19,7 +19,7 @@ export default async function RemunerationPage({
   const pageParams = pageParamsIdSchema.parse(params);
 
   return (
-    <Suspense fallback={<PageDetailsSkeleton totalSections={3} />}>
+    <Suspense fallback={<PageDetailsSkeleton totalGroups={3} />}>
       <Await promise={getRemunerationById(pageParams.id)}>
         {(remuneration) => (
           <PageWrapper.Root>
