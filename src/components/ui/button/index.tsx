@@ -28,6 +28,10 @@ export const buttonVariants = cva(
           'bg-red-600 text-white hover:bg-red-700 focus:ring-red-300',
           'dark:bg-red-700 dark:hover:bg-red-900 dark:focus:ring-red-400',
         ],
+        clear: [
+          'bg-transparent text-gray-500 hover:text-gray-700 focus:ring-gray-200',
+          'dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:ring-neutral-600',
+        ],
       },
       size: {
         default: 'h-10 px-4 py-2',
