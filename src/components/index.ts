@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search } from './search';
 import { Pagination } from './pagination';
 import { Navigation } from './navigation';
@@ -46,7 +47,7 @@ import * as Illustration from './ui/illustration';
 import * as EntityDetails from './ui/entity-details';
 import { DefinitionItem } from './ui/definition-item';
 
-export { Link, Search, Pagination, Navigation };
+export { Link, Image, Search, Pagination, Navigation };
 export { LawyerCard, ClientCard, ContractCard, FeeCard, RemunerationCard };
 export { LawyerList, ClientList, ContractList, FeeList, RemunerationList };
 export {

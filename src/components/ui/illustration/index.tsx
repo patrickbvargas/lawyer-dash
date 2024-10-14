@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Image from 'next/image';
 import { cn } from '@/utils';
+import { Image } from '@/components';
 
 interface RootProps extends React.HTMLAttributes<HTMLDivElement> {}
 export const Root = ({ className, ...props }: RootProps) => (
