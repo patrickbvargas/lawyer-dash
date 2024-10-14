@@ -42,7 +42,7 @@ import { Suspense } from './ui/suspense';
 import * as Feedback from './ui/feedback';
 import * as EntityList from './ui/entity-list';
 import * as ScrollArea from './ui/scroll-area';
-import { Illustration } from './ui/illustration';
+import * as Illustration from './ui/illustration';
 import * as EntityDetails from './ui/entity-details';
 import { DefinitionItem } from './ui/definition-item';
 

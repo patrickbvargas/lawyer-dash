@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { PageWrapper, PageErrorFeedback } from '@/components';
 
-// TODO: change title
 interface ErrorProps {
   reset: () => void;
 }

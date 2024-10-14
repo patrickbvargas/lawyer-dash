@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { cn } from '@/utils';
-import { Illustration as IllustrationPrimitive } from '@/components';
 
 interface RootProps extends React.HTMLAttributes<HTMLDivElement> {}
 export const Root = ({ className, ...props }: RootProps) => (
@@ -22,14 +21,6 @@ export const Title = ({ title, className, ...props }: TitleProps) => (
   >
     {title}
   </h2>
-);
-
-interface IllustrationProps
-  extends React.ComponentProps<typeof IllustrationPrimitive> {}
-export const Illustration = ({ src, alt }: IllustrationProps) => (
-  <div className="flex justify-center">
-    <IllustrationPrimitive src={src} alt={alt} />
-  </div>
 );
 
 interface ControlsProps extends React.HTMLAttributes<HTMLDivElement> {}

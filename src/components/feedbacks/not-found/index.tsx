@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Feedback } from '@/components';
+import { Feedback, Illustration } from '@/components';
 import { DEFAULT_NOT_FOUND_FEEDBACK } from '@/constants';
 
-// TODO: replace illustration
 interface NotFoundFeedbackProps
   extends React.ComponentProps<typeof Feedback.Root> {
   title?: string;
@@ -13,9 +12,15 @@ export const NotFoundFeedback = ({
 }: NotFoundFeedbackProps) => (
   <Feedback.Root {...props}>
     <Feedback.Title title={title} />
-    <Feedback.Illustration
-      src="/illustrations/not-found.svg"
-      alt="Not found illustration"
-    />
+    <Illustration.Root>
+      <Illustration.Content
+        src="/illustrations/not-found.svg"
+        alt="Not found illustration"
+      />
+      <Illustration.Attribution
+        label="Online illustrations by Storyset"
+        href="https://storyset.com/online"
+      />
+    </Illustration.Root>
   </Feedback.Root>
 );

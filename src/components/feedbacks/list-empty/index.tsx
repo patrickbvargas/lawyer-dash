@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Feedback } from '@/components';
+import { Feedback, Illustration } from '@/components';
 import { DEFAULT_LIST_EMPTY_FEEDBACK } from '@/constants';
 
-// TODO: replace illustration
 interface ListEmptyFeedbackProps
   extends React.ComponentProps<typeof Feedback.Root> {
   title?: string;
@@ -13,9 +12,15 @@ export const ListEmptyFeedback = ({
 }: ListEmptyFeedbackProps) => (
   <Feedback.Root {...props}>
     <Feedback.Title title={title} />
-    <Feedback.Illustration
-      src="/illustrations/empty.svg"
-      alt="Empty illustration"
-    />
+    <Illustration.Root>
+      <Illustration.Content
+        src="/illustrations/empty.svg"
+        alt="Empty illustration"
+      />
+      <Illustration.Attribution
+        label="Multi-purpose illustrations by Storyset"
+        href="https://storyset.com/multi-purpose"
+      />
+    </Illustration.Root>
   </Feedback.Root>
 );

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Feedback, Button } from '@/components';
+import { Feedback, Button, Illustration } from '@/components';
 import { DEFAULT_PAGE_ERROR_FEEDBACK } from '@/constants';
 
-// TODO: replace illustration
 interface PageErrorFeedbackProps
   extends React.ComponentProps<typeof Feedback.Root> {
   title?: string;
@@ -15,10 +14,16 @@ export const PageErrorFeedback = ({
 }: PageErrorFeedbackProps) => (
   <Feedback.Root {...props}>
     <Feedback.Title title={title} />
-    <Feedback.Illustration
-      src="/illustrations/error.svg"
-      alt="Error illustration"
-    />
+    <Illustration.Root>
+      <Illustration.Content
+        src="/illustrations/error.svg"
+        alt="Error illustration"
+      />
+      <Illustration.Attribution
+        label="Celebration illustrations by Storyset"
+        href="https://storyset.com/celebration"
+      />
+    </Illustration.Root>
     <Feedback.Controls>
       <Button onClick={() => reset()}>Tentar novamente</Button>
     </Feedback.Controls>

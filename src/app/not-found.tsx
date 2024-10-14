@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { PageWrapper, NotFoundFeedback } from '@/components';
 
-// TODO: change title
 export default function NotFound() {
   return (
     <PageWrapper.Root>
