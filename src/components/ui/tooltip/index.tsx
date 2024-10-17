@@ -17,7 +17,7 @@ export const Content = ({
 }: ContentProps) => (
   <TooltipPrimitive.Content
     className={cn(
-      'z-50 overflow-hidden rounded px-3 py-1.5',
+      'z-50 overflow-hidden rounded-lg px-3 py-1.5',
       buttonVariants({ variant: 'secondary' }),
       className,
     )}

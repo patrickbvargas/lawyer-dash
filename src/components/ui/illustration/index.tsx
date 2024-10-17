@@ -27,7 +27,12 @@ export const Attribution = ({
 }: AttributionProps) => {
   return (
     <a
-      className={cn('text-xs', 'text-sky-400', 'dark:text-sky-700', className)}
+      className={cn(
+        'text-xs p-2 text-center rounded-lg',
+        'text-sky-400',
+        'dark:text-sky-700',
+        className,
+      )}
       target="_blank"
       href={href}
       {...props}

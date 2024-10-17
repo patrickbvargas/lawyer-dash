@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  @apply outline-none outline-2 -outline-offset-2 focus-visible:outline focus-visible:outline-gray-300 dark:focus-visible:outline-neutral-600;
+}

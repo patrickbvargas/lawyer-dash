@@ -62,6 +62,7 @@ export const ScrollDown = ({ className, ...props }: ScrollDownProps) => (
   </SelectPrimitive.ScrollDownButton>
 );
 
+// TODO: remove ring style
 interface ContentProps
   extends React.ComponentProps<typeof SelectPrimitive.Content> {}
 export const Content = ({
@@ -73,7 +74,7 @@ export const Content = ({
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
       className={cn(
-        'relative z-50 max-h-60 min-w-[8rem] rounded overflow-hidden',
+        'relative z-50 max-h-60 min-w-[8rem] rounded-lg overflow-hidden',
         'bg-white ring-gray-200 ring-1',
         'dark:bg-neutral-800 dark:ring-neutral-700/50',
         position === 'popper' &&
@@ -116,9 +117,9 @@ interface ItemProps extends React.ComponentProps<typeof SelectPrimitive.Item> {}
 export const Item = ({ className, children, ...props }: ItemProps) => (
   <SelectPrimitive.Item
     className={cn(
-      'relative flex w-full cursor-default select-none items-center rounded py-1.5 pl-8 pr-2 text-sm outline-none focus-visible:ring-2 ring-inset data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      'bg-white text-gray-500 ring-gray-200 hover:ring-2 hover:ring-gray-200 focus:ring-gray-200',
-      'dark:bg-neutral-800 dark:text-neutral-300 dark:ring-neutral-700/50 dark:hover:ring-0 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700',
+      'relative flex w-full cursor-default select-none items-center rounded py-1.5 pl-8 pr-2 text-sm outline-none ring-inset data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'bg-white text-gray-500 ring-gray-200 hover:ring-2 hover:ring-gray-200',
+      'dark:bg-neutral-800 dark:text-neutral-300 dark:ring-neutral-700/50 dark:hover:ring-0 dark:hover:bg-neutral-700',
       className,
     )}
     {...props}
