@@ -66,7 +66,7 @@ export const Navigation = ({ ...props }: NavigationProps) => {
           <NavigationPrimitive.Item key={label}>
             <Tooltip.Provider delayDuration={500}>
               <Tooltip.Root>
-                <Tooltip.Trigger>
+                <Tooltip.Trigger asChild>
                   <NavigationPrimitive.Link
                     href={href}
                     variant={pathname.includes(href) ? 'secondary' : 'ghost'}

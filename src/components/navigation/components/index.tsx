@@ -23,20 +23,16 @@ export const Item = ({ ...props }: ItemProps) => <li {...props} />;
 interface LinkProps
   extends React.ComponentProps<typeof LinkPrimitive>,
     VariantProps<typeof buttonVariants> {}
-export const Link = ({
-  variant = 'ghost',
-  size = 'icon',
-  children,
-  className,
-  ...props
-}: LinkProps) => (
-  <LinkPrimitive
-    className={cn(buttonVariants({ variant, size }), className)}
-    {...props}
-  >
-    {children}
-  </LinkPrimitive>
+export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
+  ({ variant = 'ghost', size = 'icon', className, ...props }, ref) => (
+    <LinkPrimitive
+      ref={ref}
+      className={cn(buttonVariants({ variant, size }), className)}
+      {...props}
+    />
+  ),
 );
+Link.displayName = 'Link';
 
 interface IconProps {
   Icon: HeroIcon;
