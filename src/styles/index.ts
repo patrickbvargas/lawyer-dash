@@ -1,3 +1,4 @@
+import { buttonVariants } from './button';
 import { formFieldVariants } from './form-field';
 
-export { formFieldVariants };
+export { buttonVariants, formFieldVariants };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { cn } from '@/utils';
-import { buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/styles';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
 export const Provider = TooltipPrimitive.Provider;

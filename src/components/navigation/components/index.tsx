@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { HeroIcon } from '@/types';
+import { NavigationLink } from '@/types';
+import { buttonVariants } from '@/styles';
 import { cn, VariantProps } from '@/utils';
-import { Link as LinkPrimitive } from '@/components';
-import { buttonVariants } from '@/components/ui/button';
+import { Link as LinkPrimitive, Tooltip } from '@/components';
 
 interface RootProps extends React.ComponentProps<'nav'> {}
 export const Root = ({ className, ...props }: RootProps) => (
@@ -17,13 +17,38 @@ export const List = ({ className, ...props }: ListProps) => (
   />
 );
 
-interface ItemProps extends React.HTMLAttributes<HTMLLIElement> {}
-export const Item = ({ ...props }: ItemProps) => <li {...props} />;
+interface ItemProps
+  extends React.HTMLAttributes<HTMLLIElement>,
+    NavigationLink {
+  active?: boolean;
+}
+export const Item = ({
+  href,
+  label,
+  Icon,
+  active = false,
+  ...props
+}: ItemProps) => (
+  <Tooltip.Provider delayDuration={500}>
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <li {...props}>
+          <Link href={href} variant={active ? 'secondary' : 'ghost'}>
+            <Icon className="size-6" />
+          </Link>
+        </li>
+      </Tooltip.Trigger>
+      <Tooltip.Content>
+        <Label label={label} />
+      </Tooltip.Content>
+    </Tooltip.Root>
+  </Tooltip.Provider>
+);
 
 interface LinkProps
   extends React.ComponentProps<typeof LinkPrimitive>,
     VariantProps<typeof buttonVariants> {}
-export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
+const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ variant = 'ghost', size = 'icon', className, ...props }, ref) => (
     <LinkPrimitive
       ref={ref}
@@ -34,15 +59,10 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
 );
 Link.displayName = 'Link';
 
-interface IconProps {
-  Icon: HeroIcon;
-}
-export const Icon = ({ Icon }: IconProps) => <Icon className="size-6" />;
-
 interface LabelProps extends React.HTMLAttributes<HTMLParagraphElement> {
   label: string;
 }
-export const Label = ({ label, className, ...props }: LabelProps) => (
+const Label = ({ label, className, ...props }: LabelProps) => (
   <p className={cn('text-sm font-normal', className)} {...props}>
     {label}
   </p>

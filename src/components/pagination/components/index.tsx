@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cn } from '@/utils';
+import { buttonVariants } from '@/styles';
 import { Link as LinkPrimitive } from '@/components';
-import { buttonVariants } from '@/components/ui/button';
 import {
   ChevronRightIcon,
   ChevronDoubleRightIcon,
