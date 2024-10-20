@@ -18,6 +18,7 @@ export default async function ContractsPage({
   searchParams,
 }: ContractsPageProps) {
   const params = searchParamsSchema.parse(searchParams);
+  const fallbackSize = params.pagination.size;
 
   return (
     <PageWrapper.Root>
@@ -26,11 +27,7 @@ export default async function ContractsPage({
       </PageWrapper.Header>
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Processo, Cliente ou Advogado" />
-        <Suspense
-          fallback={
-            <EntityListSkeleton totalRecords={params.pagination.size} />
-          }
-        >
+        <Suspense fallback={<EntityListSkeleton totalRecords={fallbackSize} />}>
           <Await promise={getContracts(params)}>
             {({ data, count }) => (
               <ContractList contracts={data} totalRecords={count} />

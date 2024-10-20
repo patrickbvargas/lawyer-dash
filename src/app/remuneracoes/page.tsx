@@ -18,6 +18,7 @@ export default async function RemunerationsPage({
   searchParams,
 }: RemunerationsPageProps) {
   const params = searchParamsSchema.parse(searchParams);
+  const fallbackSize = params.pagination.size;
 
   return (
     <PageWrapper.Root>
@@ -26,11 +27,7 @@ export default async function RemunerationsPage({
       </PageWrapper.Header>
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Contrato ou Advogado" />
-        <Suspense
-          fallback={
-            <EntityListSkeleton totalRecords={params.pagination.size} />
-          }
-        >
+        <Suspense fallback={<EntityListSkeleton totalRecords={fallbackSize} />}>
           <Await promise={getRemunerations(params)}>
             {({ data, count }) => (
               <RemunerationList remunerations={data} totalRecords={count} />

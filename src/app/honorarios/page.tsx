@@ -16,6 +16,7 @@ interface FeesPageProps {
 }
 export default async function FeesPage({ searchParams }: FeesPageProps) {
   const params = searchParamsSchema.parse(searchParams);
+  const fallbackSize = params.pagination.size;
 
   return (
     <PageWrapper.Root>
@@ -23,12 +24,8 @@ export default async function FeesPage({ searchParams }: FeesPageProps) {
         <PageWrapper.Title title="Honorários" />
       </PageWrapper.Header>
       <PageWrapper.Content>
-        <Search placeholder="Pesquisar por Processo ou Cliente" />
-        <Suspense
-          fallback={
-            <EntityListSkeleton totalRecords={params.pagination.size} />
-          }
-        >
+        <Search placeholder="Pesquisar por Contrato ou Cliente" />
+        <Suspense fallback={<EntityListSkeleton totalRecords={fallbackSize} />}>
           <Await promise={getFees(params)}>
             {({ data, count }) => <FeeList fees={data} totalRecords={count} />}
           </Await>

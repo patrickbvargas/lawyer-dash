@@ -15,9 +15,10 @@ interface ContractPageProps {
 }
 export default async function ContractPage({ params }: ContractPageProps) {
   const pageParams = pageParamsSlugSchema.parse(params);
+  const fallbackSize = 3;
 
   return (
-    <Suspense fallback={<PageDetailsSkeleton totalGroups={4} />}>
+    <Suspense fallback={<PageDetailsSkeleton totalGroups={fallbackSize} />}>
       <Await promise={getContractBySlug(pageParams.slug)}>
         {(contract) => (
           <PageWrapper.Root>

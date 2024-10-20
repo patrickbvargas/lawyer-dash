@@ -15,9 +15,10 @@ interface FeePageProps {
 }
 export default async function FeePage({ params }: FeePageProps) {
   const pageParams = pageParamsIdSchema.parse(params);
+  const fallbackSize = 3;
 
   return (
-    <Suspense fallback={<PageDetailsSkeleton totalGroups={3} />}>
+    <Suspense fallback={<PageDetailsSkeleton totalGroups={fallbackSize} />}>
       <Await promise={getFeeById(pageParams.id)}>
         {(fee) => (
           <PageWrapper.Root>

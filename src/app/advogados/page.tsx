@@ -16,6 +16,7 @@ interface LawyersPageProps {
 }
 export default async function LawyersPage({ searchParams }: LawyersPageProps) {
   const params = searchParamsSchema.parse(searchParams);
+  const fallbackSize = params.pagination.size;
 
   return (
     <PageWrapper.Root>
@@ -23,12 +24,8 @@ export default async function LawyersPage({ searchParams }: LawyersPageProps) {
         <PageWrapper.Title title="Advogados" />
       </PageWrapper.Header>
       <PageWrapper.Content>
-        <Search placeholder="Pesquisar por Advogado ou OAB" />
-        <Suspense
-          fallback={
-            <EntityListSkeleton totalRecords={params.pagination.size} />
-          }
-        >
+        <Search placeholder="Pesquisar por Nome ou OAB" />
+        <Suspense fallback={<EntityListSkeleton totalRecords={fallbackSize} />}>
           <Await promise={getLawyers(params)}>
             {({ data, count }) => (
               <LawyerList lawyers={data} totalRecords={count} />

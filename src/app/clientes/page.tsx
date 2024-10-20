@@ -16,6 +16,7 @@ interface ClientsPageProps {
 }
 export default async function ClientsPage({ searchParams }: ClientsPageProps) {
   const params = searchParamsSchema.parse(searchParams);
+  const fallbackSize = params.pagination.size;
 
   return (
     <PageWrapper.Root>
@@ -24,11 +25,7 @@ export default async function ClientsPage({ searchParams }: ClientsPageProps) {
       </PageWrapper.Header>
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Nome ou CPF/CNPJ" />
-        <Suspense
-          fallback={
-            <EntityListSkeleton totalRecords={params.pagination.size} />
-          }
-        >
+        <Suspense fallback={<EntityListSkeleton totalRecords={fallbackSize} />}>
           <Await promise={getClients(params)}>
             {({ data, count }) => (
               <ClientList clients={data} totalRecords={count} />

@@ -15,9 +15,10 @@ interface LawyerPageProps {
 }
 export default async function LawyerPage({ params }: LawyerPageProps) {
   const pageParams = pageParamsSlugSchema.parse(params);
+  const fallbackSize = 2;
 
   return (
-    <Suspense fallback={<PageDetailsSkeleton totalGroups={3} />}>
+    <Suspense fallback={<PageDetailsSkeleton totalGroups={fallbackSize} />}>
       <Await promise={getLawyerBySlug(pageParams.slug)}>
         {(lawyer) => (
           <PageWrapper.Root>

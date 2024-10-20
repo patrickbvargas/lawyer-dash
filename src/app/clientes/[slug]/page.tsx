@@ -15,9 +15,10 @@ interface ClientPageProps {
 }
 export default async function ClientPage({ params }: ClientPageProps) {
   const pageParams = pageParamsSlugSchema.parse(params);
+  const fallbackSize = 3;
 
   return (
-    <Suspense fallback={<PageDetailsSkeleton totalGroups={3} />}>
+    <Suspense fallback={<PageDetailsSkeleton totalGroups={fallbackSize} />}>
       <Await promise={getClientBySlug(pageParams.slug)}>
         {(client) => (
           <PageWrapper.Root>
