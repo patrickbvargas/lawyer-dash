@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ROUTES } from '@/constants';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
 import { EntityList, LawyerCard, ListEmptyFeedback, Link } from '@/components';
 
@@ -18,7 +19,7 @@ export const LawyerList = async ({
     <EntityList.Root>
       <EntityList.Content>
         {lawyers.map((lawyer) => (
-          <Link key={lawyer.id} href={`/advogados/${lawyer.slug}`}>
+          <Link key={lawyer.id} href={`${ROUTES.lawyer.href}/${lawyer.slug}`}>
             <LawyerCard lawyer={lawyer} />
           </Link>
         ))}

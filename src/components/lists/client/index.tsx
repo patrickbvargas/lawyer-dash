@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ROUTES } from '@/constants';
 import { ClientSchemaWithSubjectNameType } from '@/schemas';
 import { EntityList, ClientCard, ListEmptyFeedback, Link } from '@/components';
 
@@ -18,7 +19,7 @@ export const ClientList = async ({
     <EntityList.Root>
       <EntityList.Content>
         {clients.map((client) => (
-          <Link key={client.id} href={`/clientes/${client.slug}`}>
+          <Link key={client.id} href={`${ROUTES.client.href}/${client.slug}`}>
             <ClientCard client={client} />
           </Link>
         ))}

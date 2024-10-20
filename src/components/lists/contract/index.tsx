@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ROUTES } from '@/constants';
 import { ContractSchemaWithSubjectNameType } from '@/schemas';
 import {
   EntityList,
@@ -23,7 +24,10 @@ export const ContractList = async ({
     <EntityList.Root>
       <EntityList.Content>
         {contracts.map((contract) => (
-          <Link key={contract.id} href={`/contratos/${contract.slug}`}>
+          <Link
+            key={contract.id}
+            href={`${ROUTES.contract.href}/${contract.slug}`}
+          >
             <ContractCard contract={contract} />
           </Link>
         ))}

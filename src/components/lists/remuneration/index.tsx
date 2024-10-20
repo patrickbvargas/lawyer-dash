@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ROUTES } from '@/constants';
 import { RemunerationSchemaWithSubjectNameType } from '@/schemas';
 import {
   EntityList,
@@ -23,7 +24,10 @@ export const RemunerationList = async ({
     <EntityList.Root>
       <EntityList.Content>
         {remunerations.map((remuneration) => (
-          <Link key={remuneration.id} href={`/remuneracoes/${remuneration.id}`}>
+          <Link
+            key={remuneration.id}
+            href={`${ROUTES.remuneration.href}/${remuneration.id}`}
+          >
             <RemunerationCard remuneration={remuneration} />
           </Link>
         ))}

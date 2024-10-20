@@ -1,58 +1,9 @@
 'use client';
 import * as React from 'react';
-import { HeroIcon } from '@/types';
+import { ROUTES } from '@/constants';
 import { Tooltip } from '@/components';
-import * as NavigationPrimitive from './components';
-import {
-  BanknotesIcon,
-  BriefcaseIcon,
-  ChartBarIcon,
-  InboxStackIcon,
-  ScaleIcon,
-  UserIcon,
-} from '@heroicons/react/20/solid';
 import { usePathname } from 'next/navigation';
-
-interface NavigationLink {
-  href: string;
-  label: string;
-  Icon: HeroIcon;
-}
-
-const links: NavigationLink[] = [
-  {
-    href: '/dashboard',
-    label: 'Dashboard',
-    Icon: ChartBarIcon,
-  },
-  {
-    href: '/advogados',
-    label: 'Advogados',
-    Icon: ScaleIcon,
-  },
-
-  {
-    href: '/clientes',
-    label: 'Clientes',
-    Icon: UserIcon,
-  },
-  {
-    href: '/contratos',
-    label: 'Contratos',
-    Icon: BriefcaseIcon,
-  },
-  {
-    href: '/honorarios',
-    label: 'Honorários',
-    Icon: InboxStackIcon,
-  },
-
-  {
-    href: '/remuneracoes',
-    label: 'Remunerações',
-    Icon: BanknotesIcon,
-  },
-];
+import * as NavigationPrimitive from './components';
 
 interface NavigationProps
   extends React.ComponentProps<typeof NavigationPrimitive.Root> {}
@@ -62,7 +13,7 @@ export const Navigation = ({ ...props }: NavigationProps) => {
   return (
     <NavigationPrimitive.Root {...props}>
       <NavigationPrimitive.List>
-        {links.map(({ href, label, Icon }) => (
+        {Object.values(ROUTES).map(({ href, label, Icon }) => (
           <NavigationPrimitive.Item key={label}>
             <Tooltip.Provider delayDuration={500}>
               <Tooltip.Root>

@@ -13,9 +13,13 @@ import {
   DEFAULT_PAGE_CONSTRUCTION_FEEDBACK,
 } from './feedback';
 import { RESPONSIBLE_CONTRACT_LAWYER_ASSIGNMENTS } from './assignment';
+import { ROUTES } from './route';
+import { ENTITY_NAME } from './entity-name';
 
 export {
   ENUM,
+  ROUTES,
+  ENTITY_NAME,
   PAGE_NUMBER_ALIAS,
   PAGE_NUMBER_DEFAULT,
   PAGE_SIZE_ALIAS,
