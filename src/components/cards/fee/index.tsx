@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card, WithLink } from '@/components';
+import { Card } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { FeeSchemaWithSubjectNameType } from '@/schemas';
 
@@ -25,17 +25,15 @@ export const FeeCard = ({ fee }: FeeCardProps) => {
   ];
 
   return (
-    <WithLink href={`/honorarios/${fee.id}`}>
-      <Card.Root>
-        <Card.Header>
-          <Card.Title>{fee.revenue.contract.identification}</Card.Title>
-        </Card.Header>
-        <Card.Divider />
-        <Card.Content>
-          <Card.DefinitionList data={feeData} />
-          <Card.Badge label={formatter.revenueType(fee.revenue.type)} />
-        </Card.Content>
-      </Card.Root>
-    </WithLink>
+    <Card.Root>
+      <Card.Header>
+        <Card.Title>{fee.revenue.contract.identification}</Card.Title>
+      </Card.Header>
+      <Card.Divider />
+      <Card.Content>
+        <Card.DefinitionList data={feeData} />
+        <Card.Badge label={formatter.revenueType(fee.revenue.type)} />
+      </Card.Content>
+    </Card.Root>
   );
 };

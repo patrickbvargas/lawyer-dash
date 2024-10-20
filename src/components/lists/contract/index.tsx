@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { ContractSchemaWithSubjectNameType } from '@/schemas';
-import { EntityList, ContractCard, ListEmptyFeedback } from '@/components';
+import {
+  EntityList,
+  ContractCard,
+  ListEmptyFeedback,
+  Link,
+} from '@/components';
 
 interface ContractListProps {
   contracts: ContractSchemaWithSubjectNameType[];
@@ -18,7 +23,9 @@ export const ContractList = async ({
     <EntityList.Root>
       <EntityList.Content>
         {contracts.map((contract) => (
-          <ContractCard key={contract.id} contract={contract} />
+          <Link key={contract.id} href={`/contratos/${contract.slug}`}>
+            <ContractCard contract={contract} />
+          </Link>
         ))}
       </EntityList.Content>
       <EntityList.Pagination totalRecords={totalRecords} />

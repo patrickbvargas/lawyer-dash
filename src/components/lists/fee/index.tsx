@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FeeSchemaWithSubjectNameType } from '@/schemas';
-import { EntityList, FeeCard, ListEmptyFeedback } from '@/components';
+import { EntityList, FeeCard, ListEmptyFeedback, Link } from '@/components';
 
 interface FeeListProps {
   fees: FeeSchemaWithSubjectNameType[];
@@ -15,7 +15,9 @@ export const FeeList = async ({ totalRecords, fees }: FeeListProps) => {
     <EntityList.Root>
       <EntityList.Content>
         {fees.map((fee) => (
-          <FeeCard key={fee.id} fee={fee} />
+          <Link key={fee.id} href={`/honorarios/${fee.id}`}>
+            <FeeCard fee={fee} />
+          </Link>
         ))}
       </EntityList.Content>
       <EntityList.Pagination totalRecords={totalRecords} />

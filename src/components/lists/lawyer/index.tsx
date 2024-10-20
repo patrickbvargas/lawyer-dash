@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
-import { EntityList, LawyerCard, ListEmptyFeedback } from '@/components';
+import { EntityList, LawyerCard, ListEmptyFeedback, Link } from '@/components';
 
 interface LawyerListProps {
   lawyers: LawyerSchemaWithSubjectNameType[];
@@ -18,7 +18,9 @@ export const LawyerList = async ({
     <EntityList.Root>
       <EntityList.Content>
         {lawyers.map((lawyer) => (
-          <LawyerCard key={lawyer.id} lawyer={lawyer} />
+          <Link key={lawyer.id} href={`/advogados/${lawyer.slug}`}>
+            <LawyerCard lawyer={lawyer} />
+          </Link>
         ))}
       </EntityList.Content>
       <EntityList.Pagination totalRecords={totalRecords} />

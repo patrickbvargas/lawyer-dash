@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card, WithLink } from '@/components';
+import { Card } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { RemunerationSchemaWithSubjectNameType } from '@/schemas';
 
@@ -25,23 +25,21 @@ export const RemunerationCard = ({ remuneration }: RemunerationCardProps) => {
   ];
 
   return (
-    <WithLink href={`/remuneracoes/${remuneration.id}`}>
-      <Card.Root>
-        <Card.Header>
-          <Card.Title>
-            {remuneration.contractLawyer.contract.identification}
-          </Card.Title>
-        </Card.Header>
-        <Card.Divider />
-        <Card.Content>
-          <Card.DefinitionList data={remunerationData} />
-          <Card.Badge
-            label={formatter.lawyerAssignment(
-              remuneration.contractLawyer.lawyerAssignment,
-            )}
-          />
-        </Card.Content>
-      </Card.Root>
-    </WithLink>
+    <Card.Root>
+      <Card.Header>
+        <Card.Title>
+          {remuneration.contractLawyer.contract.identification}
+        </Card.Title>
+      </Card.Header>
+      <Card.Divider />
+      <Card.Content>
+        <Card.DefinitionList data={remunerationData} />
+        <Card.Badge
+          label={formatter.lawyerAssignment(
+            remuneration.contractLawyer.lawyerAssignment,
+          )}
+        />
+      </Card.Content>
+    </Card.Root>
   );
 };

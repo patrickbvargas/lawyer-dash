@@ -1,9 +1,7 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { Search } from './search';
 import { Pagination } from './pagination';
 import { Navigation } from './navigation';
-import { WithLink } from './hocs/with-link';
 import { LawyerCard } from './cards/lawyer';
 import { ClientCard } from './cards/client';
 import { ContractCard } from './cards/contract';
@@ -41,13 +39,14 @@ import * as Section from './ui/section';
 import { Skeleton } from './ui/skeleton';
 import { Suspense } from './ui/suspense';
 import * as Feedback from './ui/feedback';
+import { CustomLink as Link } from './ui/link';
 import * as EntityList from './ui/entity-list';
 import * as ScrollArea from './ui/scroll-area';
 import * as Illustration from './ui/illustration';
 import * as EntityDetails from './ui/entity-details';
 import { DefinitionItem } from './ui/definition-item';
 
-export { Link, Image, Search, Pagination, Navigation };
+export { Image, Search, Pagination, Navigation };
 export { LawyerCard, ClientCard, ContractCard, FeeCard, RemunerationCard };
 export { LawyerList, ClientList, ContractList, FeeList, RemunerationList };
 export {
@@ -63,7 +62,6 @@ export {
   NotFoundFeedback,
   PageConstructionFeedback,
 };
-export { WithLink };
 export { PageWrapper };
 export {
   CardSkeleton,
@@ -74,6 +72,7 @@ export {
   EntityDetailsSkeleton,
 };
 export {
+  Link,
   Card,
   Await,
   Input,

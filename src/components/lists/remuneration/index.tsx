@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { RemunerationSchemaWithSubjectNameType } from '@/schemas';
-import { EntityList, RemunerationCard, ListEmptyFeedback } from '@/components';
+import {
+  EntityList,
+  RemunerationCard,
+  ListEmptyFeedback,
+  Link,
+} from '@/components';
 
 interface RemunerationListProps {
   remunerations: RemunerationSchemaWithSubjectNameType[];
@@ -18,7 +23,9 @@ export const RemunerationList = async ({
     <EntityList.Root>
       <EntityList.Content>
         {remunerations.map((remuneration) => (
-          <RemunerationCard key={remuneration.id} remuneration={remuneration} />
+          <Link key={remuneration.id} href={`/remuneracoes/${remuneration.id}`}>
+            <RemunerationCard remuneration={remuneration} />
+          </Link>
         ))}
       </EntityList.Content>
       <EntityList.Pagination totalRecords={totalRecords} />

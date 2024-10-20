@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ClientSchemaWithSubjectNameType } from '@/schemas';
-import { EntityList, ClientCard, ListEmptyFeedback } from '@/components';
+import { EntityList, ClientCard, ListEmptyFeedback, Link } from '@/components';
 
 interface ClientListProps {
   clients: ClientSchemaWithSubjectNameType[];
@@ -18,7 +18,9 @@ export const ClientList = async ({
     <EntityList.Root>
       <EntityList.Content>
         {clients.map((client) => (
-          <ClientCard key={client.id} client={client} />
+          <Link key={client.id} href={`/clientes/${client.slug}`}>
+            <ClientCard client={client} />
+          </Link>
         ))}
       </EntityList.Content>
       <EntityList.Pagination totalRecords={totalRecords} />

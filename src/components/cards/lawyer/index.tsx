@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card, WithLink } from '@/components';
+import { Card } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
 
@@ -25,17 +25,15 @@ export const LawyerCard = ({ lawyer }: LawyerCardProps) => {
   ];
 
   return (
-    <WithLink href={`/advogados/${lawyer.slug}`}>
-      <Card.Root>
-        <Card.Header>
-          <Card.Title>{lawyer.fullName}</Card.Title>
-        </Card.Header>
-        <Card.Divider />
-        <Card.Content>
-          <Card.DefinitionList data={lawyerData} />
-          <Card.Badge label={formatter.role(lawyer.role)} />
-        </Card.Content>
-      </Card.Root>
-    </WithLink>
+    <Card.Root>
+      <Card.Header>
+        <Card.Title>{lawyer.fullName}</Card.Title>
+      </Card.Header>
+      <Card.Divider />
+      <Card.Content>
+        <Card.DefinitionList data={lawyerData} />
+        <Card.Badge label={formatter.role(lawyer.role)} />
+      </Card.Content>
+    </Card.Root>
   );
 };

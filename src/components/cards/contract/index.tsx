@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card, WithLink } from '@/components';
+import { Card } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { isLawyerResponsibleForContract } from '@/services';
 import { ContractSchemaWithSubjectNameType } from '@/schemas';
@@ -32,17 +32,15 @@ export const ContractCard = ({ contract }: ContractCardProps) => {
   ];
 
   return (
-    <WithLink href={`/contratos/${contract.slug}`}>
-      <Card.Root>
-        <Card.Header>
-          <Card.Title>{contract.identification}</Card.Title>
-        </Card.Header>
-        <Card.Divider />
-        <Card.Content>
-          <Card.DefinitionList data={contractData} />
-          <Card.Badge label={formatter.legalArea(contract.legalArea)} />
-        </Card.Content>
-      </Card.Root>
-    </WithLink>
+    <Card.Root>
+      <Card.Header>
+        <Card.Title>{contract.identification}</Card.Title>
+      </Card.Header>
+      <Card.Divider />
+      <Card.Content>
+        <Card.DefinitionList data={contractData} />
+        <Card.Badge label={formatter.legalArea(contract.legalArea)} />
+      </Card.Content>
+    </Card.Root>
   );
 };

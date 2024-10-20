@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card, WithLink } from '@/components';
+import { Card } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { ClientSchemaWithSubjectNameType } from '@/schemas';
 
@@ -37,17 +37,15 @@ export const ClientCard = ({ client }: ClientCardProps) => {
   ];
 
   return (
-    <WithLink href={`/clientes/${client.slug}`}>
-      <Card.Root>
-        <Card.Header>
-          <Card.Title>{client.fullName}</Card.Title>
-        </Card.Header>
-        <Card.Divider />
-        <Card.Content>
-          <Card.DefinitionList data={clientData} />
-          <Card.Badge label={client.individual ? 'PF' : 'PJ'} />
-        </Card.Content>
-      </Card.Root>
-    </WithLink>
+    <Card.Root>
+      <Card.Header>
+        <Card.Title>{client.fullName}</Card.Title>
+      </Card.Header>
+      <Card.Divider />
+      <Card.Content>
+        <Card.DefinitionList data={clientData} />
+        <Card.Badge label={client.individual ? 'PF' : 'PJ'} />
+      </Card.Content>
+    </Card.Root>
   );
 };
