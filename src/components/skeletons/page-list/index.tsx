@@ -24,9 +24,6 @@ export const PageListSkeleton = ({
           <EntityListSkeleton totalRecords={totalRecords} />
         </PageWrapper.ScrollArea>
       </PageWrapper.Content>
-      <PageWrapper.Footer className="justify-end">
-        <Skeleton className="h-10 max-w-[300px]" />
-      </PageWrapper.Footer>
     </PageWrapper.Root>
   );
 };

@@ -10,5 +10,5 @@ export function useUrlSearchParams() {
     replace(`${pathname}?${params.toString()}`);
   };
 
-  return { searchParams, handleSearchParams };
+  return { pathname, searchParams, handleSearchParams };
 }
