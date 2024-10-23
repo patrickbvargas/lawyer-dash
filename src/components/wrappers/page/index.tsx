@@ -10,7 +10,7 @@ export const Root = ({ className, ...props }: RootProps) => (
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 export const Header = ({ className, ...props }: HeaderProps) => (
   <div
-    className={cn('shrink-0 flex justify-between gap-3 py-4', className)}
+    className={cn('shrink-0 flex justify-between gap-3 pb-4', className)}
     {...props}
   />
 );

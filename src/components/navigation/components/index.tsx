@@ -12,7 +12,10 @@ export const Root = ({ className, ...props }: RootProps) => (
 interface ListProps extends React.HTMLAttributes<HTMLUListElement> {}
 export const List = ({ className, ...props }: ListProps) => (
   <ul
-    className={cn('flex flex-wrap justify-evenly gap-3 sm:flex-col', className)}
+    className={cn(
+      'flex flex-wrap justify-evenly items-center gap-3 sm:flex-col',
+      className,
+    )}
     {...props}
   />
 );

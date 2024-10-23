@@ -28,6 +28,7 @@ import { PageErrorFeedback } from './feedbacks/page-error';
 import { ListEmptyFeedback } from './feedbacks/list-empty';
 import { NotFoundFeedback } from './feedbacks/not-found';
 import { PageConstructionFeedback } from './feedbacks/page-construction';
+import { Logo } from './ui/logo';
 import * as Card from './ui/card';
 import { Await } from './ui/await';
 import { Input } from './ui/input';
@@ -72,6 +73,7 @@ export {
   EntityDetailsSkeleton,
 };
 export {
+  Logo,
   Link,
   Card,
   Await,
