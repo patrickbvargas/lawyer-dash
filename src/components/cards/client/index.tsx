@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card } from '@/components';
+import { Card, Separator } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { ClientSchemaWithSubjectNameType } from '@/schemas';
 
@@ -41,7 +41,7 @@ export const ClientCard = ({ client }: ClientCardProps) => {
       <Card.Header>
         <Card.Title>{client.fullName}</Card.Title>
       </Card.Header>
-      <Card.Divider />
+      <Separator />
       <Card.Content>
         <Card.DefinitionList data={clientData} />
         <Card.Badge label={client.individual ? 'PF' : 'PJ'} />

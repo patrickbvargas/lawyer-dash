@@ -1,23 +1,18 @@
 import * as React from 'react';
-import { cn, type VariantProps } from '@/utils';
-import { formFieldVariants } from '@/styles';
+import { cn } from '@/utils';
 
-interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof formFieldVariants> {}
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ variant, className, type = 'text', ...props }, ref) => {
+  ({ className, type, ...props }, ref) => {
     return (
       <input
-        ref={ref}
         type={type}
         className={cn(
-          formFieldVariants({ variant }),
-          'file:border-0 file:bg-transparent file:text-sm file:font-medium',
-          'file:text-gray-500',
-          'dark:file:text-neutral-300',
+          'flex h-10 w-full rounded-md border border-input bg-input px-3 py-2 text-sm shadow-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-none',
           className,
         )}
+        ref={ref}
         {...props}
       />
     );

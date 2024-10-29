@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card } from '@/components';
+import { Card, Separator } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { isLawyerResponsibleForContract } from '@/services';
 import { ContractSchemaWithSubjectNameType } from '@/schemas';
@@ -36,7 +36,7 @@ export const ContractCard = ({ contract }: ContractCardProps) => {
       <Card.Header>
         <Card.Title>{contract.identification}</Card.Title>
       </Card.Header>
-      <Card.Divider />
+      <Separator />
       <Card.Content>
         <Card.DefinitionList data={contractData} />
         <Card.Badge label={formatter.legalArea(contract.legalArea)} />

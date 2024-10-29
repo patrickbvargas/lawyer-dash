@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card } from '@/components';
+import { Card, Separator } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
 
@@ -29,7 +29,7 @@ export const LawyerCard = ({ lawyer }: LawyerCardProps) => {
       <Card.Header>
         <Card.Title>{lawyer.fullName}</Card.Title>
       </Card.Header>
-      <Card.Divider />
+      <Separator />
       <Card.Content>
         <Card.DefinitionList data={lawyerData} />
         <Card.Badge label={formatter.role(lawyer.role)} />

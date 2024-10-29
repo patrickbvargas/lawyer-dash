@@ -1,43 +1,43 @@
 import { NavigationLink } from '@/types';
 import { ENTITY_NAME } from '@/constants';
 import {
-  BanknotesIcon,
-  BriefcaseIcon,
-  ChartBarIcon,
-  InboxStackIcon,
-  ScaleIcon,
-  UserIcon,
-} from '@heroicons/react/20/solid';
+  IconScale,
+  IconInbox,
+  IconBanknote,
+  IconUserRound,
+  IconBriefcaseBusiness,
+  IconChartNoAxesColumnIncreasing,
+} from '@/assets/icons';
 
 export const ROUTES: Record<ENTITY_NAME, NavigationLink> = {
   dashboard: {
     href: '/dashboard',
     label: 'Dashboard',
-    Icon: ChartBarIcon,
+    Icon: IconChartNoAxesColumnIncreasing,
   },
   lawyer: {
     href: '/advogados',
     label: 'Advogados',
-    Icon: ScaleIcon,
+    Icon: IconScale,
   },
   client: {
     href: '/clientes',
     label: 'Clientes',
-    Icon: UserIcon,
+    Icon: IconUserRound,
   },
   contract: {
     href: '/contratos',
     label: 'Contratos',
-    Icon: BriefcaseIcon,
+    Icon: IconBriefcaseBusiness,
   },
   fee: {
     href: '/honorarios',
     label: 'Honorários',
-    Icon: InboxStackIcon,
+    Icon: IconInbox,
   },
   remuneration: {
     href: '/remuneracoes',
     label: 'Remunerações',
-    Icon: BanknotesIcon,
+    Icon: IconBanknote,
   },
 } as const;

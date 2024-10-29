@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { cn } from '@/utils';
 
-interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Wrapper = ({ className, ...props }: WrapperProps) => (
+export const Wrapper = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      'h-screen max-w-[80rem] mx-auto overflow-hidden place-self-center',
-      'bg-gray-50',
-      'dark:bg-neutral-900',
+      'h-screen max-w-[80rem] mx-auto overflow-hidden place-self-center bg-background',
       className,
     )}
     {...props}

@@ -18,7 +18,6 @@ export interface DefinitionItemData
   term: string;
   definition: string | number;
 }
-
 interface DefinitionItemProps
   extends React.HTMLAttributes<HTMLDivElement>,
     DefinitionItemData {}
@@ -30,12 +29,7 @@ export const DefinitionItem = ({
   ...props
 }: DefinitionItemProps) => (
   <div
-    className={cn(
-      'flex flex-col gap-1',
-      'text-gray-500',
-      'dark:text-neutral-300',
-      className,
-    )}
+    className={cn('flex flex-col gap-1 text-foreground', className)}
     {...props}
   >
     <dt className="truncate text-xs font-semibold uppercase">{term}</dt>

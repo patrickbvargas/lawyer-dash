@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { NavigationLink } from '@/types';
-import { buttonVariants } from '@/styles';
 import { cn, VariantProps } from '@/utils';
+import { buttonVariants } from '@/components/ui/button';
 import { Link as LinkPrimitive, Tooltip } from '@/components';
 
-interface RootProps extends React.ComponentProps<'nav'> {}
-export const Root = ({ className, ...props }: RootProps) => (
+export const Root = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav className={cn('w-full z-10', className)} {...props} />
 );
 
-interface ListProps extends React.HTMLAttributes<HTMLUListElement> {}
-export const List = ({ className, ...props }: ListProps) => (
+export const List = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLUListElement>) => (
   <ul
     className={cn(
       'flex flex-wrap justify-evenly items-center gap-3 sm:flex-col',
@@ -37,12 +38,12 @@ export const Item = ({
       <Tooltip.Trigger asChild>
         <li {...props}>
           <Link href={href} variant={active ? 'secondary' : 'ghost'}>
-            <Icon className="size-6" />
+            <Icon className="size-5" />
           </Link>
         </li>
       </Tooltip.Trigger>
-      <Tooltip.Content>
-        <Label label={label} />
+      <Tooltip.Content side="right" sideOffset={10}>
+        <Label>{label}</Label>
       </Tooltip.Content>
     </Tooltip.Root>
   </Tooltip.Provider>
@@ -62,24 +63,9 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
 );
 Link.displayName = 'Link';
 
-interface LabelProps extends React.HTMLAttributes<HTMLParagraphElement> {
-  label: string;
-}
-const Label = ({ label, className, ...props }: LabelProps) => (
-  <p className={cn('text-sm font-normal', className)} {...props}>
-    {label}
-  </p>
-);
-
-interface DividerProps extends React.HTMLAttributes<HTMLHRElement> {}
-export const Divider = ({ className, ...props }: DividerProps) => (
-  <hr
-    className={cn(
-      'rounded-full border-t-2',
-      'border-gray-100',
-      'dark:border-neutral-700',
-      className,
-    )}
-    {...props}
-  />
+const Label = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>) => (
+  <p className={cn('text-sm font-normal', className)} {...props} />
 );

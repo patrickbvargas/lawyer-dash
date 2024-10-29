@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EntityList, CardSkeleton, Skeleton } from '@/components';
+import { EntityList, CardSkeleton, PaginationSkeleton } from '@/components';
 
 interface EntityListSkeletonProps {
   totalRecords: number;
@@ -14,7 +14,9 @@ export const EntityListSkeleton = ({
           <CardSkeleton key={index} />
         ))}
       </EntityList.Content>
-      <Skeleton className="h-16 max-w-[430px] flex-shrink-0 place-self-end sm:h-10" />
+      <EntityList.Footer>
+        <PaginationSkeleton />
+      </EntityList.Footer>
     </EntityList.Root>
   );
 };

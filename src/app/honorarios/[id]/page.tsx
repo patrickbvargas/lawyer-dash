@@ -3,10 +3,10 @@ import { PageParams } from '@/types';
 import { getFeeById } from '@/services';
 import { pageParamsIdSchema } from '@/schemas';
 import {
-  PageWrapper,
-  Suspense,
   Await,
+  Suspense,
   FeeDetails,
+  PageWrapper,
   PageDetailsSkeleton,
 } from '@/components';
 
@@ -25,11 +25,9 @@ export default async function FeePage({ params }: FeePageProps) {
             <PageWrapper.Header>
               <PageWrapper.Title title={fee.revenue.contract.identification} />
             </PageWrapper.Header>
-            <PageWrapper.Content>
-              <PageWrapper.ScrollArea>
-                <FeeDetails fee={fee} />
-              </PageWrapper.ScrollArea>
-            </PageWrapper.Content>
+            <PageWrapper.ContentScrollable>
+              <FeeDetails fee={fee} />
+            </PageWrapper.ContentScrollable>
           </PageWrapper.Root>
         )}
       </Await>

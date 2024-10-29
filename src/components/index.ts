@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Search } from './search';
-import { Pagination } from './pagination';
+import { PaginationControl } from './pagination-control';
 import { Navigation } from './navigation';
 import { LawyerCard } from './cards/lawyer';
 import { ClientCard } from './cards/client';
@@ -17,13 +17,15 @@ import { ClientDetails } from './details/client';
 import { ContractDetails } from './details/contract';
 import { FeeDetails } from './details/fee';
 import { RemunerationDetails } from './details/remuneration';
-import * as PageWrapper from './wrappers/page';
 import { CardSkeleton } from './skeletons/card';
-import { PageTitleSkeleton } from './skeletons/page-title';
+import { SearchSkeleton } from './skeletons/search';
 import { PageListSkeleton } from './skeletons/page-list';
-import { PageDetailsSkeleton } from './skeletons/page-details';
+import { TitleSkeleton } from './skeletons/title';
+import { PaginationSkeleton } from './skeletons/pagination';
 import { EntityListSkeleton } from './skeletons/entity-list';
+import { PageDetailsSkeleton } from './skeletons/page-details';
 import { EntityDetailsSkeleton } from './skeletons/entity-details';
+import { DefinitionListSkeleton } from './skeletons/definition-list';
 import { PageErrorFeedback } from './feedbacks/page-error';
 import { ListEmptyFeedback } from './feedbacks/list-empty';
 import { NotFoundFeedback } from './feedbacks/not-found';
@@ -31,46 +33,52 @@ import { PageConstructionFeedback } from './feedbacks/page-construction';
 import { Logo } from './ui/logo';
 import * as Card from './ui/card';
 import { Await } from './ui/await';
+import { CustomLink as Link } from './ui/link';
 import { Input } from './ui/input';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
+import { Separator } from './ui/separator';
 import * as Select from './ui/select';
 import * as Tooltip from './ui/tooltip';
 import * as Section from './ui/section';
 import { Skeleton } from './ui/skeleton';
 import { Suspense } from './ui/suspense';
 import * as Feedback from './ui/feedback';
-import { CustomLink as Link } from './ui/link';
+import * as Pagination from './ui/pagination';
 import * as EntityList from './ui/entity-list';
+import * as PageWrapper from './ui/page-wrapper';
 import * as ScrollArea from './ui/scroll-area';
 import * as Illustration from './ui/illustration';
 import * as EntityDetails from './ui/entity-details';
 import { DefinitionItem } from './ui/definition-item';
+import * as NavigationMenu from './ui/navigation-menu';
 
-export { Image, Search, Pagination, Navigation };
+export { Image, Search, PaginationControl, Navigation };
 export { LawyerCard, ClientCard, ContractCard, FeeCard, RemunerationCard };
 export { LawyerList, ClientList, ContractList, FeeList, RemunerationList };
 export {
+  FeeDetails,
   LawyerDetails,
   ClientDetails,
   ContractDetails,
-  FeeDetails,
   RemunerationDetails,
 };
 export {
+  NotFoundFeedback,
   PageErrorFeedback,
   ListEmptyFeedback,
-  NotFoundFeedback,
   PageConstructionFeedback,
 };
-export { PageWrapper };
 export {
   CardSkeleton,
+  TitleSkeleton,
+  SearchSkeleton,
   PageListSkeleton,
-  PageTitleSkeleton,
   EntityListSkeleton,
+  PaginationSkeleton,
   PageDetailsSkeleton,
   EntityDetailsSkeleton,
+  DefinitionListSkeleton,
 };
 export {
   Logo,
@@ -84,11 +92,15 @@ export {
   Section,
   Tooltip,
   Skeleton,
+  Separator,
   Feedback,
   Suspense,
   ScrollArea,
   EntityList,
+  Pagination,
+  PageWrapper,
   Illustration,
   EntityDetails,
   DefinitionItem,
+  NavigationMenu,
 };

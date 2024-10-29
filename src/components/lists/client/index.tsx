@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { ROUTES } from '@/constants';
 import { ClientSchemaWithSubjectNameType } from '@/schemas';
-import { EntityList, ClientCard, ListEmptyFeedback, Link } from '@/components';
+import {
+  Link,
+  EntityList,
+  ClientCard,
+  ListEmptyFeedback,
+  PaginationControl,
+} from '@/components';
 
 interface ClientListProps {
   clients: ClientSchemaWithSubjectNameType[];
@@ -24,7 +30,9 @@ export const ClientList = async ({
           </Link>
         ))}
       </EntityList.Content>
-      <EntityList.Pagination totalRecords={totalRecords} />
+      <EntityList.Footer>
+        <PaginationControl totalRecords={totalRecords} />
+      </EntityList.Footer>
     </EntityList.Root>
   );
 };

@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { ROUTES } from '@/constants';
 import { FeeSchemaWithSubjectNameType } from '@/schemas';
-import { EntityList, FeeCard, ListEmptyFeedback, Link } from '@/components';
+import {
+  Link,
+  FeeCard,
+  EntityList,
+  ListEmptyFeedback,
+  PaginationControl,
+} from '@/components';
 
 interface FeeListProps {
   fees: FeeSchemaWithSubjectNameType[];
@@ -21,7 +27,9 @@ export const FeeList = async ({ totalRecords, fees }: FeeListProps) => {
           </Link>
         ))}
       </EntityList.Content>
-      <EntityList.Pagination totalRecords={totalRecords} />
+      <EntityList.Footer>
+        <PaginationControl totalRecords={totalRecords} />
+      </EntityList.Footer>
     </EntityList.Root>
   );
 };

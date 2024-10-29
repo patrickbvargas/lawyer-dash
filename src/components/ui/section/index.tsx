@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { cn } from '@/utils';
 
-interface RootProps extends React.ComponentProps<'section'> {}
-export const Root = ({ className, ...props }: RootProps) => (
+export const Root = ({
+  className,
+  ...props
+}: React.ComponentProps<'section'>) => (
   <section className={cn('flex flex-col flex-1 gap-4', className)} {...props} />
 );
 
@@ -17,16 +19,12 @@ export const Title = ({ title, className, ...props }: TitleProps) => {
     >
       <span
         className={cn(
-          'h-4 w-1 rounded-r-sm transition duration-300 group-hover:bg-accent',
-          'bg-gray-300',
-          'dark:bg-neutral-600',
+          'h-4 w-1 rounded-r-sm transition duration-300 group-hover:bg-accent bg-border',
         )}
       />
       <h3
         className={cn(
-          'truncate text-base font-medium uppercase',
-          'text-gray-700',
-          'dark:text-neutral-200',
+          'truncate text-base font-medium uppercase text-foreground',
         )}
       >
         {title}
@@ -35,8 +33,10 @@ export const Title = ({ title, className, ...props }: TitleProps) => {
   );
 };
 
-interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Content = ({ className, ...props }: ContentProps) => (
+export const Content = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn('w-full flex flex-col flex-1 gap-4 pl-3.5', className)}
     {...props}

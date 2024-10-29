@@ -1,7 +1,7 @@
-import { HeroIcon } from '@/types';
+import { LucideIcon } from 'lucide-react';
 
 export interface NavigationLink {
   href: string;
   label: string;
-  Icon: HeroIcon;
+  Icon: LucideIcon;
 }

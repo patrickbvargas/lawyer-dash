@@ -4,14 +4,13 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from './providers';
 import { Wrapper, Header, Sidebar, Content } from '@/layouts';
 
-const inter = Inter({ subsets: ['latin'] });
+const fontFamily = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Lawyer Dashboard',
   description: 'Lawyer Dashboard Project',
 };
 
-// TODO: check body font family with Next font
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${fontFamily.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

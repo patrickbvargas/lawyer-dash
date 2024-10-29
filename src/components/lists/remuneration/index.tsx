@@ -2,10 +2,11 @@ import * as React from 'react';
 import { ROUTES } from '@/constants';
 import { RemunerationSchemaWithSubjectNameType } from '@/schemas';
 import {
+  Link,
   EntityList,
   RemunerationCard,
   ListEmptyFeedback,
-  Link,
+  PaginationControl,
 } from '@/components';
 
 interface RemunerationListProps {
@@ -32,7 +33,9 @@ export const RemunerationList = async ({
           </Link>
         ))}
       </EntityList.Content>
-      <EntityList.Pagination totalRecords={totalRecords} />
+      <EntityList.Footer>
+        <PaginationControl totalRecords={totalRecords} />
+      </EntityList.Footer>
     </EntityList.Root>
   );
 };

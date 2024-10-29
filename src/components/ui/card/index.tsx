@@ -3,57 +3,79 @@ import { cn } from '@/utils';
 import { CardDefinitionItemData } from '@/types';
 import { Badge as BadgePrimitive, DefinitionItem } from '@/components';
 
-interface RootProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Root = ({ className, ...props }: RootProps) => (
+export const Root = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
   <div
+    ref={ref}
     className={cn(
-      'flex cursor-pointer flex-col gap-2 rounded-lg border-l-4 border-transparent py-3 pl-3 pr-4 transition duration-300 hover:border-accent',
-      'bg-white shadow-sm',
-      'dark:bg-neutral-800 dark:shadow-none',
+      'rounded-lg bg-card text-card-foreground shadow-sm border-l-4 border-transparent p-4 pl-3 transition duration-300 hover:border-accent',
       className,
     )}
     {...props}
   />
-);
+));
+Root.displayName = 'Card';
 
-interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Header = ({ className, ...props }: HeaderProps) => (
+export const Header = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
   <div
-    className={cn('flex items-center justify-between', className)}
+    ref={ref}
+    className={cn('flex flex-col space-y-1.5 pb-3', className)}
     {...props}
   />
-);
+));
+Header.displayName = 'CardHeader';
 
-interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
-export const Title = ({ className, ...props }: TitleProps) => (
-  <h2
+export const Title = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h3
+    ref={ref}
     className={cn(
-      'truncate text-base font-medium',
-      'text-gray-700',
-      'dark:text-neutral-200',
+      'text-base text-card-foreground font-semibold leading-none tracking-tight',
       className,
     )}
     {...props}
   />
-);
+));
+Title.displayName = 'CardTitle';
 
-interface DividerProps extends React.HTMLAttributes<HTMLHRElement> {}
-export const Divider = ({ className, ...props }: DividerProps) => (
-  <hr
-    className={cn(
-      'rounded-full border-t-2',
-      'border-gray-100',
-      'dark:border-neutral-700',
-      className,
-    )}
+export const Description = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn('text-sm text-muted-foreground', className)}
     {...props}
   />
-);
+));
+Description.displayName = 'CardDescription';
 
-interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Content = ({ className, ...props }: ContentProps) => (
-  <div className={cn('relative flex flex-col gap-3.5', className)} {...props} />
-);
+export const Content = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn('relative flex flex-col gap-3.5 pt-3', className)}
+    {...props}
+  />
+));
+Content.displayName = 'CardContent';
+
+export const Footer = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn('flex items-center', className)} {...props} />
+));
+Footer.displayName = 'CardFooter';
 
 interface DefinitionListProps extends React.HTMLAttributes<HTMLDListElement> {
   data: CardDefinitionItemData;
@@ -73,10 +95,20 @@ export const DefinitionList = ({
   </dl>
 );
 
-interface BadgeProps extends React.ComponentProps<typeof BadgePrimitive> {}
-export const Badge = ({ variant, className, ...props }: BadgeProps) => (
+interface BadgeProps extends React.ComponentProps<typeof BadgePrimitive> {
+  label: string;
+}
+export const Badge = ({
+  label,
+  variant = 'accent',
+  className,
+  ...props
+}: BadgeProps) => (
   <BadgePrimitive
-    className={cn('sm:absolute sm:bottom-0 sm:right-0', variant, className)}
+    variant={variant}
+    className={cn('sm:absolute sm:bottom-0 sm:right-0', className)}
     {...props}
-  />
+  >
+    {label}
+  </BadgePrimitive>
 );

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card } from '@/components';
+import { Card, Separator } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { RemunerationSchemaWithSubjectNameType } from '@/schemas';
 
@@ -31,7 +31,7 @@ export const RemunerationCard = ({ remuneration }: RemunerationCardProps) => {
           {remuneration.contractLawyer.contract.identification}
         </Card.Title>
       </Card.Header>
-      <Card.Divider />
+      <Separator />
       <Card.Content>
         <Card.DefinitionList data={remunerationData} />
         <Card.Badge

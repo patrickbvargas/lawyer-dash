@@ -3,9 +3,9 @@ import { PageParams } from '@/types';
 import { getClientBySlug } from '@/services';
 import { pageParamsSlugSchema } from '@/schemas';
 import {
-  PageWrapper,
-  Suspense,
   Await,
+  Suspense,
+  PageWrapper,
   ClientDetails,
   PageDetailsSkeleton,
 } from '@/components';
@@ -25,11 +25,9 @@ export default async function ClientPage({ params }: ClientPageProps) {
             <PageWrapper.Header>
               <PageWrapper.Title title={client.fullName} />
             </PageWrapper.Header>
-            <PageWrapper.Content>
-              <PageWrapper.ScrollArea>
-                <ClientDetails client={client} />
-              </PageWrapper.ScrollArea>
-            </PageWrapper.Content>
+            <PageWrapper.ContentScrollable>
+              <ClientDetails client={client} />
+            </PageWrapper.ContentScrollable>
           </PageWrapper.Root>
         )}
       </Await>

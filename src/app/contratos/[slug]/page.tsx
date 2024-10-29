@@ -3,9 +3,9 @@ import { PageParams } from '@/types';
 import { getContractBySlug } from '@/services';
 import { pageParamsSlugSchema } from '@/schemas';
 import {
-  PageWrapper,
-  Suspense,
   Await,
+  Suspense,
+  PageWrapper,
   ContractDetails,
   PageDetailsSkeleton,
 } from '@/components';
@@ -25,11 +25,9 @@ export default async function ContractPage({ params }: ContractPageProps) {
             <PageWrapper.Header>
               <PageWrapper.Title title={contract.identification} />
             </PageWrapper.Header>
-            <PageWrapper.Content>
-              <PageWrapper.ScrollArea>
-                <ContractDetails contract={contract} />
-              </PageWrapper.ScrollArea>
-            </PageWrapper.Content>
+            <PageWrapper.ContentScrollable>
+              <ContractDetails contract={contract} />
+            </PageWrapper.ContentScrollable>
           </PageWrapper.Root>
         )}
       </Await>

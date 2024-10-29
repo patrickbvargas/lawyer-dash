@@ -1,14 +1,13 @@
 'use client';
 import { cn } from '@/utils';
 import { usePagination } from '@/hooks';
-import * as PaginationPrimitive from './components';
+import { Pagination } from '@/components';
 
-interface PaginationProps
-  extends React.ComponentProps<typeof PaginationPrimitive.Root> {
+interface PaginationProps extends React.ComponentProps<typeof Pagination.Root> {
   totalRecords: number;
   siblingCount?: number;
 }
-export const Pagination = ({
+export const PaginationControl = ({
   totalRecords = 0,
   siblingCount = 1,
   className,
@@ -35,9 +34,15 @@ export const Pagination = ({
   );
   const endPage = Math.min(totalPagesCount, startPage + totalDisplayPages - 1);
 
+  const isValidPageNumber = (pageNumber: number) =>
+    pageNumber >= 1 && pageNumber <= totalPagesCount;
+
+  const getPaginationPageURL = (pageNumber: number) => {
+    return isValidPageNumber(pageNumber) ? getPageURL(pageNumber) : '#';
+  };
+
   const handlePageChange = (pageNumber: number) => {
-    if (pageNumber < 1 || pageNumber > totalPagesCount) return;
-    handlePageNumber(pageNumber);
+    if (isValidPageNumber(pageNumber)) handlePageNumber(pageNumber);
   };
 
   const generateFeedback = () => {
@@ -51,56 +56,54 @@ export const Pagination = ({
     Array.from({ length: endPage - startPage + 1 }, (_, index) => {
       const pageNumber = startPage + index;
       return (
-        <PaginationPrimitive.Item key={pageNumber}>
-          <PaginationPrimitive.Link
+        <Pagination.Item key={pageNumber}>
+          <Pagination.Link
             href={getPageURL(pageNumber)}
             isActive={pageNumber === currentPage}
             onClick={() => handlePageChange(pageNumber)}
           >
             {pageNumber}
-          </PaginationPrimitive.Link>
-        </PaginationPrimitive.Item>
+          </Pagination.Link>
+        </Pagination.Item>
       );
     });
 
   return (
-    <PaginationPrimitive.Root
+    <Pagination.Root
       className={cn(
-        'flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',
+        'flex flex-col-reverse gap-3 sm:flex-row sm:justify-end',
         className,
       )}
       {...props}
     >
-      <PaginationPrimitive.Feedback>
-        {generateFeedback()}
-      </PaginationPrimitive.Feedback>
-      <PaginationPrimitive.Content>
-        <PaginationPrimitive.Item isDisabled={currentPage === 1}>
-          <PaginationPrimitive.First
-            href={getPageURL(1)}
+      <Pagination.Feedback>{generateFeedback()}</Pagination.Feedback>
+      <Pagination.Content>
+        <Pagination.Item isDisabled={currentPage === 1}>
+          <Pagination.First
+            href={getPaginationPageURL(1)}
             onClick={() => handlePageChange(1)}
           />
-        </PaginationPrimitive.Item>
-        <PaginationPrimitive.Item isDisabled={currentPage === 1}>
-          <PaginationPrimitive.Previous
-            href={getPageURL(currentPage - 1)}
+        </Pagination.Item>
+        <Pagination.Item isDisabled={currentPage === 1}>
+          <Pagination.Previous
+            href={getPaginationPageURL(currentPage - 1)}
             onClick={() => handlePageChange(currentPage - 1)}
           />
-        </PaginationPrimitive.Item>
+        </Pagination.Item>
         {renderPageLinks()}
-        <PaginationPrimitive.Item isDisabled={!(currentPage < totalPagesCount)}>
-          <PaginationPrimitive.Next
-            href={getPageURL(currentPage + 1)}
+        <Pagination.Item isDisabled={!(currentPage < totalPagesCount)}>
+          <Pagination.Next
+            href={getPaginationPageURL(currentPage + 1)}
             onClick={() => handlePageChange(currentPage + 1)}
           />
-        </PaginationPrimitive.Item>
-        <PaginationPrimitive.Item isDisabled={!(currentPage < totalPagesCount)}>
-          <PaginationPrimitive.Last
-            href={getPageURL(totalPagesCount)}
+        </Pagination.Item>
+        <Pagination.Item isDisabled={!(currentPage < totalPagesCount)}>
+          <Pagination.Last
+            href={getPaginationPageURL(totalPagesCount)}
             onClick={() => handlePageChange(totalPagesCount)}
           />
-        </PaginationPrimitive.Item>
-      </PaginationPrimitive.Content>
-    </PaginationPrimitive.Root>
+        </Pagination.Item>
+      </Pagination.Content>
+    </Pagination.Root>
   );
 };

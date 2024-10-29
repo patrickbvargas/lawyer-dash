@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { Skeleton, EntityDetails, Section } from '@/components';
+import {
+  Section,
+  Skeleton,
+  EntityDetails,
+  DefinitionListSkeleton,
+} from '@/components';
 
 interface EntityDetailsSkeletonProps {
   totalGroups: number;
@@ -24,10 +29,7 @@ const EntityDetailsGroupSkeleton = () => {
         <Section.Content>
           {Array.from({ length: 4 }).map((_, index) => (
             <div className="flex flex-col gap-3.5 pl-3.5 w-3/5" key={index}>
-              <div className="flex flex-col gap-1">
-                <Skeleton className="h-4" />
-                <Skeleton className="h-5 w-3/6" />
-              </div>
+              <DefinitionListSkeleton />
             </div>
           ))}
         </Section.Content>

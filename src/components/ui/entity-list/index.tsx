@@ -1,35 +1,48 @@
 import * as React from 'react';
 import { cn } from '@/utils';
-import { Pagination as PaginationPrimitive, ScrollArea } from '@/components';
+import { ScrollArea } from '@/components';
 
-interface RootProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Root = ({ className, ...props }: RootProps) => (
+export const Root = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(
-      'h-full flex flex-col gap-2 justify-between overflow-hidden',
-      className,
-    )}
+    className={cn('size-full flex flex-col gap-1 overflow-hidden', className)}
     {...props}
   />
 );
 
-interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Content = ({ className, ...props }: ContentProps) => (
+export const Header = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn('shrink-0 flex justify-between gap-3 p-1', className)}
+    {...props}
+  />
+);
+
+export const Content = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <ScrollArea.Root>
-    <ScrollArea.Viewport>
-      <div
-        className={cn(
-          'grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-          className,
-        )}
-        {...props}
-      />
-    </ScrollArea.Viewport>
+    <div
+      className={cn(
+        'grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+        className,
+      )}
+      {...props}
+    />
   </ScrollArea.Root>
 );
 
-interface PaginationProps
-  extends React.ComponentProps<typeof PaginationPrimitive> {}
-export const Pagination = ({ ...props }: PaginationProps) => (
-  <PaginationPrimitive {...props} />
+export const Footer = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn('shrink-0 flex justify-end gap-3 p-1', className)}
+    {...props}
+  />
 );

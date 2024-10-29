@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
   PageWrapper,
+  TitleSkeleton,
   EntityDetailsSkeleton,
-  PageTitleSkeleton,
 } from '@/components';
 
 interface PageDetailsSkeletonProps {
@@ -14,11 +14,11 @@ export const PageDetailsSkeleton = ({
   return (
     <PageWrapper.Root>
       <PageWrapper.Header>
-        <PageTitleSkeleton />
+        <TitleSkeleton />
       </PageWrapper.Header>
-      <PageWrapper.Content>
+      <PageWrapper.ContentScrollable>
         <EntityDetailsSkeleton totalGroups={totalGroups} />
-      </PageWrapper.Content>
+      </PageWrapper.ContentScrollable>
     </PageWrapper.Root>
   );
 };

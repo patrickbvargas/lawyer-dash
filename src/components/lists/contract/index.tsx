@@ -2,10 +2,11 @@ import * as React from 'react';
 import { ROUTES } from '@/constants';
 import { ContractSchemaWithSubjectNameType } from '@/schemas';
 import {
+  Link,
   EntityList,
   ContractCard,
   ListEmptyFeedback,
-  Link,
+  PaginationControl,
 } from '@/components';
 
 interface ContractListProps {
@@ -32,7 +33,9 @@ export const ContractList = async ({
           </Link>
         ))}
       </EntityList.Content>
-      <EntityList.Pagination totalRecords={totalRecords} />
+      <EntityList.Footer>
+        <PaginationControl totalRecords={totalRecords} />
+      </EntityList.Footer>
     </EntityList.Root>
   );
 };

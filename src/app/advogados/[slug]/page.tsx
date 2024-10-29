@@ -3,9 +3,9 @@ import { PageParams } from '@/types';
 import { getLawyerBySlug } from '@/services';
 import { pageParamsSlugSchema } from '@/schemas';
 import {
-  PageWrapper,
-  Suspense,
   Await,
+  Suspense,
+  PageWrapper,
   LawyerDetails,
   PageDetailsSkeleton,
 } from '@/components';
@@ -25,11 +25,9 @@ export default async function LawyerPage({ params }: LawyerPageProps) {
             <PageWrapper.Header>
               <PageWrapper.Title title={lawyer.fullName} />
             </PageWrapper.Header>
-            <PageWrapper.Content>
-              <PageWrapper.ScrollArea>
-                <LawyerDetails lawyer={lawyer} />
-              </PageWrapper.ScrollArea>
-            </PageWrapper.Content>
+            <PageWrapper.ContentScrollable>
+              <LawyerDetails lawyer={lawyer} />
+            </PageWrapper.ContentScrollable>
           </PageWrapper.Root>
         )}
       </Await>

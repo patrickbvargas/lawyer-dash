@@ -1,12 +1,12 @@
 'use client';
 import * as React from 'react';
 import { ROUTES } from '@/constants';
+import { NavigationMenu } from '@/components';
 import { usePathname } from 'next/navigation';
-import * as NavigationPrimitive from './components';
 
-interface NavigationProps
-  extends React.ComponentProps<typeof NavigationPrimitive.Root> {}
-export const Navigation = ({ ...props }: NavigationProps) => {
+export const Navigation = ({
+  ...props
+}: React.ComponentProps<typeof NavigationMenu.Root>) => {
   const pathname = usePathname();
 
   const isActiveRoute = (href: string) => {
@@ -14,16 +14,16 @@ export const Navigation = ({ ...props }: NavigationProps) => {
   };
 
   return (
-    <NavigationPrimitive.Root {...props}>
-      <NavigationPrimitive.List>
+    <NavigationMenu.Root {...props}>
+      <NavigationMenu.List>
         {Object.values(ROUTES).map((route) => (
-          <NavigationPrimitive.Item
-            key={route.href}
+          <NavigationMenu.Item
+            key={route.label}
             active={isActiveRoute(route.href)}
             {...route}
           />
         ))}
-      </NavigationPrimitive.List>
-    </NavigationPrimitive.Root>
+      </NavigationMenu.List>
+    </NavigationMenu.Root>
   );
 };

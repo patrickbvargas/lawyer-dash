@@ -3,9 +3,9 @@ import { PageParams } from '@/types';
 import { pageParamsIdSchema } from '@/schemas';
 import { getRemunerationById } from '@/services';
 import {
-  PageWrapper,
-  Suspense,
   Await,
+  Suspense,
+  PageWrapper,
   RemunerationDetails,
   PageDetailsSkeleton,
 } from '@/components';
@@ -29,11 +29,9 @@ export default async function RemunerationPage({
                 title={remuneration.contractLawyer.contract.identification}
               />
             </PageWrapper.Header>
-            <PageWrapper.Content>
-              <PageWrapper.ScrollArea>
-                <RemunerationDetails remuneration={remuneration} />
-              </PageWrapper.ScrollArea>
-            </PageWrapper.Content>
+            <PageWrapper.ContentScrollable>
+              <RemunerationDetails remuneration={remuneration} />
+            </PageWrapper.ContentScrollable>
           </PageWrapper.Root>
         )}
       </Await>

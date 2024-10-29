@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { ROUTES } from '@/constants';
 import { LawyerSchemaWithSubjectNameType } from '@/schemas';
-import { EntityList, LawyerCard, ListEmptyFeedback, Link } from '@/components';
+import {
+  Link,
+  EntityList,
+  LawyerCard,
+  ListEmptyFeedback,
+  PaginationControl,
+} from '@/components';
 
 interface LawyerListProps {
   lawyers: LawyerSchemaWithSubjectNameType[];
@@ -24,7 +30,9 @@ export const LawyerList = async ({
           </Link>
         ))}
       </EntityList.Content>
-      <EntityList.Pagination totalRecords={totalRecords} />
+      <EntityList.Footer>
+        <PaginationControl totalRecords={totalRecords} />
+      </EntityList.Footer>
     </EntityList.Root>
   );
 };

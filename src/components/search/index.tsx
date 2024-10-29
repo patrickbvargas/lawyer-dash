@@ -3,11 +3,13 @@ import * as React from 'react';
 import { cn } from '@/utils';
 import { useSearch } from '@/hooks';
 import { Button, Input } from '@/components';
-import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import { IconSearch, IconX } from '@/assets/icons';
 
 // TODO: refatore with react-hook-form
-interface SearchProps extends React.ComponentProps<typeof Input> {}
-export const Search = ({ className, ...props }: SearchProps) => {
+export const Search = ({
+  className,
+  ...props
+}: React.ComponentProps<typeof Input>) => {
   const { query, handleSearch } = useSearch();
   const [searchValue, setSearchValue] = React.useState(query);
 
@@ -17,8 +19,8 @@ export const Search = ({ className, ...props }: SearchProps) => {
   };
 
   return (
-    <div className="relative">
-      <MagnifyingGlassIcon className="absolute size-4 opacity-60 left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-neutral-400" />
+    <div className="relative p-1">
+      <IconSearch className="absolute size-4 opacity-60 left-4 top-1/2 -translate-y-1/2 text-foreground" />
       <Input
         className={cn('px-10', className)}
         value={searchValue}
@@ -26,12 +28,12 @@ export const Search = ({ className, ...props }: SearchProps) => {
         {...props}
       />
       <Button
-        className="absolute right-0 top-1/2 -translate-y-1/2"
-        variant="clear"
+        className="absolute right-1 top-1/2 -translate-y-1/2"
+        variant="ghost"
         size="icon"
         onClick={() => handleInputSearch('')}
       >
-        <XMarkIcon className="size-4 opacity-60" />
+        <IconX className="size-4 opacity-60" />
       </Button>
     </div>
   );

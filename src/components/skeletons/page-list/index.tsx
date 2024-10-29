@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { PAGE_SIZE_DEFAULT } from '@/constants';
 import {
-  Skeleton,
   PageWrapper,
+  TitleSkeleton,
+  SearchSkeleton,
   EntityListSkeleton,
-  PageTitleSkeleton,
 } from '@/components';
 
 interface PageListSkeletonProps {
@@ -16,13 +16,11 @@ export const PageListSkeleton = ({
   return (
     <PageWrapper.Root>
       <PageWrapper.Header>
-        <PageTitleSkeleton />
+        <TitleSkeleton />
       </PageWrapper.Header>
       <PageWrapper.Content>
-        <Skeleton className="h-10 flex-shrink-0" />
-        <PageWrapper.ScrollArea>
-          <EntityListSkeleton totalRecords={totalRecords} />
-        </PageWrapper.ScrollArea>
+        <SearchSkeleton />
+        <EntityListSkeleton totalRecords={totalRecords} />
       </PageWrapper.Content>
     </PageWrapper.Root>
   );

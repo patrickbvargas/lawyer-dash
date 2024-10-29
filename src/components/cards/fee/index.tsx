@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { formatter } from '@/utils';
-import { Card } from '@/components';
+import { Card, Separator } from '@/components';
 import { CardDefinitionItemData } from '@/types';
 import { FeeSchemaWithSubjectNameType } from '@/schemas';
 
@@ -29,7 +29,7 @@ export const FeeCard = ({ fee }: FeeCardProps) => {
       <Card.Header>
         <Card.Title>{fee.revenue.contract.identification}</Card.Title>
       </Card.Header>
-      <Card.Divider />
+      <Separator />
       <Card.Content>
         <Card.DefinitionList data={feeData} />
         <Card.Badge label={formatter.revenueType(fee.revenue.type)} />

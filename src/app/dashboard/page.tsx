@@ -1,16 +1,15 @@
 import * as React from 'react';
-import { PageConstructionFeedback, PageWrapper } from '@/components';
+import { PageWrapper, PageConstructionFeedback } from '@/components';
 
-interface DashboardPageProps {}
-export default async function DashboardPage({}: DashboardPageProps) {
+export default async function DashboardPage() {
   return (
     <PageWrapper.Root>
       <PageWrapper.Header>
         <PageWrapper.Title title="Quase lá! " />
       </PageWrapper.Header>
-      <PageWrapper.Content>
+      <PageWrapper.ContentScrollable>
         <PageConstructionFeedback />
-      </PageWrapper.Content>
+      </PageWrapper.ContentScrollable>
     </PageWrapper.Root>
   );
 }
