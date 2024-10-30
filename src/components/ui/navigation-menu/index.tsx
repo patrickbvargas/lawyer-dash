@@ -14,7 +14,7 @@ export const List = ({
 }: React.HTMLAttributes<HTMLUListElement>) => (
   <ul
     className={cn(
-      'flex flex-wrap justify-evenly items-center gap-3 sm:flex-col',
+      'flex flex-wrap gap-1 justify-evenly items-center sm:gap-3 sm:flex-col',
       className,
     )}
     {...props}

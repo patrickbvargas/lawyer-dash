@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { Search } from './search';
 import { PaginationControl } from './pagination-control';
 import { Navigation } from './navigation';
+import { UserProfile } from './user-profile';
+import { Toaster } from './toaster';
 import { LawyerCard } from './cards/lawyer';
 import { ClientCard } from './cards/client';
 import { ContractCard } from './cards/contract';
@@ -37,7 +39,9 @@ import { CustomLink as Link } from './ui/link';
 import { Input } from './ui/input';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
+import * as Toast from './ui/toast';
 import { Separator } from './ui/separator';
+import * as Avatar from './ui/avatar';
 import * as Select from './ui/select';
 import * as Tooltip from './ui/tooltip';
 import * as Section from './ui/section';
@@ -49,11 +53,12 @@ import * as EntityList from './ui/entity-list';
 import * as PageWrapper from './ui/page-wrapper';
 import * as ScrollArea from './ui/scroll-area';
 import * as Illustration from './ui/illustration';
+import * as DropdownMenu from './ui/dropdown-menu';
 import * as EntityDetails from './ui/entity-details';
 import { DefinitionItem } from './ui/definition-item';
 import * as NavigationMenu from './ui/navigation-menu';
 
-export { Image, Search, PaginationControl, Navigation };
+export { Image, Search, PaginationControl, Navigation, UserProfile, Toaster };
 export { LawyerCard, ClientCard, ContractCard, FeeCard, RemunerationCard };
 export { LawyerList, ClientList, ContractList, FeeList, RemunerationList };
 export {
@@ -87,8 +92,10 @@ export {
   Await,
   Input,
   Badge,
+  Avatar,
   Button,
   Select,
+  Toast,
   Section,
   Tooltip,
   Skeleton,
@@ -99,6 +106,7 @@ export {
   EntityList,
   Pagination,
   PageWrapper,
+  DropdownMenu,
   Illustration,
   EntityDetails,
   DefinitionItem,

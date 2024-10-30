@@ -16,6 +16,8 @@ import {
   Scale,
   UserRound,
   Blocks,
+  Circle,
+  LogOut,
 } from 'lucide-react';
 
 export {
@@ -36,4 +38,6 @@ export {
   ChevronRight as IconChevronRight,
   ChevronsRight as IconChevronsRight,
   MoreHorizontal as IconMoreHorizontal,
+  Circle as IconCircle,
+  LogOut as IconLogOut,
 };

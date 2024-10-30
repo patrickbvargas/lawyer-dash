@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from './providers';
+import { Toaster } from '@/components';
 import { Wrapper, Header, Sidebar, Content } from '@/layouts';
 
 const fontFamily = Inter({ subsets: ['latin'] });
@@ -29,6 +30,7 @@ export default function RootLayout({
             <Header className="sm:row-start-1" />
             <Sidebar className="order-last sm:row-start-2" />
             <Content className="sm:row-span-full">{children}</Content>
+            <Toaster />
           </Wrapper>
         </ThemeProvider>
       </body>
