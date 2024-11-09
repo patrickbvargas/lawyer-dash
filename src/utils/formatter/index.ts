@@ -79,7 +79,7 @@ function formatCNPJ(cnpj: string) {
 }
 
 function formatMobilePhone(mobilePhone: string) {
-  return mobilePhone.replace(/(\d{3})(\d{5})(\d{4})/, '($1) $2-$3');
+  return mobilePhone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
 }
 
 function formatDate(date: Date | string) {
