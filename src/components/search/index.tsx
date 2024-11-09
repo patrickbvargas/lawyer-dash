@@ -28,7 +28,7 @@ export const Search = ({
         {...props}
       />
       <Button
-        className="absolute right-1 top-1/2 -translate-y-1/2"
+        className="absolute size-6 right-3 top-1/2 -translate-y-1/2"
         variant="ghost"
         size="icon"
         onClick={() => handleInputSearch('')}
