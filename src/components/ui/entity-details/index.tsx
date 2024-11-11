@@ -7,10 +7,7 @@ export const Root = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn('flex flex-wrap gap-6 mt-4 sm:gap-8', className)}
-    {...props}
-  />
+  <div className={cn('flex flex-wrap gap-6 sm:gap-8', className)} {...props} />
 );
 
 export const Group = ({

@@ -7,7 +7,7 @@ export const Root = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn('size-full flex flex-col gap-1 overflow-hidden', className)}
+    className={cn('size-full flex flex-col gap-2 overflow-hidden', className)}
     {...props}
   />
 );

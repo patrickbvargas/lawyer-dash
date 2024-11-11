@@ -6,7 +6,10 @@ export const Root = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('size-full flex flex-col p-4', className)} {...props} />
+  <div
+    className={cn('size-full flex flex-col p-4 pt-5 pl-1', className)}
+    {...props}
+  />
 );
 
 export const Header = ({
@@ -14,7 +17,10 @@ export const Header = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn('shrink-0 flex justify-between gap-3 p-1 pb-4', className)}
+    className={cn(
+      'shrink-0 flex justify-between gap-3 p-1 pb-3 sm:pb-4',
+      className,
+    )}
     {...props}
   />
 );
