@@ -9,6 +9,7 @@ import {
   Await,
   LawyerList,
   EntityListSkeleton,
+  EntityCreationMenu,
 } from '@/components';
 
 interface LawyersPageProps {
@@ -22,6 +23,7 @@ export default async function LawyersPage({ searchParams }: LawyersPageProps) {
     <PageWrapper.Root>
       <PageWrapper.Header>
         <PageWrapper.Title title="Advogados" />
+        <EntityCreationMenu />
       </PageWrapper.Header>
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Nome ou OAB" />

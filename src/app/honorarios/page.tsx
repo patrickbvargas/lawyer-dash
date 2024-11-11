@@ -9,6 +9,7 @@ import {
   Await,
   FeeList,
   EntityListSkeleton,
+  EntityCreationMenu,
 } from '@/components';
 
 interface FeesPageProps {
@@ -22,6 +23,7 @@ export default async function FeesPage({ searchParams }: FeesPageProps) {
     <PageWrapper.Root>
       <PageWrapper.Header>
         <PageWrapper.Title title="Honorários" />
+        <EntityCreationMenu />
       </PageWrapper.Header>
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Contrato ou Cliente" />

@@ -3,6 +3,7 @@ import { Search } from './search';
 import { PaginationControl } from './pagination-control';
 import { Navigation } from './navigation';
 import { UserProfile } from './user-profile';
+import { EntityCreationMenu } from './entity-creation-menu';
 import { Toaster } from './toaster';
 import { LawyerCard } from './cards/lawyer';
 import { ClientCard } from './cards/client';
@@ -23,6 +24,7 @@ import { CardSkeleton } from './skeletons/card';
 import { SearchSkeleton } from './skeletons/search';
 import { PageListSkeleton } from './skeletons/page-list';
 import { TitleSkeleton } from './skeletons/title';
+import { ButtonSkeleton } from './skeletons/button';
 import { PaginationSkeleton } from './skeletons/pagination';
 import { EntityListSkeleton } from './skeletons/entity-list';
 import { PageDetailsSkeleton } from './skeletons/page-details';
@@ -58,7 +60,15 @@ import * as EntityDetails from './ui/entity-details';
 import { DefinitionItem } from './ui/definition-item';
 import * as NavigationMenu from './ui/navigation-menu';
 
-export { Image, Search, PaginationControl, Navigation, UserProfile, Toaster };
+export {
+  Image,
+  Search,
+  PaginationControl,
+  Navigation,
+  UserProfile,
+  Toaster,
+  EntityCreationMenu,
+};
 export { LawyerCard, ClientCard, ContractCard, FeeCard, RemunerationCard };
 export { LawyerList, ClientList, ContractList, FeeList, RemunerationList };
 export {
@@ -77,6 +87,7 @@ export {
 export {
   CardSkeleton,
   TitleSkeleton,
+  ButtonSkeleton,
   SearchSkeleton,
   PageListSkeleton,
   EntityListSkeleton,

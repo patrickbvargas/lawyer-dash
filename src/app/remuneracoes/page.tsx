@@ -9,6 +9,7 @@ import {
   Await,
   RemunerationList,
   EntityListSkeleton,
+  EntityCreationMenu,
 } from '@/components';
 
 interface RemunerationsPageProps {
@@ -24,6 +25,7 @@ export default async function RemunerationsPage({
     <PageWrapper.Root>
       <PageWrapper.Header>
         <PageWrapper.Title title="Remunerações" />
+        <EntityCreationMenu />
       </PageWrapper.Header>
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Contrato ou Advogado" />

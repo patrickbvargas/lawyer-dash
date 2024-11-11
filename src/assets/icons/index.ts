@@ -18,6 +18,7 @@ import {
   Blocks,
   Circle,
   LogOut,
+  Plus,
 } from 'lucide-react';
 
 export {
@@ -40,4 +41,5 @@ export {
   MoreHorizontal as IconMoreHorizontal,
   Circle as IconCircle,
   LogOut as IconLogOut,
+  Plus as IconPlus,
 };

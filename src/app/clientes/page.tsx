@@ -9,6 +9,7 @@ import {
   Await,
   ClientList,
   EntityListSkeleton,
+  EntityCreationMenu,
 } from '@/components';
 
 interface ClientsPageProps {
@@ -22,6 +23,7 @@ export default async function ClientsPage({ searchParams }: ClientsPageProps) {
     <PageWrapper.Root>
       <PageWrapper.Header>
         <PageWrapper.Title title="Clientes" />
+        <EntityCreationMenu />
       </PageWrapper.Header>
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Nome ou CPF/CNPJ" />

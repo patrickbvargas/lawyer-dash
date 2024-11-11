@@ -9,6 +9,7 @@ import {
   Await,
   ContractList,
   EntityListSkeleton,
+  EntityCreationMenu,
 } from '@/components';
 
 interface ContractsPageProps {
@@ -24,6 +25,7 @@ export default async function ContractsPage({
     <PageWrapper.Root>
       <PageWrapper.Header>
         <PageWrapper.Title title="Contratos" />
+        <EntityCreationMenu />
       </PageWrapper.Header>
       <PageWrapper.Content>
         <Search placeholder="Pesquisar por Processo, Cliente ou Advogado" />
