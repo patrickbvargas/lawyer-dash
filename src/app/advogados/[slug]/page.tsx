@@ -8,6 +8,7 @@ import {
   PageWrapper,
   LawyerDetails,
   PageDetailsSkeleton,
+  EntityControls,
 } from '@/components';
 
 interface LawyerPageProps {
@@ -24,6 +25,7 @@ export default async function LawyerPage({ params }: LawyerPageProps) {
           <PageWrapper.Root>
             <PageWrapper.Header>
               <PageWrapper.Title title={lawyer.fullName} />
+              <EntityControls />
             </PageWrapper.Header>
             <PageWrapper.ContentScrollable>
               <LawyerDetails lawyer={lawyer} />

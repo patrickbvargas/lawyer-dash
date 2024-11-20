@@ -8,6 +8,7 @@ import {
   PageWrapper,
   ContractDetails,
   PageDetailsSkeleton,
+  EntityControls,
 } from '@/components';
 
 interface ContractPageProps {
@@ -24,6 +25,7 @@ export default async function ContractPage({ params }: ContractPageProps) {
           <PageWrapper.Root>
             <PageWrapper.Header>
               <PageWrapper.Title title={contract.identification} />
+              <EntityControls />
             </PageWrapper.Header>
             <PageWrapper.ContentScrollable>
               <ContractDetails contract={contract} />

@@ -19,6 +19,8 @@ import {
   Circle,
   LogOut,
   Plus,
+  PencilLine,
+  Trash,
 } from 'lucide-react';
 
 export {
@@ -42,4 +44,6 @@ export {
   Circle as IconCircle,
   LogOut as IconLogOut,
   Plus as IconPlus,
+  PencilLine as IconPencilLine,
+  Trash as IconTrash,
 };

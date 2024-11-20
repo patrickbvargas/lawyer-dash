@@ -8,6 +8,7 @@ import {
   PageWrapper,
   RemunerationDetails,
   PageDetailsSkeleton,
+  EntityControls,
 } from '@/components';
 
 interface RemunerationPageProps {
@@ -28,6 +29,7 @@ export default async function RemunerationPage({
               <PageWrapper.Title
                 title={remuneration.contractLawyer.contract.identification}
               />
+              <EntityControls />
             </PageWrapper.Header>
             <PageWrapper.ContentScrollable>
               <RemunerationDetails remuneration={remuneration} />

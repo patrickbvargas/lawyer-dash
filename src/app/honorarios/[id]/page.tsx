@@ -8,6 +8,7 @@ import {
   FeeDetails,
   PageWrapper,
   PageDetailsSkeleton,
+  EntityControls,
 } from '@/components';
 
 interface FeePageProps {
@@ -24,6 +25,7 @@ export default async function FeePage({ params }: FeePageProps) {
           <PageWrapper.Root>
             <PageWrapper.Header>
               <PageWrapper.Title title={fee.revenue.contract.identification} />
+              <EntityControls />
             </PageWrapper.Header>
             <PageWrapper.ContentScrollable>
               <FeeDetails fee={fee} />

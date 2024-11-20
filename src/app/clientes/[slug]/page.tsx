@@ -8,6 +8,7 @@ import {
   PageWrapper,
   ClientDetails,
   PageDetailsSkeleton,
+  EntityControls,
 } from '@/components';
 
 interface ClientPageProps {
@@ -24,6 +25,7 @@ export default async function ClientPage({ params }: ClientPageProps) {
           <PageWrapper.Root>
             <PageWrapper.Header>
               <PageWrapper.Title title={client.fullName} />
+              <EntityControls />
             </PageWrapper.Header>
             <PageWrapper.ContentScrollable>
               <ClientDetails client={client} />

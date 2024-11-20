@@ -42,8 +42,8 @@ export const Item = ({
           </Link>
         </li>
       </Tooltip.Trigger>
-      <Tooltip.Content side="right" sideOffset={10}>
-        <Label>{label}</Label>
+      <Tooltip.Content side="right">
+        <Tooltip.Description>{label}</Tooltip.Description>
       </Tooltip.Content>
     </Tooltip.Root>
   </Tooltip.Provider>
@@ -62,10 +62,3 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ),
 );
 Link.displayName = 'Link';
-
-const Label = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) => (
-  <p className={cn('text-sm font-normal', className)} {...props} />
-);

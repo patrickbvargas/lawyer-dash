@@ -10,7 +10,7 @@ export const Trigger = TooltipPrimitive.Trigger;
 export const Content = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
+>(({ className, sideOffset = 10, ...props }, ref) => (
   <TooltipPrimitive.Content
     ref={ref}
     sideOffset={sideOffset}
@@ -22,3 +22,10 @@ export const Content = React.forwardRef<
   />
 ));
 Content.displayName = TooltipPrimitive.Content.displayName;
+
+export const Description = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>) => (
+  <p className={cn('text-sm font-normal', className)} {...props} />
+);

@@ -4,6 +4,7 @@ import { PaginationControl } from './pagination-control';
 import { Navigation } from './navigation';
 import { UserProfile } from './user-profile';
 import { EntityCreationMenu } from './entity-creation-menu';
+import { EntityControls } from './entity-controls';
 import { Toaster } from './toaster';
 import { LawyerCard } from './cards/lawyer';
 import { ClientCard } from './cards/client';
@@ -68,6 +69,7 @@ export {
   UserProfile,
   Toaster,
   EntityCreationMenu,
+  EntityControls,
 };
 export { LawyerCard, ClientCard, ContractCard, FeeCard, RemunerationCard };
 export { LawyerList, ClientList, ContractList, FeeList, RemunerationList };
